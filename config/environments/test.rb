@@ -31,3 +31,5 @@ config.gem 'rspec-rails', :git => 'git://github.com/dchelimsky/rspec-rails.git'
 config.gem 'rspec', :git => 'git://github.com/dchelimsky/rspec.git'
 config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com'
 config.gem 'thoughtbot-shoulda', :lib => 'shoulda', :source => 'http://gems.github.com'
+
+HOST = "localhost"
