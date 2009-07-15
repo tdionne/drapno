@@ -3,7 +3,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe "/dreams/show.html.erb" do
   include DreamsHelper
   before(:each) do
-    assigns[:dream] = @dream = Dream.mock(:id => 1)
+    @dreamer = Dreamer.mock(:name => 'Dreamer 1')
+    assigns[:dream] = @dream = Dream.mock(:id => 1, :dreamer => @dreamer)
   end
 
   it "renders attributes in <p>" do
