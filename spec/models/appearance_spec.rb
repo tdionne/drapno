@@ -1,13 +1,17 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe Dreamer do
+describe Appearance do
   describe "associations" do
-    it { should have_many(:dreams) }
-    it { should have_many(:appearances) }    
+    it { should belong_to(:dream) }
+    it { should belong_to(:apparition) }    
   end
   
   describe "validations" do
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:name) }
+  end
+  
+  it "checks for a matching dreamer before create" do
+    pending
   end
 end

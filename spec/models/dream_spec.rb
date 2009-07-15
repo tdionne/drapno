@@ -3,6 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Dream do
   describe "associations" do
     it { should belong_to(:dreamer) }
+    it { should have_many(:appearances) }
   end
   
   describe "validations" do

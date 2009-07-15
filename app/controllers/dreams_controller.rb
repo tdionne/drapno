@@ -27,7 +27,8 @@ class DreamsController < ApplicationController
   # GET /dreams/new.xml
   def new
     @dream = Dream.new
-
+    @dream.appearances.build
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @dream }
@@ -50,6 +51,7 @@ class DreamsController < ApplicationController
         format.html { redirect_to(@dream) }
         format.xml  { render :xml => @dream, :status => :created, :location => @dream }
       else
+        # @dream.appearances.build
         format.html { render :action => "new" }
         format.xml  { render :xml => @dream.errors, :status => :unprocessable_entity }
       end

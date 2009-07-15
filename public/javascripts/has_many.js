@@ -45,11 +45,11 @@ var HasMany = {
     return false;
   },
   
-  'clear': function(container) {
+  clear: function(container) {
     container.find('input,textarea').attr('value', '');
   },
   
-  'removeNew': function() {
+  removeNew: function() {
     if (this.parentNode.nodeName.toUpperCase() == 'LI') {
       $(this.parentNode).remove();
     } else {
@@ -66,7 +66,7 @@ var HasMany = {
     return false;
   },
   
-  'removeExisting': function() {
+  removeExisting: function() {
     if (this.parentNode.nodeName.toUpperCase() == 'LI') {
       $div = $(this.parentNode);
     } else {
@@ -77,7 +77,7 @@ var HasMany = {
     return false;
   },
   
-  'addNew': function() {
+  addNew: function() {
     $predecessors = $(this).parent().prev('ul').children('li');
     $initial = $(this).parent().prev('ul').children('li:first');
     $predecessor = $(this).parent().prev('ul').children('li:last');
@@ -88,9 +88,10 @@ var HasMany = {
     return false;
   },
   
-  'attach': function(selector) {
-    $(selector).filter('.new').find('.remove-link').click(HasMany.removeNew);
-    $(selector).filter('.old').find('.remove-link').click(HasMany.removeExisting);
-    $('.add-link').click(HasMany.addNew);
+  attach: function(selector) {
+    var $selector = $(selector);
+    $('.new .remove-link', $selector).click(HasMany.removeNew);
+    $('.old .remove-link', $selector).click(HasMany.removeExisting);
+    $('a.add-link', $selector).click(HasMany.addNew);
   }
 }
