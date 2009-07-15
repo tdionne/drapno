@@ -9,5 +9,7 @@ class Dream < ActiveRecord::Base
     indexes title
     indexes story
     indexes dreamer(:name), :as => :dreamer
+    
+    set_property :delta => :delayed
   end
 end
