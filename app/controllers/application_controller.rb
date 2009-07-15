@@ -3,6 +3,8 @@
 
 class ApplicationController < ActionController::Base
   include Clearance::Authentication
+  include ErrorRenderers
+
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
@@ -10,7 +12,14 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
   before_filter :transfer_dreamer_params
   skip_before_filter :verify_authenticity_token, :if => proc { |c| c.request.js? }
-  
+
+  protected
+    def restrict_to_admin
+      unless signed_in? and current_user.is_admin?
+        render_401 and return false
+      end
+    end
+    
   private
   
     # Making clearance work with a user called anything but User (in our case Dreamer)
