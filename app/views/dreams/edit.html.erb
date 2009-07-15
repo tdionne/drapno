@@ -1,0 +1,12 @@
+<h1>Editing dream</h1>
+
+<% form_for(@dream) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @dream %> |
+<%= link_to 'Back', dreams_path %>

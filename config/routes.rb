@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :dreams
+
 
   map.resources :dreamers, :controller => 'clearance/users' do |dreamers|
     dreamers.resource :password,
