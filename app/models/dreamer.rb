@@ -4,4 +4,6 @@ class Dreamer < ActiveRecord::Base
   has_many :dreams
   
   validates_presence_of :name
+  
+  attr_accessible :name
 end
