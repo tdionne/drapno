@@ -10,6 +10,7 @@ Feature: Dream creation
     And I follow "Add a dream"
     And I fill in "Title" with "My Real Dream"
     And I fill in "Story" with "All this stuff happens"
+    And I fill in "Tags" with "dream, weird, stuff"
     And I press "Add Dream"
     
     Then I should see "Dream was successfully created"
