@@ -13,5 +13,8 @@ ActionController::Routing::Routes.draw do |map|
       :only       => [:new, :create]
   end
   
+  map.sign_up  'sign_up',
+    :controller => 'dreamers',
+    :action     => 'new'
   map.root :controller => 'home'
 end
