@@ -7,4 +7,8 @@ class Dreamer < ActiveRecord::Base
   validates_presence_of :name
   
   attr_accessible :name
+  
+  def is_admin?
+    true
+  end
 end

@@ -12,12 +12,22 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
   before_filter :transfer_dreamer_params
   skip_before_filter :verify_authenticity_token, :if => proc { |c| c.request.js? }
+  
+  before_filter :invitation_only_authenticate, :if => :invitation_only?
 
   protected
     def restrict_to_admin
       unless signed_in? and current_user.is_admin?
         render_401 and return false
       end
+    end
+    
+    def invitation_only_authenticate
+      authenticate
+    end
+    
+    def invitation_only?
+      true
     end
     
   private

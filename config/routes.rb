@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :invitations, :only => [:index, :new, :create]
+
   map.resources :dreams
 
   map.search '/search.:format', :controller => 'search'

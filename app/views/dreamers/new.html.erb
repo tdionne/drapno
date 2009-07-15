@@ -1,0 +1,11 @@
+<h2>Sign up</h2>
+
+<% form_for @user do |form| %>
+  <%= render form %>
+  
+  <% if @invitation %>
+    <%= hidden_field_tag 'code', @invitation.invitation_code %>
+  <% end %>
+  
+  <%= form.submit 'Sign up', :disable_with => 'Please wait...' %>
+<% end %>

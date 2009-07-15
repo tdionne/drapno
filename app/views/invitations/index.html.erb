@@ -1,0 +1,22 @@
+<h1>Listing invitations</h1>
+
+<table border="1" cellpadding="5">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Code</th>
+    <th>Sent</th>
+  </tr>
+
+<% @invitations.each do |invitation| %>
+  <tr>
+    <td><%= invitation.name %></td>
+    <td><%= invitation.email %></td>
+    <td><%= invitation.invitation_code %></td>
+    <td><%= invitation.created_at %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<p><%= link_to 'New invitation', new_invitation_path %></p>
