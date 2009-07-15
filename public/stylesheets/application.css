@@ -36,6 +36,9 @@ h1, h2, h3, h4 {
     display: inline;
     margin-right: 20px;
   }
+  #basic-navigation form {
+    display: inline;
+  }
 
 #content {
   margin: 10px;
