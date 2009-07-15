@@ -1,3 +1,11 @@
+<h2><%= @dream.title %></h2>
 
-<%= link_to 'Edit', edit_dream_path(@dream) %> |
-<%= link_to 'Back', dreams_path %>
+<p><%= @dream.story %></p>
+
+<p>Dreamt up by <%= link_to @dream.dreamer.name, @dream.dreamer %></p>
+
+<% if signed_in? and current_user == @dream.dreamer %>
+  <p><%= link_to 'Edit', edit_dream_path(@dream) %></p>
+<% end %>
+
+<p><%= link_to 'Browse Dreams', dreams_path %></p>
