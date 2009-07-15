@@ -1,25 +1,32 @@
-<p>
-  <%= form.label :title %>
-  <%= form.text_field :title %>
-</p>
+<fieldset>
+  <legend>The Basics</legend>
+  <p>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </p>
 
-<p>
-  <%= form.label :story %>
-  <%= form.text_area :story %>
-</p>
+  <p>
+    <%= form.label :story %>
+    <%= form.text_area :story %>
+  </p>
+</fieldset>
 
-<p>
-  <%= form.label :tag_list, "Tags" %>
-  <%= form.text_field :tag_list %>
-</p>
+<fieldset>
+  <legend>Extra Details</legend>
+  <p>
+    <%= form.label :tag_list, "Tags" %>
+    <%= form.text_field :tag_list %>
+  </p>
 
-<p>
-  <%= form.label :location, 'Where in the world were you sleeping?' %>
-  <%= form.text_field :location %>
-</p>
+  <p>
+    <%= form.label :location, 'Where in the world were you sleeping?' %>
+    <%= form.text_field :location %>
+  </p>
 
-<p>
-  <%= form.label :dreamt_on, "When was the dream" %>
-  <%= form.date_select :dreamt_on, :order => [:day, :month, :year], 
-    :start_year => Date.today.year - 5, :end_year => Date.today.year %>
-</p>
+  <p>
+    <%= form.label :dreamt_on, "When was the dream" %>
+    <%= form.date_select :dreamt_on, :order => [:day, :month, :year], 
+      :start_year => Date.today.year - 5, :end_year => Date.today.year %>
+  </p>
+</fieldset>
+
