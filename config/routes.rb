@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :dreams
 
+  map.search '/search.:format', :controller => 'search'
 
   map.resources :dreamers do |dreamers|
     dreamers.resource :password,

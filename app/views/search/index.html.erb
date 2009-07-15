@@ -1,0 +1,21 @@
+<% if @results %>
+  <h3>Search Results</h3>
+
+  <% if @results.any? %>
+  
+    <%= page_entries_info @results %>
+  
+    <ul>
+      <% @results.each do |dream| %>
+      <li><%= link_to dream.title, dream %> from <%= link_to dream.dreamer.name, dream.dreamer %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No matching results. Please try again</p>
+  <% end %>
+<% end %>
+
+<% form_tag search_path, :method => :get do %>
+  <p><%= text_field_tag 'q', params[:q] %></p>
+  <p><%= submit_tag 'Search' %></p>
+<% end %>
