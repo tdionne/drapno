@@ -7,5 +7,21 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
+  filter_parameter_logging :password
+  before_filter :transfer_dreamer_params
+  
+  private
+  
+    # Making clearance work with a user called anything but User (in our case Dreamer)
+    # is a bit of a pain. This is a bit of a hack to make it simpler.
+    def transfer_dreamer_params
+      params[:user_id] ||= params[:dreamer_id]
+      params[:user] ||= params[:dreamer]
+    end
+    
+    def sign_user_in(user)
+      # store current time to display "last signed in at" message
+      user.update_attribute(:last_signed_in_at, Time.now)
+      sign_in(user)
+    end
 end
