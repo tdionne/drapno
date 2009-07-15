@@ -1,10 +1,10 @@
 Feature: Password reset
-  In order to sign in even if user forgot their password
-  A user
+  In order to sign in even if dreamer forgot their password
+  A dreamer
   Should be able to reset it
 
     Scenario: User is not signed up
-      Given no user exists with an email of "email@person.com"
+      Given no dreamer exists with an email of "email@person.com"
       When I request password reset link to be sent to "email@person.com"
       Then I should see "Unknown email"
 

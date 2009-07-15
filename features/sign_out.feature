@@ -1,6 +1,6 @@
 Feature: Sign out
   To protect my account from unauthorized access
-  A signed in user
+  A signed in dreamer
   Should be able to sign out
 
     Scenario: User signs out

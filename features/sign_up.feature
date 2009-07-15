@@ -1,6 +1,6 @@
 Feature: Sign up
   In order to get access to protected sections of the site
-  A user
+  A dreamer
   Should be able to sign up
 
     Scenario: User signs up with invalid data
