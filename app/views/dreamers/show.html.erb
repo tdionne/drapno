@@ -1,0 +1,9 @@
+<h1>Dreamer: <%= @dreamer.name %></h1>
+
+<h2>Dreams</h2>
+
+<ul>
+  <% @dreamer.dreams.each do |dream| %>
+    <li><%= link_to dream.title, dream %></li>
+  <% end %>
+</ul>

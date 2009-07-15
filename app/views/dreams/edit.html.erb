@@ -3,6 +3,8 @@
 <% form_for(@dream) do |f| %>
   <%= f.error_messages %>
 
+  <%= render f %>
+
   <p>
     <%= f.submit 'Update' %>
   </p>

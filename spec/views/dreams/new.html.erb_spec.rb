@@ -4,9 +4,7 @@ describe "/dreams/new.html.erb" do
   include DreamsHelper
 
   before(:each) do
-    assigns[:dream] = stub_model(Dream,
-      :new_record? => true
-    )
+    assigns[:dream] = Dream.mock { |d| d.as_new_record }
   end
 
   it "renders new dream form" do

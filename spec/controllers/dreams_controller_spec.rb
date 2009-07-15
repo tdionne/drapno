@@ -11,7 +11,7 @@ describe DreamsController do
 
   describe "GET index" do
     it "assigns all dreams as @dreams" do
-      Dream.stubs(:find).with(:all).returns([@mock_dream])
+      Dream.stubs(:find).with(:all, :include => :dreamer).returns([@mock_dream])
       get :index
       assigns[:dreams].should == [@mock_dream]
     end

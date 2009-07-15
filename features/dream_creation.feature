@@ -13,6 +13,9 @@ Feature: Dream creation
     And I press "Add Dream"
     
     Then I should see "Dream was successfully created"
+    
+    When I go to the dreamer page for "email@person.com"
+    Then I should see "My Real Dream"
   
   Scenario: Failed creation
     Given I am signed up and confirmed as "email@person.com/password"

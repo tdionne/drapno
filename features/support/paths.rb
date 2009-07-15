@@ -10,7 +10,9 @@ module NavigationHelpers
       new_session_path
     when /the password reset request page/i
       new_password_path
-    
+    when /the dreamer page for "(.+?)"/i
+      d = Dreamer.find_by_email($1)
+      dreamer_path(d)
     # Add more page name => path mappings here
     
     else

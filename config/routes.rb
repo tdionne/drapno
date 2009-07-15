@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :dreams
 
 
-  map.resources :dreamers, :controller => 'clearance/users' do |dreamers|
+  map.resources :dreamers do |dreamers|
     dreamers.resource :password,
       :controller => 'clearance/passwords',
       :only       => [:create, :edit, :update]

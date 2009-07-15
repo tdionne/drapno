@@ -8,5 +8,6 @@ describe Dream do
   describe "validations" do
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:story) }
+    it { should validate_presence_of(:dreamer_id) }
   end
 end

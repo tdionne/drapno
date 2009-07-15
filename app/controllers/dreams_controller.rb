@@ -4,7 +4,7 @@ class DreamsController < ApplicationController
   # GET /dreams
   # GET /dreams.xml
   def index
-    @dreams = Dream.all
+    @dreams = Dream.all(:include => :dreamer)
 
     respond_to do |format|
       format.html # index.html.erb

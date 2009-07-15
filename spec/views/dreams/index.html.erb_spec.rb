@@ -4,9 +4,10 @@ describe "/dreams/index.html.erb" do
   include DreamsHelper
 
   before(:each) do
+    @dreamer = Dreamer.mock(:name => 'Dreamer')
     assigns[:dreams] = [
-      stub_model(Dream),
-      stub_model(Dream)
+      Dream.mock(:id => 1, :dreamer => @dreamer),
+      Dream.mock(:id => 2, :dreamer => @dreamer)
     ]
   end
 
