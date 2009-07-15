@@ -9,17 +9,17 @@
     <ul id="basic-navigation">
       <li><%= link_to 'Add a dream', new_dream_path %></li>
       <% if signed_in? %>
-      <li><%= link_to 'Sign out', sign_out_path %></p>
+        <li><%= link_to 'Sign out', sign_out_path %></p>
       <% else %>
-      <li><%= link_to 'Sign Up', sign_up_path %></li>
-      <li><%= link_to 'Sign In', sign_in_path %></li>
-        <% unless controller.class.to_s == 'SearchController' %>
-          <li>
-            <% form_tag search_path, :method => :get do %>
-              <%= text_field_tag 'q', params[:q] %> <%= submit_tag 'Search' %>
-            <% end %>
-          </li>
-        <% end %>
+        <li><%= link_to 'Sign Up', sign_up_path %></li>
+        <li><%= link_to 'Sign In', sign_in_path %></li>
+      <% end %>
+      <% unless controller.class.to_s == 'SearchController' %>
+        <li>
+          <% form_tag search_path, :method => :get do %>
+            <%= text_field_tag 'q', params[:q] %> <%= submit_tag 'Search' %>
+          <% end %>
+        </li>
       <% end %>
     </ul>
     
