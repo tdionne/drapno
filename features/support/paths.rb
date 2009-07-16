@@ -5,11 +5,15 @@ module NavigationHelpers
     when /the homepage/i
       root_path
     when /the sign up page/i
-      new_dreamer_path
+      sign_up_path
     when /the sign in page/i
       new_session_path
+    when /the sign out page/i
+      sign_out_path
     when /the password reset request page/i
       new_password_path
+    when /new invitation page/i
+      new_invitation_path
     when /the dreamer page for "(.+?)"/i
       d = Dreamer.find_by_email($1)
       dreamer_path(d)

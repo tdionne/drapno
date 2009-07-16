@@ -1,0 +1,36 @@
+<h2>Sign in</h2>
+
+<% if invitation_only? %>
+<p>We are currently in <em>invitation only</em> mode. If you don't have an account and would like an invitation, please get in touch.</p>
+<p>Otherwise, please log in below.</p>
+<hr />
+<% end %>
+
+<% form_for :session, :url => session_path do |form| %>
+  <p class="text_field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>  
+  </p>
+  <p class="text_field">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </p>
+  <p class="text_field">
+    <%= form.check_box :remember_me %>
+    <%= form.label :remember_me %>
+  </p>
+  <p class="submit_field">
+    <%= form.submit "Sign in", :disable_with => "Please wait..." %>
+  </p>
+<% end %>
+
+<ul>
+  <% unless invitation_only? %>
+  <li>
+    <%= link_to "Sign up", new_user_path %>
+  </li>
+  <% end %>
+  <li>
+    <%= link_to "Forgot password?", new_password_path %>
+  </li>
+</ul>

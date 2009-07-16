@@ -3,6 +3,9 @@ Feature: Sign up
   A dreamer
   Should be able to sign up
 
+  Background:
+    Given the site is not in invitation only mode
+  
     Scenario: User signs up with invalid data
       When I go to the sign up page
       And I fill in "Email" with "invalidemail"
