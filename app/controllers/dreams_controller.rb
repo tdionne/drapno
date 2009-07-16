@@ -37,7 +37,8 @@ class DreamsController < ApplicationController
 
   # GET /dreams/1/edit
   def edit
-    @dream = current_user.dreams.find(params[:id])
+    @dream = current_user.dreams.find(params[:id], :include => [:appearances])
+    @dream.appearances.build
   end
 
   # POST /dreams

@@ -6,9 +6,7 @@
 
 <% if @dreamer.dreams.any? %>
   <ul>
-    <% @dreamer.dreams.each do |dream| %>
-      <li><%= link_to dream.title, dream %></li>
-    <% end %>
+    <%= render :collection => @dreamer.dreams, :partial => 'dreams/dream' %>
   </ul>
 <% else %>
   <p>No dreams entered yet.</p>
@@ -17,9 +15,7 @@
 <h2>Appearances</h2>
 <% if @dreamer.references.any? %>
   <ul>
-    <% @dreamer.references.each do |dream| %>
-     <li><%= link_to dream.title, dream %></li>
-    <% end %>
+    <%= render :collection => @dreamer.references, :partial => 'dreams/dream' %>
   </ul>
 <% else %>
   <p>Has yet to be dreamed of!</p>

@@ -45,7 +45,7 @@ describe DreamsController do
     end
     
     it "assigns the requested dream as @dream" do
-      @dream_proxy.stubs(:find).with("37").returns(@mock_dream)
+      @dream_proxy.stubs(:find).with("37", :include => [:appearances]).returns(@mock_dream)
       get :edit, :id => "37"
       assigns[:dream].should equal(@mock_dream)
     end
