@@ -28,18 +28,18 @@ describe InvitationsController do
 
     describe "with valid params" do
       before(:each) do
+        Invitation.stubs(:new).returns(@mock_invitation)
         @mock_invitation.stubs(:save).returns(true)
         UserMailer.stubs(:deliver_invitation)
       end
       
       it "assigns a newly created invitation as @invitation" do
-        Invitation.stubs(:new).with({'these' => 'params'}).returns(@mock_invitation)
+        Invitation.expects(:new).with({'these' => 'params'}).returns(@mock_invitation)
         post :create, :invitation => {:these => 'params'}
         assigns[:invitation].should equal(@mock_invitation)
       end
 
       it "redirects to the created invitation" do
-        Invitation.stubs(:new).returns(@mock_invitation)
         post :create, :invitation => {}
         response.should redirect_to(invitations_url)
       end
@@ -60,7 +60,7 @@ describe InvitationsController do
         post :create, :invitation => {:these => 'params'}
         assigns[:invitation].should equal(@mock_invitation)
       end
-
+    
       it "re-renders the 'new' template" do
         Invitation.stubs(:new).returns(@mock_invitation)
         post :create, :invitation => {}

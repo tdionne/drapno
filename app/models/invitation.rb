@@ -14,7 +14,7 @@ class Invitation < ActiveRecord::Base
     self.invitation_code = Digest::SHA1.hexdigest("--#{Time.now.utc.to_s}--#{self.email}--")
   end
 
-  def redeemed!
+  def redeem!
     self.redeemed_at = Time.now.utc
     self.save!
   end

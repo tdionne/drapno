@@ -6,15 +6,25 @@ describe Invitation do
   end
   
   it "generates a code on create" do
-    pending
+    invitation = Invitation.new
+    invitation.expects(:generate_code)
+    invitation.send(:callback, :before_create)
   end
+
+  it { should have_named_scope(:redeemable).finding(:conditions => {:redeemed_at => nil}) }
   
-  it "has a named scope for redeemable invitations" do
-    pending
+  describe "marking as redeemed" do
+    it "has a method to allow redemption" do
+      Invitation.new.respond_to?(:redeem!).should be_true
+    end
+    
+    it "sets the redeemed_at time and saves" do
+      i = Invitation.mock
+      i.expects(:redeemed_at=)
+      i.expects(:save!)
+      i.redeem!
+    end
   end
-  
-  it "has a method to allow redemption" do
-    pending
-  end
+
   
 end
