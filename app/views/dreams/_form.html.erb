@@ -34,21 +34,32 @@
   <legend>Appearances</legend>
   <ul>
   <% form.fields_for :appearances do |app_form| %>
-  <li>
-    <p>
-      <%= app_form.label :name %>
-      <%= app_form.text_field :name %>
-    </p>
+    <% if app_form.object.new_record? %>
+    <li class="new">
+      <p>
+        <%= app_form.label :name %>
+        <%= app_form.text_field :name %>
+      </p>
     
-    <p>
-      <%= app_form.label :email %>
-      <%= app_form.text_field :email %>
-    </p>
+      <p>
+        <%= app_form.label :email %>
+        <%= app_form.text_field :email %>
+      </p>
     
-    <p>
-      <%= app_form.label :role %>
-      <%= app_form.text_field :role %>
-    </p>
+      <p>
+        <%= app_form.label :role %>
+        <%= app_form.text_field :role %>
+      </p>
+    </li>
+    <% else %>
+    <li class="old" id="<%= dom_id(app_form.object) %>">
+      <p>
+        <%= app_form.object.name %> as <%= app_form.object.role %><br />
+        <%= app_form.label :_delete, 'Delete' %>
+        <%= app_form.check_box :_delete %>
+      </p>
+      </li>
+    <% end %>
   </li>
   <% end %>
   </ul>

@@ -18,7 +18,8 @@ class Dream < ActiveRecord::Base
   belongs_to :dreamer
   has_many :appearances
   
-  accepts_nested_attributes_for :appearances, :reject_if => proc { |attributes| attributes['name'].blank? || attributes['email'].blank? }
+  accepts_nested_attributes_for :appearances, :allow_destroy => true,
+    :reject_if => proc { |attributes| attributes['name'].blank? || attributes['email'].blank? }
   
   validates_presence_of :title
   validates_presence_of :story

@@ -1,3 +1,19 @@
+jQuery.fn.clearForm = function() {
+  return this.each(function() {
+    var type = this.type, tag = this.tagName.toLowerCase();
+    
+    if (type == 'text' || type == 'password' || tag == 'textarea') {
+      this.value = '';
+    } else if (type == 'checkbox' || type == 'radio') {
+      this.checked = false;
+    } else if (tag == 'select') {
+      this.selectedIndex = -1;
+    } else {
+      return $(':input', this).clearForm();
+    }
+  });
+};
+
 /*
  * Facilitate adding new entries into our lists of relationships
  */
@@ -16,7 +32,7 @@ jQuery.fn.extendableList = function () {
       var list_id = $the_list[0].id;
       var counter = counters[list_id];
       counters[list_id]++;
-      alert(list_id);
+
       $new_stuff = $('<li class="new"></li>');
       $new_stuff.append('<input type="hidden" name="' + resource + '[' + list_id + '_attributes][new_' + counter + '][' + ident + ']" value="' + value  + '" />');
       $new_stuff.append(text);
@@ -30,9 +46,12 @@ jQuery.fn.extendableList = function () {
 }
 
 var HasMany = {
-  wrangleAttributes: function(entity, index) {
+  wrangleAttributes: function(entity, index, offset) {
+    if (! offset) {
+      offset = 0;
+    }
     match_string = '';
-    var matcher = new RegExp(match_string + "\\]\\[0\\]"); 
+    var matcher = new RegExp(match_string + "\\]\\[" + offset + "\\]"); 
 
     $parts = $('input,select', entity);
     $parts.each(function () {
@@ -79,12 +98,14 @@ var HasMany = {
   
   addNew: function() {
     $predecessors = $(this).parent().prev('ul').children('li');
-    $initial = $(this).parent().prev('ul').children('li:first');
+    $initial = $(this).parent().prev('ul').children('li.new:first');
+    var offset = jQuery.inArray($initial[0], jQuery.makeArray($predecessors));
+    
     $predecessor = $(this).parent().prev('ul').children('li:last');
     $partial = $initial.clone(true);    
     $partial.insertAfter($predecessor);
-    HasMany.wrangleAttributes($partial, $predecessors.length);
-    $partial.find('input,textarea').val('');
+    HasMany.wrangleAttributes($partial, $predecessors.length, offset);
+    $partial.clearForm();
     return false;
   },
   
