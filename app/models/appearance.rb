@@ -21,8 +21,13 @@ class Appearance < ActiveRecord::Base
   validates_presence_of :email
   
   before_create :identify_apparition
+  after_create :send_notification
   
   protected
+    def send_notification
+      UserMailer.deliver_appearance self
+    end
+    
     def identify_apparition
       apparition = Dreamer.find_by_email(self.email)
       self.apparition_id = apparition.id if apparition

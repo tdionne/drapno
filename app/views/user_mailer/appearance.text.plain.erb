@@ -1,0 +1,16 @@
+Dear <%= @appearance.name %>,
+
+You appeared in <%= "#{@appearance.dream.dreamer.name}'s" %> dream last night. 
+You had a major role as <%= @appearance.role %>.
+
+View the full dream at drapno: <%= dream_url(@appearance.dream, :only_path => false) %>
+
+From Drapno team
+
+
+-----
+
+Please do not reply directly to this email. Questions? Contact us -
+http://www.drapno.com/contactus
+
+Drapno Ltd., 123 The Street, 11th Floor, London UK

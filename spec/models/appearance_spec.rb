@@ -26,7 +26,6 @@ describe Appearance do
   end
   
   describe "checking for a matching dreamer before create" do
-    
     before(:each) do
       @appearance = Appearance.new(:email => 'sample@example.com')
     end
@@ -40,6 +39,22 @@ describe Appearance do
       Dreamer.expects(:find_by_email).with(@appearance.email)
       @appearance.send(:identify_apparition)
     end
-
+  end
+  
+  describe "notifications" do
+    before(:each) do
+      @appearance = Appearance.new(:email => 'sample@example.com')
+      UserMailer.stubs(:deliver_appearance)
+    end
+    
+    it "invokes the relevant callback" do
+      @appearance.expects(:send_notification)
+      @appearance.send(:callback, :after_create)
+    end
+    
+    it "sends an email to this person" do
+      UserMailer.expects(:deliver_appearance)
+      @appearance.send(:callback, :after_create)
+    end
   end
 end

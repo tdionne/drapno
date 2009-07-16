@@ -8,9 +8,11 @@ class CreateDreams < ActiveRecord::Migration
     end
     
     add_index :dreams, :dreamer_id
+    add_index :dreams, :created_at
   end
 
   def self.down
+    remove_index :dreams, :created_at
     remove_index :dreams, :dreamer_id
     drop_table :dreams
   end
