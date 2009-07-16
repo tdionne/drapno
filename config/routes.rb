@@ -6,6 +6,8 @@ ActionController::Routing::Routes.draw do |map|
   map.search '/search.:format', :controller => 'search'
 
   map.resources :dreamers do |dreamers|
+    dreamers.resource :credentials, :only => [:edit, :update]
+
     dreamers.resource :password,
       :controller => 'clearance/passwords',
       :only       => [:create, :edit, :update]
