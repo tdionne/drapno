@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: dreams
+#
+#  id         :integer(4)      not null, primary key
+#  title      :string(255)
+#  story      :text
+#  story_html :text
+#  dreamer_id :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#  delta      :boolean(1)      default(TRUE), not null
+#  location   :string(255)
+#  dreamt_on  :date
+#
+
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Dream do

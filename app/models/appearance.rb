@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: appearances
+#
+#  id            :integer(4)      not null, primary key
+#  role          :string(32)
+#  dream_id      :integer(4)
+#  apparition_id :integer(4)
+#  name          :string(64)
+#  email         :string(64)
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 class Appearance < ActiveRecord::Base
   belongs_to :dream
   belongs_to :apparition, :class_name => 'Dreamer'
