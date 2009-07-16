@@ -88,6 +88,14 @@ When /^I sign in( with "remember me")? as "(.*)\/(.*)"$/ do |remember, email, pa
   And %{I press "Sign In"}
 end
 
+Given /^I am signed in( with "remember me")? as "(.*)\/(.*)"$/ do |remember, email, password|
+  When %{I go to the sign in page}
+  And %{I fill in "Email" with "#{email}"}
+  And %{I fill in "Password" with "#{password}"}
+  And %{I check "Remember me"} if remember
+  And %{I press "Sign In"}
+end
+
 When /^I sign out$/ do
   visit '/session', :delete
 end
