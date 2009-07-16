@@ -5,7 +5,7 @@ class UserMailer < ActionMailer::Base
   def invitation(invitation)
     from       DO_NOT_REPLY
     recipients invitation.email
-    subject    "Welcome to Drapnote" 
+    subject    "Welcome to Drapno" 
     body       :invitation => invitation
   end
 

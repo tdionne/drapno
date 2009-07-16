@@ -1,5 +1,5 @@
 atom_feed(:url => search_url, :schema_date => '2009', 'xmlns:opensearch' => "http://a9.com/-/spec/opensearch/1.1/") do |feed|
-  feed.title("Drapnote: Search Results for \"#{h(params[:q])}\"")
+  feed.title("Drapno: Search Results for \"#{h(params[:q])}\"")
   feed.updated(@results.any? ? @results.first.created_at : Time.now.utc)
   feed.tag!('openSearch:totalResults', @results.total_entries)
   feed.tag!('opensearch:startIndex', @results.offset + 1)
