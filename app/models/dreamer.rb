@@ -32,6 +32,8 @@ class Dreamer < ActiveRecord::Base
   
   attr_accessible :name, :location, :gender, :age_band
   
+  xss_terminate
+  
   def is_admin?
     true
   end

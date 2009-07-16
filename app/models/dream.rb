@@ -27,6 +27,8 @@ class Dream < ActiveRecord::Base
   named_scope :listings, :order => 'created_at DESC', :select => 'id, title, dreamer_id, created_at, dreamt_on', :include => :dreamer
   acts_as_taggable_on :tags
   
+  xss_terminate
+  
   define_index do
     indexes title
     indexes story

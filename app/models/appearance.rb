@@ -23,6 +23,8 @@ class Appearance < ActiveRecord::Base
   before_create :identify_apparition
   after_create :send_notification
   
+  xss_terminate
+  
   protected
     def send_notification
       UserMailer.deliver_appearance self
