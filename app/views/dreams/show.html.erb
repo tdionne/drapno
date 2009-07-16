@@ -1,8 +1,21 @@
 <h2><%= @dream.title %></h2>
 
-<p><%= @dream.story %></p>
+<%= simple_format @dream.story %>
 
 <p>Dreamt up by <%= link_to @dream.dreamer.name, @dream.dreamer %></p>
+
+<% if @dream.appearances.any? %>
+  <h3>Featuring Appearances From...</h3>
+  <ul>
+  <% @dream.appearances.each do |app| %>
+    <% if app.apparition %>
+      <li><%= link_to app.name, app.apparition %></li>
+    <% else %>
+      <li><%= app.name %></li>
+    <% end %>
+  <% end %>
+  </ul>
+<% end %>
 
 <% if signed_in? and current_user == @dream.dreamer %>
   <p><%= link_to 'Edit', edit_dream_path(@dream) %></p>

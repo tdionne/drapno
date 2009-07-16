@@ -1,8 +1,12 @@
 <h1>Listing dreams</h1>
 
+<%= page_entries_info @dreams %>
+
 <ul>
   <% @dreams.each do |dream| %>
-  <li><%= link_to dream.title, dream %> from <%= link_to dream.dreamer.name, dream.dreamer %></li>
+  <li><%= link_to dream.title, dream %> from <%= link_to dream.dreamer.name, dream.dreamer %>
+    <br />Added on: <%= dream.created_at.to_date %> <% if dream.dreamt_on %>/ Dreamt on: <%= dream.dreamt_on %> <% end %></li>
   <% end %>
 </ul>
 
+<%= will_paginate @dreams %>

@@ -4,7 +4,7 @@ class DreamsController < ApplicationController
   # GET /dreams
   # GET /dreams.xml
   def index
-    @dreams = Dream.all(:include => :dreamer)
+    @dreams = Dream.listings.paginate(:per_page => 30, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class DreamsController < ApplicationController
   # GET /dreams/1
   # GET /dreams/1.xml
   def show
-    @dream = Dream.find(params[:id])
+    @dream = Dream.find(params[:id], :include => {:appearances => :apparition})
 
     respond_to do |format|
       format.html # show.html.erb

@@ -17,12 +17,14 @@
 class Dream < ActiveRecord::Base
   belongs_to :dreamer
   has_many :appearances
+  
   accepts_nested_attributes_for :appearances, :reject_if => proc { |attributes| attributes['name'].blank? || attributes['email'].blank? }
   
   validates_presence_of :title
   validates_presence_of :story
   validates_presence_of :dreamer_id
   
+  named_scope :listings, :order => 'created_at DESC', :select => 'id, title, dreamer_id, created_at, dreamt_on', :include => :dreamer
   acts_as_taggable_on :tags
   
   define_index do

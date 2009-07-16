@@ -1,1 +1,10 @@
-hello
+<h2>Some Recent Dreams</h2>
+
+<ul>
+  <% @recent_dreams.each do |dream| %>
+  <li><%= link_to dream.title, dream %> from <%= link_to dream.dreamer.name, dream.dreamer %>
+    <br />Added on: <%= dream.created_at.to_date %> <% if dream.dreamt_on %>/ Dreamt on: <%= dream.dreamt_on %> <% end %></li>
+  <% end %>
+</ul>
+
+<p><%= link_to "View all", dreams_path %></p>

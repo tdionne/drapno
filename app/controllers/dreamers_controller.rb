@@ -10,7 +10,7 @@ class DreamersController < Clearance::UsersController
   end
   
   def show
-    @dreamer = Dreamer.find(params[:id])
+    @dreamer = Dreamer.find(params[:id], :include => [:dreams, :references])
   end
   
   def edit

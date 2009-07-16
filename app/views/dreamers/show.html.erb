@@ -13,3 +13,14 @@
 <% else %>
   <p>No dreams entered yet.</p>
 <% end %>
+
+<h2>Appearances</h2>
+<% if @dreamer.references.any? %>
+  <ul>
+    <% @dreamer.references.each do |dream| %>
+     <li><%= link_to dream.title, dream %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Has yet to be dreamed of!</p>
+<% end %>
