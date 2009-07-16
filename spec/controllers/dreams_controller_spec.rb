@@ -10,8 +10,10 @@ describe DreamsController do
   end
 
   describe "GET index" do
-    it "assigns all dreams as @dreams" do
-      Dream.stubs(:find).with(:all, :include => :dreamer).returns([@mock_dream])
+    it "assigns a page of dreams as @dreams" do
+      @listing_proxy = stub_everything('dream listing proxy')
+      @listing_proxy.expects(:paginate).returns([@mock_dream])
+      Dream.stubs(:listings).returns(@listing_proxy)
       get :index
       assigns[:dreams].should == [@mock_dream]
     end
@@ -19,7 +21,7 @@ describe DreamsController do
 
   describe "GET show" do
     it "assigns the requested dream as @dream" do
-      Dream.stubs(:find).with("37").returns(@mock_dream)
+      Dream.expects(:find).with("37", :include => {:appearances => :apparition}).returns(@mock_dream)
       get :show, :id => "37"
       assigns[:dream].should equal(@mock_dream)
     end
