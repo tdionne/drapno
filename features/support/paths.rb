@@ -5,7 +5,7 @@ module NavigationHelpers
     when /the homepage/i
       root_path
     when /the sign up page/i
-      new_user_path
+      new_dreamer_path
     when /the sign in page/i
       new_session_path
     when /the password reset request page/i

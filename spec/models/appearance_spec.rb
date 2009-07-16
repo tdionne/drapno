@@ -11,7 +11,21 @@ describe Appearance do
     it { should validate_presence_of(:name) }
   end
   
-  it "checks for a matching dreamer before create" do
-    pending
+  describe "checking for a matching dreamer before create" do
+    
+    before(:each) do
+      @appearance = Appearance.new(:email => 'sample@example.com')
+    end
+    
+    it "invokes the relevant callback" do
+      @appearance.expects(:identify_apparition)
+      @appearance.send(:callback, :before_create)
+    end
+    
+    it "looks for the dreamer with a matching email address" do
+      Dreamer.expects(:find_by_email).with(@appearance.email)
+      @appearance.send(:identify_apparition)
+    end
+
   end
 end
