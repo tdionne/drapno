@@ -10,7 +10,9 @@
     <ul id="basic-navigation">
       <li><%= link_to 'Add a dream', new_dream_path %></li>
       <% if signed_in? %>
-        <li><%= link_to 'Sign out', sign_out_path %></p>
+        <li><%= link_to 'My Profile', dreamer_path(current_user) %></li>
+        <li><%= link_to 'Edit Profile', edit_dreamer_path(current_user) %></li>
+        <li><%= link_to 'Sign out', sign_out_path %></li>        
       <% else %>
         <li><%= link_to 'Sign Up', sign_up_path %></li>
         <li><%= link_to 'Sign In', sign_in_path %></li>

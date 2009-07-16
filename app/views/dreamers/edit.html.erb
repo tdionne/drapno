@@ -1,0 +1,32 @@
+<h2>Edit Profile</h2>
+
+<% form_for @dreamer do |form| %>
+  <%= form.error_messages %>
+  
+  <fieldset>
+    <legend>The Basics</legend>
+    <%= render form %>
+  </fieldset>
+  
+  <fieldset>
+    <legend>The Rest</legend>
+    <p>
+      <%= form.label :location %>
+      <%= form.text_field :location %>
+    </p>
+    
+    <p>
+      <%= form.label :gender %>
+      <%= form.select :gender, %W(Male Female) %>
+    </p>
+    
+    <p>
+      <%= form.label :age_band %>
+      <%= form.select :age_band, Dreamer::AGE_BANDS %>
+    </p>
+  </fieldset>
+  
+  <p>
+    <%= form.submit 'Save Changes' %>
+  </p>
+<% end %>

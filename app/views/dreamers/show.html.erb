@@ -1,9 +1,15 @@
 <h1>Dreamer: <%= @dreamer.name %></h1>
 
+<p><%= [@dreamer.location, @dreamer.gender, @dreamer.age_band].compact.join(' / ') %></p>
+
 <h2>Dreams</h2>
 
-<ul>
-  <% @dreamer.dreams.each do |dream| %>
-    <li><%= link_to dream.title, dream %></li>
-  <% end %>
-</ul>
+<% if @dreamer.dreams.any? %>
+  <ul>
+    <% @dreamer.dreams.each do |dream| %>
+      <li><%= link_to dream.title, dream %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No dreams entered yet.</p>
+<% end %>
