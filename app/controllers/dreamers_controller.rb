@@ -47,9 +47,4 @@ class DreamersController < Clearance::UsersController
       render :action => 'new'
     end
   end
-  
-  protected
-    def validate_invitation
-      @invitation = Invitation.redeemable.find_by_invitation_code!(params[:code])
-    end
 end
