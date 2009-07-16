@@ -1,5 +1,7 @@
 <h2>Edit Profile</h2>
 
+<p>Want to change your password? <%= link_to 'Click here', edit_dreamer_credentials_path(current_user) %></p>
+
 <% form_for @dreamer do |form| %>
   <%= form.error_messages %>
   
