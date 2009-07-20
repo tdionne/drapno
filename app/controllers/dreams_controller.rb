@@ -8,6 +8,7 @@ class DreamsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.atom
       format.xml  { render :xml => @dreams }
     end
   end
