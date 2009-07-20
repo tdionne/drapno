@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @recent_dreams = Dream.listings.all(:limit => 10)
+    @recent_dreams = Dream.listings.all(:limit => 5)
   end
 end
