@@ -3,12 +3,14 @@
   <h1 id="h_my-drapno" class="ir">My Drapno<span></span></h1>
              
   <div class="inner">
-    <form action="" method="post">
       <h2 id="h_personal-info">Personal Information</h2> 
       
        <div id="privacy">
-          Private <input type="checkbox" name="" value="" />
-          Public <input type="checkbox" name="" value="" />
+         <% form_for(current_user) do |form| %>
+           Private <%= form.radio_button :public_profile, false %>
+           Public <%= form.radio_button :public_profile, true %>
+           <%= form.submit 'Save' %>
+          <% end %>
         </div>
                                              
       <table class="tab1 tab2">
@@ -68,9 +70,6 @@
         </tr>
         <% end %>
       </table>
-      
-      <p><button type="submit" class="save-changes"><span>Save changes</span></button></p>
-    </form>
     
   </div>
                    
@@ -167,3 +166,16 @@
   </div> <!-- //inner -->
   
 </div> <!-- //right-col -->
+
+<% content_for :extra_headers do %>
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function () {
+    $('form.edit_dreamer input[type=radio]').change(function () {
+      $form = $(this).closest('form');
+      $.post($form.attr('action') + '.js', $form.serialize());
+      return false;
+    });
+    $('form.edit_dreamer input[type=submit]').hide();
+  });
+</script>
+<% end %>

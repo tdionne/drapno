@@ -32,11 +32,14 @@ class DreamersController < Clearance::UsersController
   
   def update
     @dreamer = current_user
-    if @dreamer.update_attributes(params[:dreamer])
-      flash[:success] = 'Profile successfully updated'
-      redirect_to @dreamer
-    else
-      render :action => 'edit'
+    respond_to do |format|
+      if @dreamer.update_attributes(params[:dreamer])
+        format.html { flash[:success] = 'Profile successfully updated'; redirect_to @dreamer }
+        format.js { head :ok }
+      else
+        format.html { render :action => 'edit' }
+        format.js { head :status => '400' }
+      end
     end
   end
   
