@@ -54,7 +54,7 @@ describe Appearance do
     
     it "sends an email to this person if they should be notified" do
       @appearance.should_be_notified = '1'
-      UserMailer.expects(:deliver_appearance)
+      UserMailer.expects(:send_later).with(:deliver_appearance, @appearance)
       @appearance.send(:callback, :after_create)
     end
   end

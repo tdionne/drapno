@@ -33,7 +33,7 @@ class Appearance < ActiveRecord::Base
   protected
     def send_notification
       if should_be_notified?
-        UserMailer.deliver_appearance self
+        UserMailer.send_later(:deliver_appearance, self)
       end
     end
     

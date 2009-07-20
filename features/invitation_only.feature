@@ -32,5 +32,5 @@ Feature: Invitation Only
     Given I signed up with an invitation as "email@person.com/password"
     When I follow the confirmation link sent to "email@person.com"
     Then I should see "Confirmed email and signed in"
-    And I should see "Edit Profile"
+    # And I should see "Edit Profile"
     

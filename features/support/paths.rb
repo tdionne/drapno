@@ -17,6 +17,9 @@ module NavigationHelpers
     when /the dreamer page for "(.+?)"/i
       d = Dreamer.find_by_email($1)
       dreamer_path(d)
+    when /the edit profile page for "(.+?)"/i
+      d = Dreamer.find_by_email($1)
+      edit_dreamer_path(d)
     # Add more page name => path mappings here
     
     else

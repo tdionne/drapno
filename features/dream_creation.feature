@@ -7,11 +7,11 @@ Feature: Dream creation
     Given I am signed up and confirmed as "email@person.com/password"
 
     When I sign in as "email@person.com/password"
-    And I follow "Add a dream"
-    And I fill in "Title" with "My Real Dream"
-    And I fill in "Story" with "All this stuff happens"
-    And I fill in "Tags" with "dream, weird, stuff"
-    And I press "Add Dream"
+    And I follow "Submit my dream"
+    And I fill in "Give your dream a title" with "My Real Dream"
+    And I fill in "Describe your dream" with "All this stuff happens"
+    And I fill in "dream[tag_list]" with "dream, weird, stuff"
+    And I press "Submit my dream"
     
     Then I should see "Dream was successfully created"
     
@@ -22,9 +22,9 @@ Feature: Dream creation
     Given I am signed up and confirmed as "email@person.com/password"
 
     When I sign in as "email@person.com/password"
-    And I follow "Add a dream"
-    And I fill in "Story" with "All this stuff happens"
-    And I press "Add Dream"
+    And I follow "Submit my dream"
+    And I fill in "Describe your dream" with "All this stuff happens"
+    And I press "Submit my dream"
   
     Then I should see error messages
   

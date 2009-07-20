@@ -8,9 +8,10 @@ Feature: Profile editing
     And I am signed in as "email@person.com/password"
     
   Scenario: Successful edit
-    Given I am on the homepage
-
-    When I follow "Edit profile"    
+    # Given I am on the homepage
+    # 
+    # When I follow "Edit profile"    
+    When I go to the edit profile page for "email@person.com"
     And I fill in "Location" with "London"
     And I select "Male" from "Gender"
     And I select "26-35" from "Age band"
@@ -22,9 +23,10 @@ Feature: Profile editing
     And I should see "26-35"
     
   Scenario: Unsuccessful edit
-    Given I am on the homepage
-
-    When I follow "Edit profile"    
+    # Given I am on the homepage
+    # 
+    # When I follow "Edit profile"    
+    When I go to the edit profile page for "email@person.com"
     And I fill in "Email" with ""
     And I press "Save Changes"
     
