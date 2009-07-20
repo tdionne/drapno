@@ -1,0 +1,169 @@
+
+<div id="left-col">
+  <h1 id="h_my-drapno" class="ir">My Drapno<span></span></h1>
+             
+  <div class="inner">
+    <form action="" method="post">
+      <h2 id="h_personal-info">Personal Information</h2> 
+      
+       <div id="privacy">
+          Private <input type="checkbox" name="" value="" />
+          Public <input type="checkbox" name="" value="" />
+        </div>
+                                             
+      <table class="tab1 tab2">
+        <tr>
+          <th>Name:</th>
+          <td><%= current_user.name %> <span>[<%= link_to "Change", edit_dreamer_path(current_user) %>]</span></td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td><%= current_user.email %> <span>[<%= link_to "Change", edit_dreamer_path(current_user) %>]</span></td>
+        </tr>
+        <tr>
+          <th>Password:</th>
+          <td>***** <span>[<%= link_to "Change", edit_dreamer_credentials_path(current_user) %>]</span></td>
+        </tr>
+        <% if current_user.gender %>
+        <tr>
+          <th>Gender</th>
+          <td><%= current_user.gender %> <span>[<%= link_to "Change", edit_dreamer_path(current_user) %>]</span></td>
+        </tr>
+        <% end %>
+        <% if current_user.location %>
+        <tr>
+          <th>Location</th>
+          <td><%= current_user.location %> <span>[<%= link_to "Change", edit_dreamer_path(current_user) %>]</span></td>
+        </tr>
+        <% end %>
+        <% if current_user.age_band %>
+        <tr>
+          <th>Age Band</th>
+          <td><%= current_user.age_band %> <span>[<%= link_to "Change", edit_dreamer_path(current_user) %>]</span></td>
+        </tr>
+        <% end %>
+      </table>
+      
+      <p><%= link_to 'Click here to view your profile as other people see it', dreamer_path(current_user, :public => '1') %></p>
+      
+      <h2>My Dreams</h2>
+
+      <table class="tab1 tab2">
+        <% current_user.dreams.each do |dream| %>
+        <tr>
+          <th><%= dream.dreamt_on || dream.created_at.to_date %>:</th>
+          <td><%= dream.title %></td>
+          <td><span>[<%= link_to 'View', dream %>] [<%= link_to 'Update', edit_dream_path(dream) %>] [<%= button_to 'Delete', dream, :method => 'delete' %>]</span></td>
+        </tr>
+        <% end %>
+      </table>
+      
+      <h2>Dreams I appear in</h2>              
+      <table class="tab1 tab2">
+        <% current_user.references.each do |dream| %>
+        <tr>
+          <th><%= dream.dreamt_on || dream.created_at.to_date %>:</th>
+          <td><%= dream.title %></td>
+          <td><span>[<%= link_to 'View', dream %>]</span></td>
+        </tr>
+        <% end %>
+      </table>
+      
+      <p><button type="submit" class="save-changes"><span>Save changes</span></button></p>
+    </form>
+    
+  </div>
+                   
+</div> <!-- //left-col -->
+
+<div id="right-col">
+ <h2 id="h_my-network" class="ir">My Network<span></span></h2>
+   <p>tbd</p>
+
+ 
+  <div class="inner">
+    <h2>Calendar View</h2>
+    
+    <table id="calendar">
+      <tr>
+        <td class="prev_month"><a href=""><img src="/images/arrow_red-left.gif" width="15" height="15" alt="&laquo;" /></a></td>
+        <td colspan="5" class="month">January 2009</td>
+        <td class="next_month"><a href=""><img src="/images/arrow_red-right.gif" width="15" height="15" alt="&raquo;" /></a></td>
+      </tr>
+      <tr>
+        <td class="weekday">M</td>
+        <td class="weekday">T</td>
+        <td class="weekday">W</td>
+        <td class="weekday">T</td>
+        <td class="weekday">F</td>
+        <td class="weekend">S</td>
+        <td class="weekend">S</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td><a href="" class="my-dream">5</a></td>
+        <td>6</td>
+        <td>7</td>
+        <td><a href="" class="my-dream">8</a></td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>13</td>
+        <td><a href="" class="dreamiappear">14</a></td>
+        <td>15</td>
+        <td>16</td>
+        <td>17</td>
+        <td class="now">18</td>
+      </tr>
+      <tr>
+        <td class="future">19</td>
+        <td class="future">20</td>
+        <td class="future">21</td>
+        <td class="future">22</td>
+        <td class="future">23</td>
+        <td class="future">24</td>
+        <td class="future">25</td>
+      </tr>
+      <tr>
+        <td class="future">26</td>
+        <td class="future">27</td>
+        <td class="future">28</td>
+        <td class="future">29</td>
+        <td class="future">30</td>
+        <td class="future">31</td>
+        <td class="">&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    
+    <div id="calendar-legend">
+      <div class="legendbox clearfix">
+        <img src="/images/ico_mydream.gif" width="20" height="19" alt="" /> <span>= My Dreams</span>
+      </div>
+      <div class="legendbox clearfix">
+        <img src="/images/ico_dreamiappear.gif" width="20" height="19" alt="" /> <span>= Dreams I appear in</span>
+      </div>
+    </div>
+  
+  </div> <!-- //inner -->
+  
+</div> <!-- //right-col -->

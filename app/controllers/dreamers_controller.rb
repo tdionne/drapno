@@ -10,7 +10,11 @@ class DreamersController < Clearance::UsersController
   end
   
   def show
-    @dreamer = Dreamer.find(params[:id], :include => [:dreams, :references])
+    if signed_in? and params[:id] == current_user.id.to_s and params[:public].nil?
+      render :action => 'mydrapno'
+    else
+      @dreamer = Dreamer.find(params[:id], :include => [:dreams, :references])
+    end
   end
   
   def edit
