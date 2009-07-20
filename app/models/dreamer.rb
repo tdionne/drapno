@@ -31,7 +31,7 @@ class Dreamer < ActiveRecord::Base
   validates_inclusion_of :gender, :in => %W(Male Female), :allow_nil => true, :message => 'is invalid'
   validates_inclusion_of :age_band, :in => AGE_BANDS, :allow_nil => true, :message => 'is invalid'
   
-  attr_accessible :name, :location, :gender, :age_band
+  attr_accessible :name, :location, :gender, :age_band, :public_profile
   
   xss_terminate
   

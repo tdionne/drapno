@@ -13,7 +13,7 @@ class DreamersController < Clearance::UsersController
     if signed_in? and params[:id] == current_user.id.to_s and params[:public].nil?
       render :action => 'mydrapno'
     else
-      @dreamer = Dreamer.find(params[:id], :include => [:dreams, :references])
+      @dreamer = Dreamer.find(params[:id], :include => {:dreams => :dreamer, :references => :dreamer})
     end
   end
   

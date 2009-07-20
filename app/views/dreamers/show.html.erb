@@ -1,6 +1,9 @@
 <h1>Dreamer: <%= @dreamer.name %></h1>
 
+<% if @dreamer.public_profile? %>
+<p><%= @dreamer.email %></p>
 <p><%= [@dreamer.location, @dreamer.gender, @dreamer.age_band].compact.join(' / ') %></p>
+<% end %>
 
 <h2>Dreams</h2>
 
