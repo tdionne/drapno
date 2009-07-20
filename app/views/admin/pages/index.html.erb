@@ -1,0 +1,7 @@
+<h1>Content Pages</h1>
+
+<ul>
+  <% @pages.each do |page| %>
+  <li><%= page.title %> :: <%= link_to "/#{page.permalink}", "/#{page.permalink}" %> :: <%= link_to 'Edit', edit_admin_page_path(page) %></li>
+  <% end %>
+</ul>

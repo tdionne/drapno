@@ -12,6 +12,8 @@ Rails::Initializer.run do |config|
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
   config.gem 'freelancing-god-thinking-sphinx', :lib => 'thinking_sphinx', :version => '>=1.1.23'
   config.gem "mbleigh-acts-as-taggable-on", :source => "http://gems.github.com", :lib => "acts-as-taggable-on"
+  config.gem "RedCloth", :lib => 'redcloth'
+  
   config.frameworks -= [ :active_resource ]
 
   config.time_zone = 'UTC'

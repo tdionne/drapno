@@ -36,7 +36,7 @@ class Dreamer < ActiveRecord::Base
   xss_terminate
   
   def is_admin?
-    true
+    self.role == 'admin'
   end
   
   def has_rated?(dream)

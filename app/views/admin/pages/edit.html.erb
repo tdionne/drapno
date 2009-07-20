@@ -1,0 +1,20 @@
+<h1>Edit Page: <em><%= @page.title %></em></h1>
+
+<% form_for([:admin, @page]) do |form| %>
+  <%= form.error_messages %>
+  
+  <p>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </p>
+  
+  <p>Please do not enter HTML into this field as it will be stripped. 
+    <br />Instead you can use Textile markup to format the text.
+    <br />For more on textile, visit <a href="http://hobix.com/textile/">this reference site</a>.</p>
+  <p>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </p>
+  
+  <p><%= form.submit %></p>
+<% end %>

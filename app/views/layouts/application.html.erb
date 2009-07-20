@@ -62,10 +62,10 @@
            <div class="footer-box" id="first">                
              <h4>About Drapno</h4>
              <ul>
-               <li><a href="">History</a></li>
-               <li><a href="">Who is behind Drapno</a></li>
-               <li><a href="">Where we are</a></li>
-               <li><a href="">Contact us</a></li>
+               <li><a href="/history">History</a></li>
+               <li><a href="/behind">Who is behind Drapno</a></li>
+               <li><a href="/where-we-are">Where we are</a></li>
+               <li><a href="/contact">Contact us</a></li>
              </ul>
            </div> <!-- //footer-box -->
 
@@ -75,7 +75,9 @@
                <li><%= link_to 'Submit a dream', new_dream_path %></li>
                <li><a href="">My log</a></li>
                <li><a href="">Manage my log book</a></li>
-               <li><a href="">My Profile</a></li>
+               <% if signed_in? %>
+                <li><%= link_to 'My Profile', current_user %></li>
+              <% end %>
              </ul>
            </div> <!-- //footer-box -->
 

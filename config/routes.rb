@@ -6,6 +6,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.search '/search.:format', :controller => 'search'
 
+  map.namespace :admin do |admin|
+    admin.resources :pages
+  end
+  
   map.resources :dreamers do |dreamers|
     dreamers.resources :ratings, :only => [:index, :create]
     
@@ -23,5 +27,10 @@ ActionController::Routing::Routes.draw do |map|
   map.sign_up  'sign_up',
     :controller => 'dreamers',
     :action     => 'new'
+    
+  %W(about history behind where-we-are contact).each do |page|
+    map.connect "/#{page}", :controller => 'home', :action => 'page', :permalink => page
+  end
+  
   map.root :controller => 'home'
 end
