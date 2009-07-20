@@ -1,9 +1,51 @@
-<h1>Listing dreams</h1>
+<div id="left-col">
+  <h1 id="h_view-dreams" class="ir">Read Dreams<span></span></h1>
 
-<%= page_entries_info @dreams %>
+  <div class="inner">
+    <div class="dreams-nav">
+      <%= link_to 'Newest Dreams', dreams_path %> | <a href="">Top Rated Dreams</a> | <%= page_entries_info @dreams %> | <%= will_paginate @dreams %>
+    </div> <!-- //dreams-nav -->
 
-<ul>
-  <%= render :collection => @dreams, :partial => 'dreams/dream' %>
-</ul>
+    <div id="latest-dreams">
+      <h2>Latest Dreams</h2>
+      <ul>
+        <%= render :collection => @dreams, :partial => 'dreams/dream' %>
+      </ul>
+    </div><!-- //latest-dreams -->
 
-<%= will_paginate @dreams %>
+    <div class="dreams-nav">
+      <%= link_to 'Newest Dreams', dreams_path %> | <a href="">Top Rated Dreams</a> | <%= page_entries_info @dreams %> | <%= will_paginate @dreams %>
+    </div> <!-- //dreams-nav -->
+  </div> <!-- //inner -->
+
+</div> <!-- //left-col -->
+
+<div id="right-col">
+  <h2 id="h_my-network" class="ir">My Network<span></span></h2>
+  <ul class="mynetwork">
+    <li>
+      <img src="layout/avatar-1.gif" width="23" height="27" alt="" />
+      <a href="">Dennis Calzaghe</a>
+    </li> 
+    <li>
+      <img src="layout/avatar-2.gif" width="23" height="27" alt="" />
+      <a href="">Mary LeDoof</a>
+    </li>
+    <li>
+      <img src="layout/avatar-3.gif" width="23" height="27" alt="" />
+      <a href="">Cindy Dreamalot</a>
+    </li>
+    <li>
+      <img src="layout/avatar-4.gif" width="23" height="27" alt="" />
+      <a href="">Phil Smithe</a>
+    </li>
+    <li>
+      <img src="layout/avatar-1.gif" width="23" height="27" alt="" />
+      <a href="">Dennis Calzaghe</a>
+    </li> 
+    <li>
+      <img src="layout/avatar-2.gif" width="23" height="27" alt="" />
+      <a href="">Mary LeDoof</a>
+    </li>             
+  </ul>
+</div> <!-- //right-col -->

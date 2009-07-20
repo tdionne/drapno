@@ -2,38 +2,115 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
-    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'application', 'default_001' %>
     <%= yield :extra_headers %>
   </head>
   <body>
     
-    <ul id="basic-navigation">
-      <li><%= link_to 'Add a dream', new_dream_path %></li>
-      <% if signed_in? %>
-        <li><%= link_to 'My Profile', dreamer_path(current_user) %></li>
-        <li><%= link_to 'Edit Profile', edit_dreamer_path(current_user) %></li>
-        <li><%= link_to 'Sign out', sign_out_path %></li>        
-      <% else %>
-        <li><%= link_to 'Sign Up', sign_up_path %></li>
-        <li><%= link_to 'Sign In', sign_in_path %></li>
-      <% end %>
-      <% unless controller.class.to_s == 'SearchController' %>
-        <li>
-          <% form_tag search_path, :method => :get do %>
-            <%= text_field_tag 'q', params[:q] %> <%= submit_tag 'Search' %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-    
-    <div id="flash">
-      <% flash.each do |key, value| -%>
-        <div class="flash" id="flash_<%= key -%>"><%= html_escape(value) %></div>
-      <% end -%>
+    <div class="noscreen"><a href="#content">Jump to main content</a><hr /></div>
+
+    <div id="wrapper">
+      <div id="wrapper-in">
+
+        <div id="header">
+
+          <a href="/" style="border: none"><img src="/images/logo.jpg" width="236" height="133" id="logo" alt="Drapno logo" style="border: none" /></a>
+          <%= link_to 'submit a dream<span title="submit a dream"></span>', new_dream_path, :id => 'btn_submit-dream', :title => 'submit a dream' %>
+          <a href="" id="btn_buy-notepad" title="buy a dream notepad">buy a notepad<span title="buy a dream notepad"></span></a>
+
+          <!-- <ul id="basic-navigation">
+            <li></li>
+            <% if signed_in? %>
+              <li><%= link_to 'Sign out', sign_out_path %></li>        
+            <% else %>
+              <li><%= link_to 'Sign Up', sign_up_path %></li>
+              <li><%= link_to 'Sign In', sign_in_path %></li>
+            <% end %>
+          </ul> -->
+          <div id="menu">
+            <ul>
+              <li id="item1"><a href="">About Drapno<span title="About Drapno" class="active"></span></a></li>
+              <li id="item2"><%= link_to 'Read the Dreams<span title="Read the Dreams"></span>', dreams_path %></li>
+              <li id="item3">
+                <% if signed_in? %>
+                  <%= link_to 'My Drapno<span title="My Drapno"></span>', dreamer_path(current_user) %></li>
+                <% else %>
+                  <%= link_to 'My Drapno<span title="My Drapno"></span>', sign_in_path %></li>
+                <% end %>
+              <li id="item4"><%= link_to 'Search<span title="Search"></span>', search_path  %></li>
+              <li id="item5"><a href="">Contact Us<span title="Contact Us"></span></a></li>
+            </ul>
+          </div> <!-- //menu -->
+        </div> <!-- //header -->
+
+        <div id="content" class="clearfix">
+          <div id="flash">
+            <% flash.each do |key, value| -%>
+              <div class="flash" id="flash_<%= key -%>"><%= html_escape(value) %></div>
+            <% end -%>
+          </div>
+          
+          <%= yield %>
+        </div>
+      </div>
     </div>
     
-    <div id="content">
-      <%= yield %>
-    </div>
+    <div id="footer">
+       <div id="footer-in" class="clearfix">
+
+           <div class="footer-box" id="first">                
+             <h4>About Drapno</h4>
+             <ul>
+               <li><a href="">History</a></li>
+               <li><a href="">Who is behind Drapno</a></li>
+               <li><a href="">Where we are</a></li>
+               <li><a href="">Contact us</a></li>
+             </ul>
+           </div> <!-- //footer-box -->
+
+           <div class="footer-box">                
+             <h4>Your Dreams</h4>
+             <ul>
+               <li><%= link_to 'Submit a dream', new_dream_path %></li>
+               <li><a href="">My log</a></li>
+               <li><a href="">Manage my log book</a></li>
+               <li><a href="">My Profile</a></li>
+             </ul>
+           </div> <!-- //footer-box -->
+
+           <div class="footer-box">                
+             <h4>Read Dreams</h4>
+             <ul>
+               <li><a href="">Dream Community</a></li>
+               <li><a href="">Dreams I am in</a></li>
+               <li><a href="">Highest rated</a></li>
+               <li><a href="">Most commented on</a></li>
+               <li><a href="">Most viewed</a></li>
+             </ul>
+           </div> <!-- //footer-box -->
+
+           <div class="footer-box">                
+             <h4>Dreams Feed</h4>
+             <ul>
+               <li><%= link_to 'RSS feed of new Dreams', dreams_path(:format => :atom) %></li>            
+             </ul>
+             <h4>Newsletter</h4>
+             <ul>
+               <li><a href="">Sign up</a></li>            
+             </ul>
+           </div> <!-- //footer-box -->
+
+           <div class="footer-box" id="last">                
+             <h4>Shop</h4>
+             <ul>
+               <li><a href="">Buy notepad</a></li>
+               <li><a href="">Buy other bits</a></li>            
+             </ul>
+           </div> <!-- //footer-box -->
+
+         <div id="footeropacity"></div>
+       </div> <!-- //footer-in -->
+       </div> <!-- //footer -->
+    
   </body>
 </html>
