@@ -8,6 +8,11 @@
   <%= form.text_field :name %>
 </p>
 
+<p>Make My Profile:
+Private <%= form.radio_button :public_profile, false %>
+Public <%= form.radio_button :public_profile, true %>
+</p>
+
 <% if form.object.new_record? %>
   <p class="password_field">
     <%= form.label :password %>
