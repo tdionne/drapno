@@ -21,6 +21,7 @@ class Appearance < ActiveRecord::Base
   validates_presence_of :email
   
   before_create :identify_apparition
+  before_create :generate_token
   after_create :send_notification
   
   xss_terminate
@@ -35,9 +36,17 @@ class Appearance < ActiveRecord::Base
   end
   
   protected
+    def generate_token
+      self.token = Digest::SHA1.hexdigest("--#{Time.now.utc.to_s}--#{self.dream_id}--#{self.email}--#{self.role}")
+    end
+    
     def send_notification
       if should_be_notified? and accepts_notifications?
-        UserMailer.send_later(:deliver_appearance, self)
+        if UserMailer.respond_to?(:send_later)
+          UserMailer.send_later(:deliver_appearance, self)
+        else
+          UserMailer.deliver_appearance(self)
+        end
       end
     end
     

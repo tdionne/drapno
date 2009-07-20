@@ -1,0 +1,9 @@
+<% form_for(@optout) do |form| %>
+  <p>You are requesting to opt out of future notifications from Drapno.</p>
+  <p>To complete this process, please press submit below.</p>
+  
+  <%= form.hidden_field :token %>
+  <%= form.hidden_field :email %>
+  
+  <%= form.submit 'Submit' %>
+<% end %>

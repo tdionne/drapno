@@ -7,6 +7,9 @@ View the full dream at drapno: <%= dream_url(@appearance.dream, :only_path => fa
 
 From Drapno team
 
+Don't want to receive future Drapno notifications? Follow this link:
+
+<%= opt_out_url(:id => @appearance.token, :email => @appearance.email) %>
 
 -----
 

@@ -41,6 +41,13 @@ describe Appearance do
     end
   end
   
+  it "generates an identifier token before save" do
+    @appearance = Appearance.new(:email => 'sample@example.com')
+    @appearance.stubs(:identify_apparition)
+    @appearance.expects(:generate_token)
+    @appearance.send(:callback, :before_create)
+  end
+  
   describe "notification" do
     before(:each) do
       @appearance = Appearance.new(:email => 'sample@example.com', :should_be_notified => '1')
