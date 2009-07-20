@@ -4,6 +4,19 @@
 
 <p>Dreamt up by <%= link_to @dream.dreamer.name, @dream.dreamer %></p>
 
+<% if signed_in? %>
+  <% if current_user.has_rated?(@dream) %>
+    <p>You have rated this dream.</p>
+  <% else %>
+    <% form_for([current_user, Rating.new]) do |form| %>
+      <%= form.hidden_field :dream_id, :value => @dream.id %>
+      <%= form.submit 'Rate It!' %>
+    <% end %>
+  <% end %>
+<% else %>
+  <p><%= link_to 'Sign in', sign_in_path %> or <%= link_to 'Sign up', sign_up_path %> to rate this dream.</p>
+<% end %>
+
 <% if @dream.appearances.any? %>
   <h3>Featuring Appearances From...</h3>
   <ul>
@@ -22,3 +35,29 @@
 <% end %>
 
 <p><%= link_to 'Browse Dreams', dreams_path %></p>
+
+<% content_for :extra_headers do %>
+<script type="text/javascript" charset="utf-8">
+  // var rating_error_handler = function () {
+  //   alert('this?');
+  // }
+  $(document).ready(function () {
+    $('#new_rating').submit(function () {
+      $.ajax({
+        type: "POST",
+        url: this.action + ".js",
+        data: $(this).serialize(),
+        dataType: "script",
+        // error: rating_error_handler,
+        success: function(msg) {
+          $(this).html("<p>You have rated this dream.</p>");
+          $('#flash').append('<div class="flash" id="flash_notice">Rating was successfully created.</div>');
+          $('#flash_notice').hide(1800);
+        }
+      });
+      
+      return false;
+    });
+  });
+</script>
+<% end %>

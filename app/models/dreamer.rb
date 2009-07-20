@@ -25,6 +25,7 @@ class Dreamer < ActiveRecord::Base
   has_many :dreams
   has_many :appearances, :foreign_key => :apparition_id
   has_many :references, :through => :appearances, :class_name => 'Dream', :source => :dream
+  has_many :ratings, :foreign_key => :rater_id
   
   validates_presence_of :name
   validates_inclusion_of :gender, :in => %W(Male Female), :allow_nil => true, :message => 'is invalid'
@@ -36,5 +37,9 @@ class Dreamer < ActiveRecord::Base
   
   def is_admin?
     true
+  end
+  
+  def has_rated?(dream)
+    Rating.exists?(:dream_id => dream.id, :rater_id => self.id)
   end
 end

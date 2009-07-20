@@ -20,6 +20,8 @@ describe Dream do
   describe "associations" do
     it { should belong_to(:dreamer) }
     it { should have_many(:appearances) }
+    it { should have_many(:ratings) }
+    it { should have_many(:raters) }
   end
   
   describe "validations" do

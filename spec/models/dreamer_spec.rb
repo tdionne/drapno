@@ -23,7 +23,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Dreamer do
   describe "associations" do
     it { should have_many(:dreams) }
-    it { should have_many(:appearances) }    
+    it { should have_many(:appearances) }
+    it { should have_many(:ratings) }
   end
   
   describe "validations" do

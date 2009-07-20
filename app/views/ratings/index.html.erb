@@ -1,0 +1,8 @@
+<h1>Dreams rated by <%= @dreamer.name %></h1>
+
+<ul>
+<% @ratings.each do |rating| %>
+  <li><%= link_to rating.dream.title, rating.dream %></li>
+<% end %>
+</ul>
+
