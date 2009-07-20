@@ -30,9 +30,13 @@ class Appearance < ActiveRecord::Base
     self.should_be_notified.to_i == 1
   end
   
+  def accepts_notifications?
+    ! OptOut.exists?(:email => self.email)
+  end
+  
   protected
     def send_notification
-      if should_be_notified?
+      if should_be_notified? and accepts_notifications?
         UserMailer.send_later(:deliver_appearance, self)
       end
     end
