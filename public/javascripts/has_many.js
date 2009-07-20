@@ -64,10 +64,9 @@ var HasMany = {
     return false;
   },
   
-  clear: function(container) {
-    container.find('input,textarea').attr('value', '');
-  },
-  
+  /*
+   * TODO: remove dependency on being in a ul list
+   */
   removeNew: function() {
     if (this.parentNode.nodeName.toUpperCase() == 'LI') {
       $(this.parentNode).remove();
@@ -77,7 +76,7 @@ var HasMany = {
       if (parent[0].nodeName.toUpperCase() == 'LI' || parent.siblings('div').length > 1) {
         parent.remove();
       } else {
-        HasMany.clear(parent);
+        $(parent).clearForm();
       }
       
     }
@@ -85,6 +84,9 @@ var HasMany = {
     return false;
   },
   
+  /*
+   * TODO: remove dependency on being in a ul list
+   */
   removeExisting: function() {
     if (this.parentNode.nodeName.toUpperCase() == 'LI') {
       $div = $(this.parentNode);
@@ -97,11 +99,20 @@ var HasMany = {
   },
   
   addNew: function() {
-    $predecessors = $(this).parent().prev('ul').children('li');
-    $initial = $(this).parent().prev('ul').children('li.new:first');
-    var offset = jQuery.inArray($initial[0], jQuery.makeArray($predecessors));
+    $ul = $(this).parent().prev('ul');
+
+    if ($ul.length == 0) {
+      // it looks like we're in a table, not a ul
+      $table = $(this).closest('table');
+      $predecessors = $('tr.appearances', $table).not('.append');
+    } else {
+      $predecessors = $('li', $ul);
+    }
     
-    $predecessor = $(this).parent().prev('ul').children('li:last');
+    $initial = $predecessors.filter('.new:first');
+    $predecessor = $predecessors.filter(':last');
+    
+    var offset = jQuery.inArray($initial[0], jQuery.makeArray($predecessors));
     $partial = $initial.clone(true);    
     $partial.insertAfter($predecessor);
     HasMany.wrangleAttributes($partial, $predecessors.length, offset);
