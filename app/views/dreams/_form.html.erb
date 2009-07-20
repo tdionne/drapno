@@ -59,7 +59,8 @@
             <%= app_form.text_field :email, :size => 30 %>
           </p>
           <p style="text-align:right">
-            (Let them Know) <input type="checkbox" name="letthemknow" id="letthemknow" value="" />
+            (Let them Know) 
+            <%= app_form.check_box :should_be_notified %>
           </p>
         </td>                    
       </tr>

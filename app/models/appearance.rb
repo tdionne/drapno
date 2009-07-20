@@ -24,10 +24,17 @@ class Appearance < ActiveRecord::Base
   after_create :send_notification
   
   xss_terminate
+  attr_accessor :should_be_notified
+  
+  def should_be_notified?
+    self.should_be_notified.to_i == 1
+  end
   
   protected
     def send_notification
-      UserMailer.deliver_appearance self
+      if should_be_notified?
+        UserMailer.deliver_appearance self
+      end
     end
     
     def identify_apparition
