@@ -1,6 +1,6 @@
 Dear <%= @appearance.name %>,
 
-You appeared in <%= "#{@appearance.dream.dreamer.name}'s" %> dream last night. 
+You appeared in <%= "#{@appearance.dream.dreamer}'s" %> dream last night. 
 You had a major role as <%= @appearance.role %>.
 
 View the full dream at drapno: <%= dream_url(@appearance.dream, :only_path => false) %>

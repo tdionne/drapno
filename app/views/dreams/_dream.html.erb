@@ -1,5 +1,5 @@
 <li id="<%= dom_id(dream) %>" class="dream">
-  <h4><%= link_to dream.title, dream %> from <%= link_to dream.dreamer.name, dream.dreamer %></h4>
+  <h4><%= link_to dream.title, dream %> from <%= link_to dream.dreamer, dream.dreamer %></h4>
   <p>Added on: <%= dream.created_at.to_date %> <% if dream.dreamt_on %>/ Dreamt on: <%= dream.dreamt_on %> <% end %></p>
   <p><%= truncate dream.story, :length => 100 %></p>
 </li>

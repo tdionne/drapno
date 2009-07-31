@@ -7,7 +7,7 @@
   
     <ul>
       <% @results.each do |dream| %>
-      <li><%= link_to dream.title, dream %> from <%= link_to dream.dreamer.name, dream.dreamer %></li>
+      <li><%= link_to dream.title, dream %> from <%= link_to dream.dreamer, dream.dreamer %></li>
       <% end %>
     </ul>
   <% else %>

@@ -39,6 +39,14 @@ class Dreamer < ActiveRecord::Base
     self.role == 'admin'
   end
   
+  def display_name
+    self.public_alias.blank? ? self.name : self.public_alias
+  end
+  
+  def to_s
+    display_name
+  end
+  
   def has_rated?(dream)
     Rating.exists?(:dream_id => dream.id, :rater_id => self.id)
   end

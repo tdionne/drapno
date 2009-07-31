@@ -7,10 +7,10 @@
   <%= form.label :name %>
   <%= form.text_field :name %>
 </p>
-
-<p>Make My Profile:
-Private <%= form.radio_button :public_profile, false %>
-Public <%= form.radio_button :public_profile, true %>
+<p>
+  <%= form.label :public_alias %>
+  <%= form.text_field :public_alias %>
+  <br />(how you would like to be identified on the site. Leave this blank if you want us to display your real name)
 </p>
 
 <% if form.object.new_record? %>

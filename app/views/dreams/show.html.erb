@@ -2,7 +2,7 @@
 
 <%= simple_format @dream.story %>
 
-<p>Dreamt up by <%= link_to @dream.dreamer.name, @dream.dreamer %></p>
+<p>Dreamt up by <%= link_to @dream.dreamer, @dream.dreamer %></p>
 
 <% if signed_in? %>
   <% if current_user.has_rated?(@dream) %>

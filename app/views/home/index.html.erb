@@ -14,7 +14,7 @@
   <div style="padding-left:25px;">
     <% @recent_dreams.each do |dream| %>
     <p><%= link_to truncate(dream.story, :length => 75), dream_path(dream) %><br /> 
-    <%= dream.dreamer.name %> from <%= dream.dreamer.location %></p>    
+    <%= dream.dreamer %> from <%= dream.dreamer.location %></p>    
     <% end %>
     <p><%= link_to 'More Dreams', dreams_path %></p>
   </div>                      

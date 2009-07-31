@@ -1,6 +1,6 @@
 Dear <%= @appearance.name %>,
 
-You appeared in <%= link_to "#{@appearance.dream.dreamer.name}'s", dreamer_url(@appearance.dream.dreamer) %> dream last night. You had a major role as <%= @appearance.role %>.
+You appeared in <%= link_to "#{@appearance.dream.dreamer}'s", dreamer_url(@appearance.dream.dreamer) %> dream last night. You had a major role as <%= @appearance.role %>.
 
 <%= link_to "View the full dream at drapno", dream_url(@appearance.dream) %>
 
