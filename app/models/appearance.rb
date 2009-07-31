@@ -10,6 +10,7 @@
 #  email         :string(64)
 #  created_at    :datetime
 #  updated_at    :datetime
+#  token         :string(255)
 #
 
 class Appearance < ActiveRecord::Base

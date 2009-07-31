@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: pages
+#
+#  id           :integer(4)      not null, primary key
+#  title        :string(255)
+#  content      :text
+#  content_html :text
+#  permalink    :string(24)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Page do

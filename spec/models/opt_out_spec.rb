@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: opt_outs
+#
+#  id         :integer(4)      not null, primary key
+#  email      :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe OptOut do

@@ -16,6 +16,10 @@
 #  location           :string(255)
 #  gender             :string(10)
 #  age_band           :string(8)
+#  ratings_count      :integer(4)      default(0), not null
+#  public_profile     :boolean(1)      default(TRUE)
+#  role               :string(255)     default("user"), not null
+#  public_alias       :string(63)
 #
 
 class Dreamer < ActiveRecord::Base

@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: ratings
+#
+#  id         :integer(4)      not null, primary key
+#  score      :integer(4)
+#  rater_id   :integer(4)
+#  dream_id   :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Rating do

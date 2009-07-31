@@ -10,6 +10,7 @@
 #  email         :string(64)
 #  created_at    :datetime
 #  updated_at    :datetime
+#  token         :string(255)
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
