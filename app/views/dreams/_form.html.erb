@@ -77,10 +77,17 @@
 
       <tr>
         <td colspan="3">
-          <p style="text-align:right;">
-            Private <input type="checkbox" name="" value="" />
-            Public <input type="checkbox" name="" value="" />
-          </p>
+          <h2 id="h_tagyourdream" class="ir">Tag your dream<span></span></h2>
+          <div class="inner">
+            <h2>Add <span>optional</span> data to help understand your dreams over time.</h2>
+            <p style="color:#544915;">Tag your dream. Put a comma between tags. Eg, running, nightime, swimming etc..</p>
+            <%= form.text_area :tag_list, :style => 'width: 100%', :rows => '4' %>
+          </div>
+        </td>  
+      </tr>
+        
+      <tr>
+        <td colspan="3">
           <p style="margin:2em 0; text-align: right" class="clearfix">
             <%= image_submit_tag '/images/btn_submitadream.gif', :alt => 'Submit my dream' %>
           </p>                      
@@ -92,12 +99,6 @@
 </div> <!-- //left-col -->
 
 <div id="right-col">
-  <h2 id="h_tagyourdream" class="ir">Tag your dream<span></span></h2>
-  <div class="inner">
-    <h2>Add <span>optional</span> data to help understand your dreams over time.</h2>
-    <p style="color:#544915;">Tag your dream. Put a comma between tags. Eg, running, nightime, swimming etc..</p>
-    <%= form.text_area :tag_list, :style => 'width: 100%', :rows => '4' %>
-  </div>
 </div> <!-- //right-col -->
 
 <% content_for :extra_headers do %>
