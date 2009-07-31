@@ -4,4 +4,6 @@ class Comment < ActiveRecord::Base
   has_many :reports, :class_name => 'CommentReport'
   
   validates_presence_of :dream_id, :dreamer_id, :body
+  
+  named_scope :available, :conditions => {:status => %W{visible reported}}
 end

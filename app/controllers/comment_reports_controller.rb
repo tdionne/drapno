@@ -1,4 +1,5 @@
 class CommentReportsController < ApplicationController
+  before_filter :authenticate
   before_filter :load_comment
   
   def new
@@ -6,7 +7,7 @@ class CommentReportsController < ApplicationController
   end
   
   def create
-    @report = @comment.reports.build(params[:comment_report])
+    @report = @comment.reports.build(params[:comment_report].merge(:reporter_id => current_user.id))
     
     if @report.save
       flash[:notice] = 'Thank you. We have noted your concern.'

@@ -16,7 +16,7 @@ class DreamsController < ApplicationController
   # GET /dreams/1
   # GET /dreams/1.xml
   def show
-    @dream = Dream.find(params[:id], :include => {:appearances => :apparition})
+    @dream = Dream.find(params[:id], :include => [:available_comments, {:appearances => :apparition}])
 
     respond_to do |format|
       format.html # show.html.erb

@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :dreams do |dream|
     dream.resources :comments, :only => :create do |comment|
-      comment.resources :reports, :only => [:new, :create], :controller => 'comment_reports_controller'
+      comment.resources :reports, :only => [:new, :create], :controller => 'comment_reports'
     end
   end
 
