@@ -19,4 +19,4 @@ Rails::Initializer.run do |config|
   config.time_zone = 'UTC'
 end
 
-DO_NOT_REPLY = "donotreply@drapno.com"
+DO_NOT_REPLY = "Dream Notification <donotreply@drapno.com>"
