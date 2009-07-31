@@ -1,4 +1,14 @@
 namespace :db do
+  task :pages => :environment do
+    pages = Dir.glob(File.join(RAILS_ROOT, "db", "pages", "*.textile"))
+    pages.each do |page_file|
+      permalink = File.basename(page_file, ".textile")
+      page = Page.find_or_create_by_permalink(permalink)
+      page.content = File.read(page_file)
+      page.save!
+    end
+  end
+  
   task :populate => :environment do
     require 'populator'
     require 'faker'
