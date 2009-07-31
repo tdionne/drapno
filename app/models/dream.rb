@@ -20,6 +20,7 @@ class Dream < ActiveRecord::Base
   has_many :appearances
   has_many :ratings
   has_many :raters, :through => :ratings
+  has_many :comments
   
   accepts_nested_attributes_for :appearances, :allow_destroy => true,
     :reject_if => proc { |attributes| attributes['name'].blank? || attributes['email'].blank? }

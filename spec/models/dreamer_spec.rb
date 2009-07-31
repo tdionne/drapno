@@ -29,6 +29,8 @@ describe Dreamer do
     it { should have_many(:dreams) }
     it { should have_many(:appearances) }
     it { should have_many(:ratings) }
+    it { should have_many(:comments) }
+    it { should have_many(:comment_reports) }
   end
   
   describe "validations" do

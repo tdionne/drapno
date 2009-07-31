@@ -2,7 +2,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :invitations, :only => [:index, :new, :create]
   map.resources :opt_outs, :only => [:show, :create]
   
-  map.resources :dreams
+  map.resources :dreams do |dream|
+    dream.resources :comments, :only => :create do |comment|
+      comment.resources :reports, :only => [:new, :create], :controller => 'comment_reports_controller'
+    end
+  end
 
   map.search '/search.:format', :controller => 'search'
 

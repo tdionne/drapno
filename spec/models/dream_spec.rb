@@ -23,6 +23,7 @@ describe Dream do
     it { should have_many(:appearances) }
     it { should have_many(:ratings) }
     it { should have_many(:raters) }
+    it { should have_many(:comments) }
   end
   
   describe "validations" do

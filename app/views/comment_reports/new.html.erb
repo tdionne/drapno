@@ -1,0 +1,25 @@
+<h2>Reporting a comment</h2>
+
+<div class="headboxnotabs">
+  <p>You have asked to report the comment:</p>
+
+  <blockquote>
+    <%= @comment.body %>
+  </blockquote>
+
+  <p>on the dream <strong><%= @comment.dream.title %></strong>.</p>
+  
+  <p>Please tell us why this comment concerns you:</p>
+
+  <% form_for(@report, :url => dream_comment_reports_path(@comment.dream, @comment)) do |form| %>
+  
+    <%= form.error_messages %>
+    
+    <p>
+      <%= form.label :reason %>
+      <%= form.text_area :reason %>
+    </p>
+
+    <p><%= form.submit 'Report Comment', :class => 'submit' %></p>
+  <% end %>
+</div>

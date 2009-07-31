@@ -30,6 +30,8 @@ class Dreamer < ActiveRecord::Base
   has_many :appearances, :foreign_key => :apparition_id
   has_many :references, :through => :appearances, :class_name => 'Dream', :source => :dream
   has_many :ratings, :foreign_key => :rater_id
+  has_many :comments
+  has_many :comment_reports, :foreign_key => :reporter_id
   
   validates_presence_of :name
   validates_inclusion_of :gender, :in => %W(Male Female), :allow_nil => true, :message => 'is invalid'

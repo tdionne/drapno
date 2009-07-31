@@ -30,6 +30,44 @@
   </ul>
 <% end %>
 
+<h3>Comments</h3>
+
+<% if @dream.comments.any? %>
+<ul>
+  <% @dream.comments.each do |comment| %>
+  <li>
+    <h4><%= comment.dreamer %> said on <%= comment.created_at.to_date %></h4>
+    <p><%= comment.body %></p>
+    <% if signed_in? %>
+      <p><%= link_to 'Report this?', new_dream_comment_report_path(@dream, comment) %></p>
+    <% else %>
+      <%= link_to 'Sign up', sign_up_path %> or <%= link_to 'sign in', sign_in_path %> to report inappropriate comments
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+<% else %>
+  <p>No comments yet</p>
+<% end %>
+
+<% if signed_in? %>
+  <% form_for([@dream, Comment.new]) do |form| %>
+  <fieldset>
+    <legend>Your Comment</legend>
+    <p>
+      <%= form.label :body, 'Comment' %>
+      <%= form.text_area :body %>
+    </p>
+    <p>
+      <%= form.submit 'Add Comment' %>
+    </p>
+  </fieldset>
+  <% end %>
+<% else %>
+  <p>You must be signed in to comment. <%= link_to 'Sign in now', sign_in_path(:return_to => dream_path(@dream)) %></p>
+<% end %>
+
+
 <% if signed_in? and current_user == @dream.dreamer %>
   <p><%= link_to 'Edit', edit_dream_path(@dream) %></p>
 <% end %>
