@@ -1,4 +1,4 @@
-<h1>Edit Page: <em><%= @page.title %></em></h1>
+<% content_for :page_title do %><h1>Edit Page: <em><%= @page.title %></em></h1><% end %>
 
 <% form_for([:admin, @page]) do |form| %>
   <%= form.error_messages %>
