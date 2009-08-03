@@ -15,6 +15,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :comments, :dreamers, :except => [:new, :create, :show]
   end
   
+  map.admin_dashboard '/admin/dashboard', :controller => '/admin/dashboard', :action => 'index'
+  
   map.resources :dreamers, :shallow => true do |dreamers|
     dreamers.resources :ratings, :only => [:index, :create]
     
