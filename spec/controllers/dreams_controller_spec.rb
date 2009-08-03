@@ -21,7 +21,7 @@ describe DreamsController do
 
   describe "GET show" do
     it "assigns the requested dream as @dream" do
-      Dream.expects(:find).with("37", :include => {:appearances => :apparition}).returns(@mock_dream)
+      Dream.expects(:find).with("37", :include => [:available_comments, {:appearances => :apparition}]).returns(@mock_dream)
       get :show, :id => "37"
       assigns[:dream].should equal(@mock_dream)
     end
