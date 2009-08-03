@@ -24,6 +24,7 @@ describe RatingsController do
     before(:each) do
       login_as :quentin
       @current_user.stubs(:ratings).returns(@proxy)
+      @proxy.stubs(:find_or_initialize_by_dream_id).returns(@rating)
     end
     
     describe "with valid params" do
@@ -32,13 +33,12 @@ describe RatingsController do
       end
       
       it "assigns a newly created rating as @rating" do
-        @proxy.stubs(:build).with({'these' => 'params'}).returns(@rating)
+        @proxy.expects(:find_or_initialize_by_dream_id).with({'these' => 'params'}).returns(@rating)
         post :create, :dreamer_id => '1', :rating => {:these => 'params'}
         assigns[:rating].should equal(@rating)
       end
 
       it "redirects to the associated dream" do
-        @proxy.stubs(:build).returns(@rating)
         post :create, :dreamer_id => '1', :rating => {}
         response.should redirect_to(dream_url(@rating.dream))
       end
@@ -50,13 +50,12 @@ describe RatingsController do
       end
       
       it "assigns a newly created but unsaved rating as @rating" do
-        @proxy.stubs(:build).with({'these' => 'params'}).returns(@rating)
+        @proxy.expects(:find_or_initialize_by_dream_id).with({'these' => 'params'}).returns(@rating)
         post :create, :dreamer_id => '1', :rating => {:these => 'params'}
         assigns[:rating].should equal(@rating)
       end
 
       it "re-renders the 'new' template" do
-        @proxy.stubs(:build).returns(@rating)
         post :create, :dreamer_id => '1', :rating => {}
         response.should render_template('new')
       end

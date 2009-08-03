@@ -16,12 +16,20 @@ class RatingsController < ApplicationController
   # POST /ratings
   # POST /ratings.xml
   def create
-    @rating = current_user.ratings.build(params[:rating])
+    # work around the jquery rating plugin we're using
+    if params[:id] and params[:rating].is_a?(String)
+      params[:rating] = { :score => params[:rating], :dream_id => params[:id] }
+    end
+    
+    # Slightly ugly, but for now we're letting users overwrite their previous
+    # ratings.
+    @rating = current_user.ratings.find_or_initialize_by_dream_id(params[:rating])
+    @rating.attributes = params[:rating] unless @rating.new_record?
 
     respond_to do |format|
       if @rating.save
         format.html { flash[:notice] = 'Rating was successfully created.'; redirect_to(@rating.dream) }
-        format.js   { head :status => :created }
+        format.js   { render :text => @rating.dream.ratings.average(:score), :status => :created }
         format.xml  { render :xml => @rating, :status => :created, :location => @rating }
       else
         format.html { render :action => "new" }

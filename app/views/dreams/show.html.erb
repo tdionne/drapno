@@ -4,18 +4,23 @@
 
 <p>Dreamt up by <%= link_to @dream.dreamer, @dream.dreamer %></p>
 
+<div id="ratings">
 <% if signed_in? %>
   <% if current_user.has_rated?(@dream) %>
-    <p>You have rated this dream.</p>
+    <p id="rated">You have rated this dream.</p>
   <% else %>
     <% form_for([current_user, Rating.new]) do |form| %>
       <%= form.hidden_field :dream_id, :value => @dream.id %>
+      <% (1..5).each do |rating|  %>
+        <%= rating %> <%= form.radio_button 'score', rating %>
+      <% end %>
       <%= form.submit 'Rate It!' %>
     <% end %>
   <% end %>
 <% else %>
-  <p><%= link_to 'Sign in', sign_in_path %> or <%= link_to 'Sign up', sign_up_path %> to rate this dream.</p>
+  <p><%= link_to 'Sign in', sign_in_path(:return_to => dream_path(@dream)) %> or <%= link_to 'Sign up', sign_up_path %> to rate this dream.</p>
 <% end %>
+</div>
 
 <% if @dream.appearances.any? %>
   <h3>Featuring Appearances From...</h3>
@@ -75,27 +80,25 @@
 <p><%= link_to 'Browse Dreams', dreams_path %></p>
 
 <% content_for :extra_headers do %>
-<script type="text/javascript" charset="utf-8">
-  // var rating_error_handler = function () {
-  //   alert('this?');
-  // }
-  $(document).ready(function () {
-    $('#new_rating').submit(function () {
-      $.ajax({
-        type: "POST",
-        url: this.action + ".js",
-        data: $(this).serialize(),
-        dataType: "script",
-        // error: rating_error_handler,
-        success: function(msg) {
-          $(this).html("<p>You have rated this dream.</p>");
-          $('#flash').append('<div class="flash" id="flash_notice">Rating was successfully created.</div>');
-          $('#flash_notice').hide(1800);
-        }
+  <% if signed_in? %>
+    <%= javascript_include_tag 'jquery.rater.js' %>
+    <%= stylesheet_link_tag 'stars.style.css' %>
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function () {
+        $(function() {
+          $('#ratings').append('<div id="testRater" class="stat"><label for="rating">Rating</label><div class="statVal"><span class="ui-rater"><span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:63px"></span></span><span class="ui-rater-rating"><%= @average_rating %></span>&#160;(<span class="ui-rater-rateCount"><%= @dream.ratings.count %></span>)</span></div></div>');
+          $('#new_rating').remove();
+          $rated = $('#rated');
+          if ($rated.length > 0) {
+            $rated.text($rated.text() + ' Choosing a value below will override your previous choice.');
+          }
+        
+          $('#testRater').rater({ 
+            id: <%= @dream.id %>,
+            postHref: '<%= dreamer_ratings_path(current_user, :format => :js) %>' 
+          });
+        });
       });
-      
-      return false;
-    });
-  });
-</script>
+    </script>
+  <% end %>
 <% end %>

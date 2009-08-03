@@ -18,6 +18,8 @@ class DreamsController < ApplicationController
   def show
     @dream = Dream.find(params[:id], :include => [:available_comments, {:appearances => :apparition}])
 
+    @average_rating = @dream.ratings.average(:score)
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @dream }
