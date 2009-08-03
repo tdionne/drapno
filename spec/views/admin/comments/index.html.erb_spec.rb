@@ -9,6 +9,7 @@ describe "/admin/comments/index.html.erb" do
       Comment.mock(:id => 1, :dream => @dream),
       Comment.mock(:id => 2, :dream => @dream)
     ]
+    assigns[:comments].stubs(:total_pages).returns(1)
   end
 
   it "renders a list of comments" do

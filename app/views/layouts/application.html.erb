@@ -90,9 +90,11 @@
              <h4>Read Dreams</h4>
              <ul>
                <li><a href="">Dream Community</a></li>
-               <li><a href="">Dreams I am in</a></li>
+               <% if signed_in? %>
+                <li><a href="">Dreams I am in</a></li>
+               <% end %>
                <li><%= link_to 'Highest rated', ratings_path %></li>
-               <li><a href="">Most commented on</a></li>
+               <li><%= link_to 'Most commented on', comments_path %></li>
                <li><a href="">Most viewed</a></li>
              </ul>
            </div> <!-- //footer-box -->

@@ -32,6 +32,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.resources :ratings, :only => :index
+  map.resources :comments, :only => :index
   
   map.sign_up  'sign_up',
     :controller => 'dreamers',
