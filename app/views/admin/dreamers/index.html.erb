@@ -1,0 +1,25 @@
+<% content_for :page_title do %><h1>Listing Dreamers</h1><% end %>
+  
+<table border="1">
+  <thead>
+    <tr>
+      <th>Display Name</th>
+      <th>Email</th>
+      <th>Signed Up At</th>
+      <th>Confirmed?</th>
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @dreamers.each do |dreamer| %>
+    <tr>
+      <td><%= dreamer %></td>      
+      <td><%= dreamer.email %></td>
+      <td><%= dreamer.created_at %></td>
+      <td><%= dreamer.email_confirmed? %></td>
+      <td><%= link_to 'Edit', edit_admin_dreamer_path(dreamer) %></td>
+      <td><%= button_to 'Delete', admin_dreamer_path(dreamer), :method => :get %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

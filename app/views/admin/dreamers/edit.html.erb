@@ -1,0 +1,37 @@
+<% content_for :page_title do %><h1>Editing Dreamer: <%= @dreamer %></h1><% end %>
+
+<% form_for([:admin, @dreamer]) do |form| %>
+  <%= form.error_messages %>
+  <p class="text_field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </p>
+  
+  <p class="text_field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </p>
+  
+  <p>
+    <%= form.label :public_alias %>
+    <%= form.text_field :public_alias %>
+  </p>
+
+  <p class="password_field">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </p>
+  <p class="password_field">
+    <%= form.label :password_confirmation, "Confirm password" %>
+    <%= form.password_field :password_confirmation %>
+  </p>
+  
+  <p>
+    <%= form.label :role %>
+    <%= form.select :role, Dreamer::ROLES %>
+  </p>
+  
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

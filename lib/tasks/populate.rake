@@ -18,6 +18,7 @@ namespace :db do
       dreamer.email_confirmed = true
       dreamer.name = Faker::Name.name
       dreamer.gender = ['Male', 'Female'][rand(2)]
+      dreamer.encrypted_password = Populator.words(1)
     end
     
     dreamer_ids = Dreamer.all(:select => 'id').collect(&:id)
