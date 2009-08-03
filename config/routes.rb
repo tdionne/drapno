@@ -12,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.namespace :admin do |admin|
     admin.resources :pages
+    admin.resources :comments, :except => [:new, :create]
   end
   
   map.resources :dreamers, :shallow => true do |dreamers|

@@ -35,6 +35,10 @@ class Dream < ActiveRecord::Base
   
   xss_terminate
   
+  def to_s
+    self.title
+  end
+  
   define_index do
     indexes title
     indexes story

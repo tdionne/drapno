@@ -1,0 +1,71 @@
+<% content_for :page_title do %><h1>Editing comment</h1><% end %>
+
+<dl>
+  <dt>Comment from</dt>
+  <dd><%= link_to @comment.dreamer, @comment.dreamer %></dd>
+  
+  <dt>Comment on</dt>
+  <dd><%= link_to @comment.dream, @comment.dream %></dd>
+  
+  <dt>Comment at</dt>
+  <dd><%= @comment.created_at %></dd>
+  
+  <dt>Reported by users</dt>
+  <dd>
+    <%= pluralize(@comment.reports.count, 'time', 'times') %>
+    <% if @comment.reports.count > 0 %>
+    <a href="#reports">Jump to reports</a>
+    <% end %>
+  </dd>
+</dl>
+
+<% form_for([:admin, @comment]) do |form| %>
+  <%= form.error_messages %>
+  <p>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </p>
+
+  <p>
+    <%= form.label :status %>
+    <%= form.select :status, Comment::STATUSES %>
+  </p>
+  
+  <p>
+    <%= form.submit 'Update' %>
+  </p>
+<% end %>
+
+<% if @comment.reports.count > 0 %>
+<div id="reports">
+  <h3>Reports</h3>
+  <ol>
+    <% @comment.reports.each do |report| %>
+      <li>
+        <h4>Report from <%= report.reporter.email %> at <%= report.created_at %></h4>
+        <p><%=h report.reason %></p>
+      </li>
+    <% end %>
+  </ol>
+</div>
+<% end %>
+
+<style type="text/css" media="screen">
+  dl dt {
+    float: left;
+    font-weight: bold;
+    width: 200px;
+    clear: both;
+  }
+  dl {
+    margin-bottom: 1em;
+  }
+  form p {
+    margin-bottom: 1em;
+  }
+  form label {
+    float: left;
+    width: 200px;
+    font-weight: bold;
+  }
+</style>

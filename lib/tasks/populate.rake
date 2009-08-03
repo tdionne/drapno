@@ -44,6 +44,11 @@ namespace :db do
       end
     end
     
+    Dreamer.find_each do |dreamer|
+      Dream.find_each do |dream|
+        Rating.create!(:rater => dreamer, :dream => dream, :score => rand(5))
+      end
+    end
     
   end
 end

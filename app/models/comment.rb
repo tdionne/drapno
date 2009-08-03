@@ -5,5 +5,6 @@ class Comment < ActiveRecord::Base
   
   validates_presence_of :dream_id, :dreamer_id, :body
   
+  STATUSES = %W(pending visible reported hidden spam)
   named_scope :available, :conditions => {:status => %W{visible reported}}
 end

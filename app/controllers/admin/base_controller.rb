@@ -1,5 +1,6 @@
 class Admin::BaseController < ApplicationController
   before_filter :ensure_admin
+  layout 'admin'
   
   protected
     def ensure_admin
