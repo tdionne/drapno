@@ -43,9 +43,9 @@ h1, h2, h3, h4 {
 #content {
   margin: 10px;
 }
-li.dream {
-  margin-bottom: 8px;
-}
-  li.dream h4, li.dream p {
-    margin: 4px 0px;
+  #content li.dream {
+    margin-bottom: 8px;
   }
+    #content li.dream h4, #content li.dream p {
+      margin: 4px 0px;
+    }

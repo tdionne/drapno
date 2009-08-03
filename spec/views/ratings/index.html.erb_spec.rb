@@ -10,6 +10,7 @@ describe "/ratings/index.html.erb" do
       Rating.mock(:dream => @dream),
       Rating.mock(:dream => @dream)
     ]
+    assigns[:ratings].stubs(:total_pages).returns(1)
   end
 
   it "renders a list of ratings" do

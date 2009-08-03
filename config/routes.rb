@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :pages
   end
   
-  map.resources :dreamers do |dreamers|
+  map.resources :dreamers, :shallow => true do |dreamers|
     dreamers.resources :ratings, :only => [:index, :create]
     
     dreamers.resource :credentials, :only => [:edit, :update]
@@ -27,6 +27,8 @@ ActionController::Routing::Routes.draw do |map|
       :controller => 'clearance/confirmations',
       :only       => [:new, :create]
   end
+  
+  map.resources :ratings, :only => :index
   
   map.sign_up  'sign_up',
     :controller => 'dreamers',

@@ -1,16 +1,11 @@
 class RatingsController < ApplicationController
-  before_filter :load_dreamer
+  before_filter :load_dreamer, :only => :create
   before_filter :authenticate, :only => :create
   
   # GET /ratings
   # GET /ratings.xml
   def index
-    @ratings = @dreamer.ratings.all(:include => :dream)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @ratings }
-    end
+    @dreams = Dream.listings.paginate :per_page => 15, :page => params[:page], :order => ['average_rating DESC']
   end
 
   # POST /ratings

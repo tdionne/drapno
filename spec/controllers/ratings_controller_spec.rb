@@ -12,10 +12,10 @@ describe RatingsController do
   end
 
   describe "GET index" do
-    it "assigns all ratings as @ratings" do
-      @proxy.expects(:all).with(:include => :dream).returns([@rating])
-      get :index, :dreamer_id => '1'
-      assigns[:ratings].should == [@rating]
+    it "assigns highest rated dreams as @dreams" do
+      Dream.expects(:find).with(:all, {:limit => 15, :offset => 0, :order => ['average_rating DESC']}).returns([@dream])
+      get :index
+      assigns[:dreams].should == [@dream]
     end
   end
 

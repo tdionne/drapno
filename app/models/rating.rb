@@ -16,4 +16,13 @@ class Rating < ActiveRecord::Base
   
   validates_presence_of :rater_id
   validates_presence_of :dream_id
+  
+  after_save :update_dream
+  
+  def update_dream
+    dream.update_attributes(
+      :average_rating => dream.ratings.average(:score),
+      :ratings_count => dream.ratings.count
+    )
+  end
 end
