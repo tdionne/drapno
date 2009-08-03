@@ -1,15 +1,14 @@
 class Admin::PagesController < Admin::BaseController
+  before_filter :load_page, :only => [:edit, :update]
+  
   def index
     @pages = Page.all
   end
   
   def edit
-    @page = Page.find(params[:id])
   end
   
   def update
-    @page = Page.find(params[:id])
-    
     respond_to do |format|
       if @page.update_attributes(params[:page])
         format.html { flash[:notice] = 'Page updated'; redirect_to admin_pages_url }
@@ -19,4 +18,8 @@ class Admin::PagesController < Admin::BaseController
     end
   end
   
+  protected
+    def load_page
+      @page = Page.find(params[:id])
+    end
 end
