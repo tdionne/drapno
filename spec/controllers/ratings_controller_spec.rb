@@ -13,7 +13,7 @@ describe RatingsController do
 
   describe "GET index" do
     it "assigns highest rated dreams as @dreams" do
-      Dream.expects(:find).with(:all, {:limit => 15, :offset => 0, :order => ['average_rating DESC']}).returns([@dream])
+      Dream.expects(:find).with(:all, {:limit => 15, :offset => 0, :order => ['average_rating DESC'], :conditions => 'ratings_count > 0'}).returns([@dream])
       get :index
       assigns[:dreams].should == [@dream]
     end
