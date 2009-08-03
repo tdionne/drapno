@@ -41,12 +41,16 @@
 <ul>
   <% @dream.available_comments.each do |comment| %>
   <li>
-    <h4><%= comment.dreamer %> said on <%= comment.created_at.to_date %></h4>
-    <p><%= comment.body %></p>
-    <% if signed_in? %>
-      <p><%= link_to 'Report this?', new_dream_comment_report_path(@dream, comment) %></p>
+    <% if comment.hidden? %>
+      <p>A comment that was here has been removed for breaching our policies.</p>
     <% else %>
-      <%= link_to 'Sign up', sign_up_path %> or <%= link_to 'sign in', sign_in_path %> to report inappropriate comments
+      <h4><%= comment.dreamer %> said on <%= comment.created_at.to_date %></h4>
+      <p><%= comment.body %></p>
+      <% if signed_in? %>
+        <p><%= link_to 'Report this?', new_dream_comment_report_path(@dream, comment) %></p>
+      <% else %>
+        <%= link_to 'Sign up', sign_up_path %> or <%= link_to 'sign in', sign_in_path %> to report inappropriate comments
+      <% end %>
     <% end %>
   </li>
   <% end %>

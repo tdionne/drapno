@@ -21,7 +21,7 @@ class Dream < ActiveRecord::Base
   has_many :ratings
   has_many :raters, :through => :ratings
   has_many :comments
-  has_many :available_comments, :class_name => 'Comment', :conditions => ['comments.status IN (?)', %W{visible reported}]
+  has_many :available_comments, :class_name => 'Comment', :conditions => ['comments.status IN (?)', %W{visible reported hidden}]
   
   accepts_nested_attributes_for :appearances, :allow_destroy => true,
     :reject_if => proc { |attributes| attributes['name'].blank? || attributes['email'].blank? }

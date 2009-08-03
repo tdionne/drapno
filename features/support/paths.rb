@@ -20,6 +20,11 @@ module NavigationHelpers
     when /the dreamer page for "(.+?)"/i
       d = Dreamer.find_by_email($1)
       dreamer_path(d)
+    when /the admin comments page/
+      admin_comments_path
+    when /the first reported comment page/i
+      c = Comment.first(:conditions => {:status => 'reported'})
+      edit_admin_comment_path(c)
     when /the edit profile page for "(.+?)"/i
       d = Dreamer.find_by_email($1)
       edit_dreamer_path(d)

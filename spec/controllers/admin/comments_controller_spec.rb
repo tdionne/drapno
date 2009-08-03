@@ -18,14 +18,6 @@ describe Admin::CommentsController do
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested comments as @comments" do
-      Comment.stubs(:find).with("37").returns(@comment)
-      get :show, :id => "37"
-      assigns[:comment].should equal(@comment)
-    end
-  end
-
   describe "GET edit" do
     it "assigns the requested comments as @comments" do
       Comment.stubs(:find).with("37").returns(@comment)

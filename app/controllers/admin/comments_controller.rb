@@ -36,7 +36,7 @@ class Admin::CommentsController < Admin::BaseController
     @comment = Comment.find(params[:id])
 
     respond_to do |format|
-      if @comment.update_attributes(params[:comments])
+      if @comment.update_attributes(params[:comment])
         flash[:notice] = 'Comment was successfully updated.'
         format.html { redirect_to(admin_comments_url) }
         format.xml  { head :ok }
