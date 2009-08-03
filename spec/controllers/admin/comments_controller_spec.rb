@@ -36,7 +36,7 @@ describe Admin::CommentsController do
       it "updates the requested comments" do
         Comment.expects(:find).with("37").returns(@comment)
         @comment.expects(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :comments => {:these => 'params'}
+        put :update, :id => "37", :comment => {:these => 'params'}
       end
 
       it "assigns the requested comments as @comments" do
@@ -58,7 +58,7 @@ describe Admin::CommentsController do
       it "updates the requested comments" do
         Comment.expects(:find).with("37").returns(@comment)
         @comment.expects(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :comments => {:these => 'params'}
+        put :update, :id => "37", :comment => {:these => 'params'}
       end
 
       it "assigns the comments as @comments" do
