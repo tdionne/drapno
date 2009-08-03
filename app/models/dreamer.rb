@@ -25,6 +25,7 @@
 class Dreamer < ActiveRecord::Base
   include Clearance::User
   AGE_BANDS = %W(18-25 26-35 36-45 45-65 65+)
+  ROLES = %W(user admin)
   
   has_many :dreams
   has_many :appearances, :foreign_key => :apparition_id
@@ -41,8 +42,11 @@ class Dreamer < ActiveRecord::Base
   
   xss_terminate
   
-  def is_admin?
-    self.role == 'admin'
+  ROLES.each do |role|
+    define_method("is_#{role}?") do
+      self.role == role
+    end
+    named_scope role.to_sym, :conditions => {:role => role}
   end
   
   def display_name
