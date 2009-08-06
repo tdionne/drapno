@@ -16,3 +16,8 @@ end
 Then /^I should see a field to explain my reason$/ do
   response.should have_tag("textarea[id=comment_report_reason]")
 end
+
+Then /^an email should be sent to "([^\"]*)"$/ do |email|
+  last_email_sent.to.include?(email).should be_true
+end
+

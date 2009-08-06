@@ -18,6 +18,27 @@ Feature: Dream creation
     When I go to the dreamer page for "email@person.com"
     Then I should see "My Real Dream"
 
+  Scenario: Successful creation with appearance and relationship
+    Given I am signed up and confirmed as "email@person.com/password"
+
+    When I sign in as "email@person.com/password"
+    And I follow "Submit my dream"
+    And I fill in "Give your dream a title" with "My Real Dream"
+    And I fill in "Describe your dream" with "All this stuff happens"
+    And I fill in "dream[tag_list]" with "dream, weird, stuff"
+    And I fill in "Their Name" with "My Friend"
+    And I fill in "Your Relationship" with "Close personal friends"
+    And I fill in "Their Role" with "Fancy bartender"
+    And I fill in "Their Email" with "example@person.com"
+    And I check "Let Them Know"
+    And I press "Submit my dream"
+
+    Then I should see "Dream was successfully created"
+    And an email should be sent to "example@person.com"
+    And I should see "My Real Dream"
+    And I should see "Close personal friends"
+
+
   Scenario: Previews
     Given I am signed up and confirmed as "email@person.com/password"
 

@@ -41,25 +41,25 @@
       <% form.fields_for :appearances do |app_form| %>
       <% if app_form.object.new_record? %>
       <tr class="appearances new">
-        <td>
+        <td colspan="3">
           <p>
-            <%= app_form.label :name, 'Their Name:' %><br />
-            <%= app_form.text_field :name, :size => 15 %>
+            <%= app_form.label :name, 'Their Name' %>
+            <%= app_form.text_field :name, :size => 12 %>
+            <%= app_form.label :relationship, 'Your Relationship' %>
+            <%= app_form.text_field :relationship, :size => 20 %>
           </p>
-        </td>
-        <td>
           <p>
-            <%= app_form.label :role, 'Their Role:' %><br />
+            <%= app_form.label :role, 'Their Role' %>
             <%= app_form.text_field :role, :size => 12 %>
+            <%= app_form.label :email, 'Their Email' %>
+            <%= app_form.text_field :email, :size => 20 %>
           </p>
-        </td>
-        <td>
           <p>
-            <%= app_form.label :email, 'Their Email:' %><br />
-            <%= app_form.text_field :email, :size => 30 %>
+            <%= app_form.label :is_public_figure, 'Are they a figure in public life?' %>
+            <%= app_form.check_box :is_public_figure %>
           </p>
-          <p style="text-align:right">
-            (Let them Know) 
+          <p>
+            <%= app_form.label :should_be_notified, 'Let Them Know' %>
             <%= app_form.check_box :should_be_notified %>
           </p>
         </td>                    
@@ -112,5 +112,22 @@ $(function() {
   HasMany.attach('tr.appearances');
 });
 </script>
+<style type="text/css" media="screen">
+tr.appearances {
+  border-bottom: 1px dotted ;
+}
+  tr.appearances p {
+    clear: both;
+    padding-top: 0.5em;
+  }
+  tr.appearances label {
+    float: left;
+    margin-right: 15px;
+  }
+  tr.appearances input {
+    float: left;
+    margin-right: 15px;
+  }
+</style>
 
 <% end %>

@@ -28,11 +28,14 @@
   <h3>Featuring Appearances From...</h3>
   <ul>
   <% @dream.appearances.each do |app| %>
-    <% if app.apparition %>
-      <li><%= link_to app.name, app.apparition %></li>
-    <% else %>
-      <li><%= app.name %></li>
-    <% end %>
+    <li>
+      <% if app.apparition %>
+        <%= link_to app.name, app.apparition %>
+      <% else %>
+      <%= app.name %>
+      <% end %>
+      (<%= app.relationship %>) in the role of <%= app.role %>
+    </li>
   <% end %>
   </ul>
 <% end %>
