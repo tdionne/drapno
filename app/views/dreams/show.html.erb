@@ -1,39 +1,4 @@
-<h2><%= @dream.title %></h2>
-
-<%= simple_format @dream.story %>
-
-<p>Dreamt up by <%= link_to @dream.dreamer, @dream.dreamer %></p>
-
-<div id="ratings">
-<% if signed_in? %>
-  <% if current_user.has_rated?(@dream) %>
-    <p id="rated">You have rated this dream.</p>
-  <% else %>
-    <% form_for([current_user, Rating.new]) do |form| %>
-      <%= form.hidden_field :dream_id, :value => @dream.id %>
-      <% (1..5).each do |rating|  %>
-        <%= rating %> <%= form.radio_button 'score', rating %>
-      <% end %>
-      <%= form.submit 'Rate It!' %>
-    <% end %>
-  <% end %>
-<% else %>
-  <p><%= link_to 'Sign in', sign_in_path(:return_to => dream_path(@dream)) %> or <%= link_to 'Sign up', sign_up_path %> to rate this dream.</p>
-<% end %>
-</div>
-
-<% if @dream.appearances.any? %>
-  <h3>Featuring Appearances From...</h3>
-  <ul>
-  <% @dream.appearances.each do |app| %>
-    <% if app.apparition %>
-      <li><%= link_to app.name, app.apparition %></li>
-    <% else %>
-      <li><%= app.name %></li>
-    <% end %>
-  <% end %>
-  </ul>
-<% end %>
+<%= render :partial => 'show_dream' %>
 
 <h3>Comments</h3>
 

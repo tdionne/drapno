@@ -50,7 +50,9 @@ class DreamsController < ApplicationController
     @dream = current_user.dreams.build(params[:dream])
 
     respond_to do |format|
-      if @dream.save
+      if params[:commit] == 'Preview my dream'
+        format.html { render :action => 'preview' }
+      elsif @dream.save
         flash[:notice] = 'Dream was successfully created.'
         format.html { redirect_to(@dream) }
         format.xml  { render :xml => @dream, :status => :created, :location => @dream }

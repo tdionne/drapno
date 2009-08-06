@@ -89,6 +89,9 @@
       <tr>
         <td colspan="3">
           <p style="margin:2em 0; text-align: right" class="clearfix">
+            <% if form.object.new_record? %>
+              <%= form.submit 'Preview my dream' %> 
+            <% end %>
             <%= image_submit_tag '/images/btn_submitadream.gif', :alt => 'Submit my dream' %>
           </p>                      
         </td>

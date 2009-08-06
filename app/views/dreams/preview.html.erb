@@ -1,0 +1,14 @@
+<p>This is a preview of your dream</p>
+
+<%= render :partial => 'show_dream' %>
+
+<h3>Edit Dream</h3>
+
+<% form_for(@dream, :html => {:id => 'submitdream'}) do |f| %>
+
+  <%= f.error_messages %>
+
+  <%= render f %>
+
+<% end %>
+
