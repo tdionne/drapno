@@ -1,0 +1,9 @@
+<h2>Dreams Tagged: <%=h @tag.name %></h2>
+
+<%= page_entries_info @dreams %>
+
+<ul>
+  <%= render :collection => @dreams, :partial => 'dreams/dream' %>
+</ul>
+
+<%= will_paginate @dreams %>

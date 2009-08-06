@@ -30,7 +30,7 @@ class Dream < ActiveRecord::Base
   validates_presence_of :story
   validates_presence_of :dreamer_id
   
-  named_scope :listings, :order => 'created_at DESC', :select => 'id, title, story, dreamer_id, created_at, dreamt_on', :include => :dreamer
+  named_scope :listings, :order => 'created_at DESC', :select => 'dreams.id, dreams.title, dreams.story, dreams.dreamer_id, dreams.created_at, dreams.dreamt_on', :include => :dreamer
   acts_as_taggable_on :tags
   
   xss_terminate

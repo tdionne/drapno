@@ -1,21 +1,62 @@
-<% if @results %>
-  <h3>Search Results</h3>
 
-  <% if @results.any? %>
+<div id="left-col-home">
   
-    <%= page_entries_info @results %>
+  <% if @results %>
+    <h3>Search Results</h3>
+
+    <% if @results.any? %>
   
-    <ul>
-      <% @results.each do |dream| %>
-      <li><%= link_to dream.title, dream %> from <%= link_to dream.dreamer, dream.dreamer %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>No matching results. Please try again</p>
+      <%= page_entries_info @results %>
+  
+      <ul>
+        <% @results.each do |dream| %>
+        <li><%= link_to dream.title, dream %> from <%= link_to dream.dreamer, dream.dreamer %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No matching results. Please try again</p>
+    <% end %>
   <% end %>
-<% end %>
 
-<% form_tag search_path, :method => :get do %>
-  <p><%= text_field_tag 'q', params[:q] %></p>
-  <p><%= submit_tag 'Search' %></p>
+  <% form_tag search_path, :method => :get do %>
+    <p><%= text_field_tag 'q', params[:q] %></p>
+    <p><%= submit_tag 'Search' %></p>
+  <% end %>
+</div>
+
+<div id="right-col-home">
+  <h3>Popular Tags</h3>
+
+  <ul id="tag-cloud">
+    <% tag_cloud(@tags, @levels) do |tag, level| %>
+      <li class="<%= level %>"><%= link_to h(tag), tag %></li>
+    <% end %>
+  </ul>
+</div>
+
+<% content_for :extra_headers do %>
+<style type="text/css" media="screen">
+  #tag-cloud {
+    list-style: none;
+    width: 200px;
+  }
+  #tag-cloud li {
+    display: inline;
+  }
+  #tag-cloud li.level-1 {
+    font-size: x-small;
+  }
+  #tag-cloud li.level-2 {
+    font-size: small;
+  }
+  #tag-cloud li.level-3 {
+    font-size: normal;
+  }
+  #tag-cloud li.level-4 {
+    font-size: large;
+  }
+  #tag-cloud li.level-5 {
+    font-size: x-large;
+  }
+</style>
 <% end %>
