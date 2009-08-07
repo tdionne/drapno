@@ -48,6 +48,14 @@
 
 <p><%= link_to 'Browse Dreams', dreams_path %></p>
 
+<h3>Related Dreams</h3>
+
+<ul>
+  <% @related_dreams.each do |dream| %>
+  <li><%= link_to dream.title, dream %> from <%= link_to dream.dreamer, dream.dreamer %></li>
+  <% end %>
+</ul>
+  
 <% content_for :extra_headers do %>
   <% if signed_in? %>
     <%= javascript_include_tag 'jquery.rater.js' %>

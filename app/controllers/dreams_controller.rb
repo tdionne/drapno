@@ -17,7 +17,7 @@ class DreamsController < ApplicationController
   # GET /dreams/1.xml
   def show
     @dream = Dream.find(params[:id], :include => [:available_comments, {:appearances => :apparition}])
-
+    @related_dreams = @dream.find_related_tags(:limit => 6)
     @average_rating = @dream.ratings.average(:score)
     
     respond_to do |format|
