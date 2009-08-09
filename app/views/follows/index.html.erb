@@ -1,0 +1,21 @@
+<div id="left-col">
+  <ol>
+    <% @updates.each do |update| %>
+      <% if update.is_a?(Dream) %>
+      <li><%= update.dreamer %> dreamt: <%= link_to update.title, update %></li>
+      <% else %>
+      <li>New comment on your dream: <%= link_to update.dream.title, update.dream %> from <%= update.dreamer %></li>
+      <% end %>
+    <% end %>
+  </ol>
+</div>
+
+<div id="right-col">
+  <h3>Your Network</h3>
+
+  <ul>
+    <% current_user.followees.each do |dreamer| %>
+    <li><%= link_to dreamer, dreamer %></li>
+    <% end %>
+  </ul>
+</div>

@@ -1,6 +1,20 @@
 class FollowsController < ApplicationController
   before_filter :authenticate
   
+  def index
+    following_ids = current_user.interests.all(:select => 'dreamer_id', :limit => 20).collect { |f| f.dreamer_id }
+    my_dream_ids = current_user.dreams.all(:select => 'id', :limit => 20).collect { |d| d.id }
+
+    recent_dreams = Dream.listings.all(:conditions => ['dreamer_id IN (?)', following_ids])
+    recent_comments = Comment.available.all(:conditions => ['dream_id IN (?)', my_dream_ids])
+    
+    @updates = (recent_dreams + recent_comments).sort { |a, b| b.created_at <=> a.created_at }
+    # 
+    # SELECT * FROM dreams WHERE dreamer_id IN (dreamer_list);
+    # SELECT * FROM comments WHERE commenter_id IN (dreamer_list);
+    
+  end
+  
   def create
     follow = current_user.interests.build(:dreamer_id => params[:dreamer_id])
     respond_to do |wants|
