@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :invitations, :only => [:index, :new, :create]
-  map.resources :opt_outs, :only => [:show, :create]
+  map.resources :opt_outs, :only => [:show, :create, :destroy]
   map.resources :tags, :only => [:show]
   
   map.resources :dreams do |dream|

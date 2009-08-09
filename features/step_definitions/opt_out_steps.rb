@@ -10,3 +10,11 @@ When /^I follow the opt out link$/ do
   a = last_email_sent.body.match(/http:\/\/example.com\/opt_outs\/(.*)\s/)
   visit a[0].strip
 end
+
+Given /^I followed the opt out link$/ do
+  When %{I follow the opt out link}
+end
+
+Given /^I pressed "([^\"]*)"$/ do |button|
+  When %{I press "#{button}"}
+end

@@ -1,60 +1,71 @@
-<%= render :partial => 'show_dream' %>
 
-<h3>Comments</h3>
+<div id="left-col-home">
+  <%= render :partial => 'show_dream' %>
 
-<% if @dream.available_comments.any? %>
-<ul>
-  <% @dream.available_comments.each do |comment| %>
-  <li>
-    <% if comment.hidden? %>
-      <p>A comment that was here has been removed for breaching our policies.</p>
-    <% else %>
-      <h4><%= comment.dreamer %> said on <%= comment.created_at.to_date %></h4>
-      <p><%= comment.body %></p>
-      <% if signed_in? %>
-        <p><%= link_to 'Report this?', new_dream_comment_report_path(@dream, comment) %></p>
+  <h3>Comments</h3>
+
+  <% if @dream.available_comments.any? %>
+  <ul>
+    <% @dream.available_comments.each do |comment| %>
+    <li>
+      <% if comment.hidden? %>
+        <p>A comment that was here has been removed for breaching our policies.</p>
       <% else %>
-        <%= link_to 'Sign up', sign_up_path %> or <%= link_to 'sign in', sign_in_path %> to report inappropriate comments
+        <h4><%= comment.dreamer %> said on <%= comment.created_at.to_date %></h4>
+        <p><%= comment.body %></p>
+        <% if signed_in? %>
+          <p><%= link_to 'Report this?', new_dream_comment_report_path(@dream, comment) %></p>
+        <% else %>
+          <%= link_to 'Sign up', sign_up_path %> or <%= link_to 'sign in', sign_in_path %> to report inappropriate comments
+        <% end %>
       <% end %>
+    </li>
     <% end %>
-  </li>
+  </ul>
+  <% else %>
+    <p>No comments yet</p>
   <% end %>
-</ul>
-<% else %>
-  <p>No comments yet</p>
-<% end %>
 
-<% if signed_in? %>
-  <% form_for([@dream, Comment.new]) do |form| %>
-  <fieldset>
-    <legend>Your Comment</legend>
-    <p>
-      <%= form.label :body, 'Comment' %>
-      <%= form.text_area :body %>
-    </p>
-    <p>
-      <%= form.submit 'Add Comment' %>
-    </p>
-  </fieldset>
+  <% if signed_in? %>
+    <% form_for([@dream, Comment.new]) do |form| %>
+    <fieldset>
+      <legend>Your Comment</legend>
+      <p>
+        <%= form.label :body, 'Comment' %>
+        <%= form.text_area :body %>
+      </p>
+      <p>
+        <%= form.submit 'Add Comment' %>
+      </p>
+    </fieldset>
+    <% end %>
+  <% else %>
+    <p>You must be signed in to comment. <%= link_to 'Sign in now', sign_in_path(:return_to => dream_path(@dream)) %></p>
   <% end %>
-<% else %>
-  <p>You must be signed in to comment. <%= link_to 'Sign in now', sign_in_path(:return_to => dream_path(@dream)) %></p>
-<% end %>
+</div>
 
+<div id="right-col-home">
 
-<% if signed_in? and current_user == @dream.dreamer %>
-  <p><%= link_to 'Edit', edit_dream_path(@dream) %></p>
-<% end %>
-
-<p><%= link_to 'Browse Dreams', dreams_path %></p>
-
-<h3>Related Dreams</h3>
-
-<ul>
-  <% @related_dreams.each do |dream| %>
-  <li><%= link_to dream.title, dream %> from <%= link_to dream.dreamer, dream.dreamer %></li>
+  <% if signed_in? and current_user == @dream.dreamer %>
+    <p>This is your dream. <%= link_to 'Edit it here', edit_dream_path(@dream) %></p>
   <% end %>
-</ul>
+
+  <h3>Tags</h3>
+  <ul>
+    <% @dream.tags.each do |tag| %>
+    <li><%= link_to tag.name, tag %></li>
+    <% end %>
+  </ul>
+  
+  <h3>Related Dreams</h3>
+  <ul>
+    <% @related_dreams.each do |dream| %>
+    <li><%= link_to dream.title, dream %> from <%= link_to dream.dreamer, dream.dreamer %></li>
+    <% end %>
+  </ul>
+  
+  <p><%= link_to 'Browse Dreams', dreams_path %> | <%= link_to 'Search Dreams', search_path %></p>
+</div>
   
 <% content_for :extra_headers do %>
   <% if signed_in? %>

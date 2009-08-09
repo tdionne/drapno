@@ -46,6 +46,13 @@
         <% end %>
       </table>
       
+      <% if current_user.opt_out %>
+        <p>
+          You have opted out of receiving new dream appearance notifications.
+          <%= button_to 'Opt back in', opt_out_path(current_user.opt_out), :method => :delete %>
+        </p>
+      <% end %>
+      
       <p><%= link_to 'Click here to view your profile as other people see it', dreamer_path(current_user, :public => '1') %></p>
       
       <h2>My Dreams</h2>

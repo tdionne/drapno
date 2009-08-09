@@ -5,6 +5,7 @@ describe "/dreams/show.html.erb" do
   before(:each) do
     @dreamer = Dreamer.mock(:name => 'Dreamer 1')
     assigns[:dream] = @dream = Dream.mock(:id => 1, :dreamer => @dreamer)
+    assigns[:related_dreams] = []
   end
 
   it "renders attributes in <p>" do

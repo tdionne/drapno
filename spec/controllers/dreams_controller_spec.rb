@@ -20,6 +20,10 @@ describe DreamsController do
   end
 
   describe "GET show" do
+    before(:each) do
+      @mock_dream.stubs(:find_related_tags).returns([])
+    end
+    
     it "assigns the requested dream as @dream" do
       Dream.expects(:find).with("37", :include => [:available_comments, {:appearances => :apparition}]).returns(@mock_dream)
       get :show, :id => "37"

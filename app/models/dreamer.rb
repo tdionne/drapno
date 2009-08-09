@@ -41,6 +41,7 @@ class Dreamer < ActiveRecord::Base
   
   attr_accessible :name, :location, :gender, :age_band, :public_profile
   
+  has_one :opt_out, :foreign_key => 'email', :primary_key => 'email'
   xss_terminate
   
   ROLES.each do |role|
