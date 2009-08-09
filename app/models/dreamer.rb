@@ -70,7 +70,11 @@ class Dreamer < ActiveRecord::Base
     display_name
   end
   
+  def is_following?(dreamer)
+    interests.exists?(:dreamer_id => dreamer.id)
+  end
+  
   def has_rated?(dream)
-    Rating.exists?(:dream_id => dream.id, :rater_id => self.id)
+    self.ratings.exists?(:dream_id => dream.id)
   end
 end

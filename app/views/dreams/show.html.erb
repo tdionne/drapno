@@ -1,7 +1,7 @@
 
 <div id="left-col-home">
   <%= render :partial => 'show_dream' %>
-
+  
   <h3>Comments</h3>
 
   <% if @dream.available_comments.any? %>
@@ -46,8 +46,12 @@
 
 <div id="right-col-home">
 
-  <% if signed_in? and current_user == @dream.dreamer %>
-    <p>This is your dream. <%= link_to 'Edit it here', edit_dream_path(@dream) %></p>
+  <% if signed_in? %>
+    <% if current_user == @dream.dreamer %>
+      <p>This is your dream. <%= link_to 'Edit it here', edit_dream_path(@dream) %></p>
+    <% elsif ! current_user.is_following?(@dream.dreamer) %>
+      <%= button_to 'Follow this dreamer', dreamer_follows_path(@dream.dreamer) %>
+    <% end %>
   <% end %>
 
   <h3>Tags</h3>

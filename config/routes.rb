@@ -18,7 +18,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.admin_dashboard '/admin/dashboard', :controller => '/admin/dashboard', :action => 'index'
   
-  map.resources :dreamers, :shallow => true do |dreamers|
+  map.resources :dreamers do |dreamers|
+    dreamers.resources :follows, :only => [:create, :destroy]
     dreamers.resources :ratings, :only => [:index, :create]
     
     dreamers.resource :credentials, :only => [:edit, :update]
