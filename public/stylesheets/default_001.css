@@ -465,3 +465,21 @@ p.ok {
   display:block;
 }
 /* End hide from IE-mac */
+div.fieldWithErrors {
+  background-image: url(/images/error-arrow.png);
+  background-repeat: no-repeat;
+  background-position: top left;
+}
+div.fieldWithErrors * {
+  border: 3px solid #f50c1c;
+  margin-left: 35px;  
+}
+
+div.fieldWithErrors label {  
+  background: white;
+  padding-left: 5px;
+  margin-left: 0px;
+}
+div.fieldWithErrors input, div.fieldWithErrors select {
+  margin-top: 20px;
+}
