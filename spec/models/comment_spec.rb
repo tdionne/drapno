@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id         :integer(4)      not null, primary key
+#  dream_id   :integer(4)
+#  dreamer_id :integer(4)
+#  status     :string(12)      default("visible"), not null
+#  body       :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Comment do

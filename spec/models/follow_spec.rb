@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: follows
+#
+#  id          :integer(4)      not null, primary key
+#  dreamer_id  :integer(4)
+#  follower_id :integer(4)
+#  reciprocal  :boolean(1)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Follow do

@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: comment_reports
+#
+#  id          :integer(4)      not null, primary key
+#  reporter_id :integer(4)
+#  comment_id  :integer(4)
+#  reason      :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe CommentReport do

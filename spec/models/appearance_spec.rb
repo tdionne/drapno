@@ -2,15 +2,17 @@
 #
 # Table name: appearances
 #
-#  id            :integer(4)      not null, primary key
-#  role          :string(32)
-#  dream_id      :integer(4)
-#  apparition_id :integer(4)
-#  name          :string(64)
-#  email         :string(64)
-#  created_at    :datetime
-#  updated_at    :datetime
-#  token         :string(255)
+#  id               :integer(4)      not null, primary key
+#  role             :string(32)
+#  dream_id         :integer(4)
+#  apparition_id    :integer(4)
+#  name             :string(64)
+#  email            :string(64)
+#  created_at       :datetime
+#  updated_at       :datetime
+#  token            :string(255)
+#  relationship     :string(255)
+#  is_public_figure :boolean(1)
 #
 
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')

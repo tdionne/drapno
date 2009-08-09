@@ -20,6 +20,7 @@
 #  public_profile     :boolean(1)      default(TRUE)
 #  role               :string(255)     default("user"), not null
 #  public_alias       :string(63)
+#  comments_count     :integer(4)      default(0), not null
 #
 
 require 'dreamer'
