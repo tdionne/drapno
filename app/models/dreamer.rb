@@ -43,7 +43,7 @@ class Dreamer < ActiveRecord::Base
   has_many :follows
   has_many :followers, :through => :follows
   has_many :interests, :class_name => 'Follow', :foreign_key => 'follower_id'
-  has_many :followees, :through => :follows, :source => :dreamer
+  has_many :followees, :through => :interests, :source => :dreamer
   
   validates_presence_of :name
   validates_inclusion_of :gender, :in => %W(Male Female), :allow_nil => true, :message => 'is invalid'
