@@ -33,6 +33,16 @@ class Dreamer < ActiveRecord::Base
   has_many :ratings, :foreign_key => :rater_id
   has_many :comments
   has_many :comment_reports, :foreign_key => :reporter_id
+
+  # The follow stuff is a little awkward linguistically.
+  # A "follow" is a request from a follower to follow this dreamer
+  # A "follower" is the dreamer who made that request
+  # An "interest" is the request to follow another dreamer
+  # A "followee" is a person I am following
+  has_many :follows
+  has_many :followers, :through => :follows
+  has_many :interests, :class_name => 'Follow', :foreign_key => 'follower_id'
+  has_many :followees, :through => :follows, :source => :dreamer
   
   validates_presence_of :name
   validates_inclusion_of :gender, :in => %W(Male Female), :allow_nil => true, :message => 'is invalid'
