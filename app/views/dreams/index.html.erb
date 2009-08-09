@@ -3,7 +3,7 @@
 
   <div class="inner">
     <div class="dreams-nav">
-      <%= link_to 'Newest Dreams', dreams_path %> | <a href="">Top Rated Dreams</a> | <%= page_entries_info @dreams %> | <%= will_paginate @dreams %>
+      <%= link_to 'Newest Dreams', dreams_path %> | <%= link_to 'Top Rated Dreams', ratings_path %> | <%= page_entries_info @dreams %> | <%= will_paginate @dreams %>
     </div> <!-- //dreams-nav -->
 
     <div id="latest-dreams">
@@ -14,7 +14,7 @@
     </div><!-- //latest-dreams -->
 
     <div class="dreams-nav">
-      <%= link_to 'Newest Dreams', dreams_path %> | <a href="">Top Rated Dreams</a> | <%= page_entries_info @dreams %> | <%= will_paginate @dreams %>
+      <%= link_to 'Newest Dreams', dreams_path %> | <%= link_to 'Top Rated Dreams', ratings_path %> | <%= page_entries_info @dreams %> | <%= will_paginate @dreams %>
     </div> <!-- //dreams-nav -->
   </div> <!-- //inner -->
 
