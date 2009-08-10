@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate
-  before_filter :load_dream
+  before_filter :authenticate, :except => :index
+  before_filter :load_dream, :except => :index
   
   def index
     @dreams = Dream.listings.paginate :per_page => 15, :page => params[:page], :order => ['comments_count DESC'],
