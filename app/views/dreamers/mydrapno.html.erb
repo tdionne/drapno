@@ -26,6 +26,17 @@
           <th>Password:</th>
           <td>***** <span>[<%= link_to "Change", edit_dreamer_credentials_path(current_user) %>]</span></td>
         </tr>
+        <tr>
+          <th>Picture</th>
+          <td>
+            <% if current_user.picture.exists? %>
+            <%= image_tag current_user.picture.url(:thumb), :height => '27', :width => '27', :alt =>'' %>
+            <span>[<%= link_to "Change", edit_dreamer_path(current_user) %>]</span>
+            <% else %>
+            No picture uploaded. <span>[<%= link_to "Upload one", edit_dreamer_path(current_user) %>]</span>
+            <% end %>
+          </td>
+        </tr>
         <% if current_user.gender %>
         <tr>
           <th>Gender</th>
@@ -83,8 +94,7 @@
 </div> <!-- //left-col -->
 
 <div id="right-col">
- <h2 id="h_my-network" class="ir">My Network<span></span></h2>
-   <p>tbd</p>
+  <%= render 'shared/network' %>
 
  
   <div class="inner">

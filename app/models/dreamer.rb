@@ -45,12 +45,26 @@ class Dreamer < ActiveRecord::Base
   has_many :interests, :class_name => 'Follow', :foreign_key => 'follower_id'
   has_many :followees, :through => :interests, :source => :dreamer
   
+  Paperclip.interpolates(:random_default_url) do |attachment, style| 
+    style = 'medium' if style == :original
+    options = Dir.glob(RAILS_ROOT + "/public/images/avatars/*_#{style}.*")
+    if options.any?
+      options[rand(options.size - 1)].sub(RAILS_ROOT + "/public", "")
+    end
+  end
+  
+  has_attached_file :picture, :styles => { :thumb => "27x27>" },
+    :convert_options => { :all => '-strip' },
+    :default_url => ":random_default_url"
+
+  validates_attachment_content_type :picture, :content_type => /^image\/.*/
+  
   validates_presence_of :name
   validates_inclusion_of :gender, :in => %W(Male Female), :allow_nil => true, :message => 'is invalid'
   validates_inclusion_of :age_band, :in => AGE_BANDS, :allow_nil => true, :message => 'is invalid'
   validates_inclusion_of :role, :in => ROLES, :allow_nil => true, :message => 'is invalid'  
   
-  attr_accessible :name, :location, :gender, :age_band, :public_profile
+  attr_accessible :name, :location, :gender, :age_band, :public_profile, :public_alias, :picture
   
   has_one :opt_out, :foreign_key => 'email', :primary_key => 'email'
   xss_terminate
@@ -61,7 +75,7 @@ class Dreamer < ActiveRecord::Base
     end
     named_scope role.to_sym, :conditions => {:role => role}
   end
-  
+
   def display_name
     self.public_alias.blank? ? self.name : self.public_alias
   end

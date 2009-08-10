@@ -19,31 +19,7 @@
 </div>
 
 <div id="right-col">
-  <h2 id="h_my-network" class="ir">My Network<span></span></h2>
-  <ul class="mynetwork">
-    <li>
-      <img src="/images/avatars/avatar-1.gif" width="23" height="27" alt="" />
-      <a href="">Dennis Calzaghe</a>
-    </li> 
-    <li>
-      <img src="/images/avatars/avatar-2.gif" width="23" height="27" alt="" />
-      <a href="">Mary LeDoof</a>
-    </li>
-    <li>
-      <img src="/images/avatars/avatar-3.gif" width="23" height="27" alt="" />
-      <a href="">Cindy Dreamalot</a>
-    </li>
-    <li>
-      <img src="/images/avatars/avatar-4.gif" width="23" height="27" alt="" />
-      <a href="">Phil Smithe</a>
-    </li>
-    <li>
-      <img src="/images/avatars/avatar-1.gif" width="23" height="27" alt="" />
-      <a href="">Dennis Calzaghe</a>
-    </li> 
-    <li>
-      <img src="/images/avatars/avatar-2.gif" width="23" height="27" alt="" />
-      <a href="">Mary LeDoof</a>
-    </li>             
-  </ul>
+  <% if signed_in? %>
+  <%= render 'shared/network' %>
+  <% end %>
 </div> <!-- //right-col -->

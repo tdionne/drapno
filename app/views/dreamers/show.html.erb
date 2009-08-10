@@ -1,33 +1,37 @@
-<h1>Dreamer: <%= @dreamer %></h1>
+<div id="left-col">
+  <h1>Dreamer: <%= @dreamer %></h1>
 
-<% if @dreamer.public_profile? %>
-  <p><%= @dreamer.email %></p>
-  <p><%= [@dreamer.location, @dreamer.gender, @dreamer.age_band].compact.join(' / ') %></p>
-<% end %>
-
-<% if signed_in? %>
-  <% if current_user.is_following?(@dreamer) %>
-    You are currently following <%= @dreamer %>. <%= button_to 'Stop?', dreamer_follow_path(@dreamer, '1'), :method => :delete %>
-  <% else %>
-    <%= button_to 'Follow this dreamer', dreamer_follows_path(@dreamer) %>
+  <% if @dreamer.public_profile? %>
+    <p><%= @dreamer.email %></p>
+    <p><%= [@dreamer.location, @dreamer.gender, @dreamer.age_band].compact.join(' / ') %></p>
   <% end %>
-<% end %>
 
-<h2>Dreams</h2>
+  <h2>Dreams</h2>
 
-<% if @dreamer.dreams.any? %>
-  <ul>
-    <%= render :collection => @dreamer.dreams, :partial => 'dreams/dream' %>
-  </ul>
-<% else %>
-  <p>No dreams entered yet.</p>
-<% end %>
+  <% if @dreamer.dreams.any? %>
+    <ul>
+      <%= render :collection => @dreamer.dreams, :partial => 'dreams/dream' %>
+    </ul>
+  <% else %>
+    <p>No dreams entered yet.</p>
+  <% end %>
 
-<h2>Appearances</h2>
-<% if @dreamer.references.any? %>
-  <ul>
-    <%= render :collection => @dreamer.references, :partial => 'dreams/dream' %>
-  </ul>
-<% else %>
-  <p>Has yet to be dreamed of!</p>
-<% end %>
+  <h2>Appearances</h2>
+  <% if @dreamer.references.any? %>
+    <ul>
+      <%= render :collection => @dreamer.references, :partial => 'dreams/dream' %>
+    </ul>
+  <% else %>
+    <p>Has yet to be dreamed of!</p>
+  <% end %>
+</div>
+
+<div id="right-col">
+  <% if signed_in? %>
+    <% if current_user.is_following?(@dreamer) %>
+      You are currently following <%= @dreamer %>. <%= button_to 'Stop?', dreamer_follow_path(@dreamer, '1'), :method => :delete %>
+    <% else %>
+      <%= button_to 'Follow this dreamer', dreamer_follows_path(@dreamer) %>
+    <% end %>
+  <% end %>
+</div>

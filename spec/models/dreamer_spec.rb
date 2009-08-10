@@ -45,4 +45,8 @@ describe Dreamer do
     end
     it { should_not allow_value('15').for(:age_band) }
   end
+  
+  # describe "attachments" do
+  #   it { should have_attached_file(:picture) }
+  # end
 end

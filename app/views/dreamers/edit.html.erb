@@ -2,7 +2,7 @@
 
 <p>Want to change your password? <%= link_to 'Click here', edit_dreamer_credentials_path(current_user) %></p>
 
-<% form_for @dreamer do |form| %>
+<% form_for @dreamer, :html => {:multipart => true} do |form| %>
   <%= form.error_messages %>
   
   <fieldset>
@@ -12,6 +12,11 @@
   
   <fieldset>
     <legend>The Rest</legend>
+    <p>
+      <%= form.label :picture %>
+      <%= form.file_field :picture %>
+    </p>
+    
     <p>
       <%= form.label :location %>
       <%= form.text_field :location %>
