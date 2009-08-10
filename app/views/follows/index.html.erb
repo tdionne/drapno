@@ -1,21 +1,39 @@
 <div id="left-col">
+  <h2>Recent Updates</h2>
+  
   <ol>
     <% @updates.each do |update| %>
+    <li><%= update.created_at.to_s(:update) %>:
       <% if update.is_a?(Dream) %>
-      <li><%= update.dreamer %> dreamt: <%= link_to update.title, update %></li>
-      <% else %>
-      <li>New comment on your dream: <%= link_to update.dream.title, update.dream %> from <%= update.dreamer %></li>
+        <%= update.dreamer %> dreamt: <%= link_to update.title, update %>
+      <% elsif update.is_a?(Comment) %>
+        <% if update.dream.dreamer_id == current_dreamer.id %>
+          New comment on your dream: <%= link_to update.dream.title, update.dream %> from <%= update.dreamer %>
+        <% else %>
+          New comment on <%= link_to update.dream.dreamer, update.dream.dreamer %>'s dream 
+            <%= link_to update.dream.title, update.dream %> from <%= update.dreamer %>
+        <% end %>
       <% end %>
+    </li>
     <% end %>
   </ol>
 </div>
 
 <div id="right-col">
-  <h3>Your Network</h3>
-
+  <p>We show:</p>
   <ul>
-    <% current_user.followees.each do |dreamer| %>
-    <li><%= link_to dreamer, dreamer %></li>
-    <% end %>
+    <li>New dreams and comments from people you're following</li>
+    <li>Comments on your dreams</li>
+    <li>Other comments on dreams you commented on</li>
+    <li>Dreams you appear in</li>
+    <li>Comments on dreams you appear in</li>
   </ul>
+  <p>We can't yet:</p>
+  <ul>
+    <li>Apply privacy or configuration settings to this</li>
+    <li>Allow paging back through older updates</li>
+    <li>Be sure it'll work well at scale (it probably won't)</li>
+  </ul>
+  
+  <%= render :partial => 'shared/network' %>
 </div>

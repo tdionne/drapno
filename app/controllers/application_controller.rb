@@ -14,11 +14,30 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
   before_filter :transfer_dreamer_params
   skip_before_filter :verify_authenticity_token, :if => proc { |c| c.request.js? }
-      
+  
+  alias :current_dreamer :current_user
+  helper_method :current_dreamer
+  
   protected
     def restrict_to_admin
       unless signed_in? and current_user.is_admin?
         render_401 and return false
+      end
+    end
+    
+    def http_authenticate
+      authenticate_or_request_with_http_basic("Drapno") do |email, password|
+        @_current_user ||= User.authenticate(email, password)
+      end
+    end
+      
+    def deny_access(flash_message = nil, opts = {})
+      if request.format.atom?
+        render_401
+      else
+        store_location
+        flash[:failure] = flash_message if flash_message
+        redirect_to(new_session_url)
       end
     end
     

@@ -8,8 +8,8 @@ module ErrorRenderers
 
   def render_401
     respond_to do |type|
-      type.html { render :file => "#{RAILS_ROOT}/public/401.html", :status => "403 Unauthorized" }
-      type.all  { render :nothing => true, :status => "401 Unauthorized" }
+      type.html { render :file => "#{RAILS_ROOT}/public/401.html", :status => "401 Authorization Required" }
+      type.all  { render :nothing => true, :status => "401 Authorization Required" }
     end
   end
     

@@ -1,22 +1,23 @@
 class FollowsController < ApplicationController
-  before_filter :authenticate
+  before_filter :authenticate, :if => proc { |c| ! c.request.format.atom? }
+  before_filter :http_authenticate, :if => proc { |c| c.request.format.atom? }
   
   def index
-    following_ids = current_user.interests.all(:select => 'dreamer_id', :limit => 20).collect { |f| f.dreamer_id }
-    my_dream_ids = current_user.dreams.all(:select => 'id', :limit => 20).collect { |d| d.id }
+    following_ids = current_dreamer.interests.all(:select => 'dreamer_id', :limit => 20).collect { |f| f.dreamer_id }
+    my_dream_ids = current_dreamer.dreams.all(:select => 'id', :limit => 20).collect { |d| d.id }
+    dreams_ive_commented_on = current_dreamer.comments.all(:select => 'dream_id', :limit => 20).collect { |d| d.dream_id }
+    dreams_ive_appeared_in = current_dreamer.references.all(:limit => 20)
+    appearance_ids = dreams_ive_appeared_in.collect { |a| a.id }
 
-    recent_dreams = Dream.listings.all(:conditions => ['dreamer_id IN (?)', following_ids])
-    recent_comments = Comment.available.all(:conditions => ['dream_id IN (?)', my_dream_ids])
-    
-    @updates = (recent_dreams + recent_comments).sort { |a, b| b.created_at <=> a.created_at }
-    # 
-    # SELECT * FROM dreams WHERE dreamer_id IN (dreamer_list);
-    # SELECT * FROM comments WHERE commenter_id IN (dreamer_list);
-    
+    recent_dreams = Dream.listings.all(:conditions => ['dreamer_id IN (?)', following_ids], :include => :dreamer)
+    recent_comments = Comment.available.all(:conditions => ['dreamer_id != ? AND (dream_id IN (?) OR dreamer_id IN (?))', 
+      current_dreamer.id, (my_dream_ids + dreams_ive_commented_on + appearance_ids).uniq, following_ids])
+
+    @updates = (dreams_ive_appeared_in + recent_dreams + recent_comments).sort { |a, b| b.created_at <=> a.created_at }
   end
   
   def create
-    follow = current_user.interests.build(:dreamer_id => params[:dreamer_id])
+    follow = current_dreamer.interests.build(:dreamer_id => params[:dreamer_id])
     respond_to do |wants|
       if follow.save
         wants.html { 
@@ -35,7 +36,7 @@ class FollowsController < ApplicationController
   end
   
   def destroy
-    follow = current_user.interests.find_by_dreamer_id(params[:dreamer_id])
+    follow = current_dreamer.interests.find_by_dreamer_id(params[:dreamer_id])
     respond_to do |wants|
       if follow.destroy
         wants.html { 
