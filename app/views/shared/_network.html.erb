@@ -1,13 +1,15 @@
-<h2 id="h_my-network" class="ir">My Network<span></span></h2>
-<ul class="mynetwork">
-  <% current_user.followees.each do |dreamer| %>
-  <li>
-    <% link_to dreamer do %>
-      <%= image_tag dreamer.picture.url(:thumb), :width => '27', :height => '27', :alt => '' %>
+<% if signed_in? %>
+  <h2 id="h_my-network" class="ir">My Network<span></span></h2>
+  <ul class="mynetwork">
+    <% current_user.followees.each do |dreamer| %>
+    <li>
+      <% link_to dreamer do %>
+        <%= image_tag dreamer.picture.url(:thumb), :width => '27', :height => '27', :alt => '' %>
+      <% end %>
+      <%= link_to dreamer.name, dreamer %>
+    </li> 
     <% end %>
-    <%= link_to dreamer.name, dreamer %>
-  </li> 
-  <% end %>
-</ul>
+  </ul>
 
-<p><%= link_to 'See activity from my network', follows_path %></p>
+  <p><%= link_to 'See activity from my network', follows_path %></p>
+<% end %>
