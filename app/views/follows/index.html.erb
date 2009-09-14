@@ -4,13 +4,9 @@
   <%= will_paginate @updates %>
     
   <ol start="<%= (((params[:page].to_i || 1) - 1) * 20) + 1 %>">
+    <%# TODO: The huge assumption here is that the actor and objects are dreamers and dreams. Can we change that? %>
     <% @updates.each do |update| %>
-    <li>
-      On <%= update.created_at.to_date %> :
-      <a href="/dreamers/<%= update.actor_id %>"><%= update.actor_name %></a>
-      <%= update.verb %> a <%= update.object_type.downcase %> <%= update.reason %>: 
-      <a href="/dreams/<%= update.object_id %>"><%= update.object_name %></a>
-    </li>
+      <li><%= render :partial => 'update', :object => update %></li>
     <% end %>
   </ol>
   

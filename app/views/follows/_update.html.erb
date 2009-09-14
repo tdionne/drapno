@@ -1,0 +1,4 @@
+On <%= update.created_at.to_date %> :
+<a href="<%= dreamer_url(:id => update.actor_id) %>"><%= update.actor_name %></a>
+<%= update.verb %> a <%= update.object_type.downcase %> <%= update.reason %>: 
+<a href="<%= dream_url(:id => update.object_id) %>"><%= update.object_name %></a>
