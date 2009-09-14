@@ -1,4 +1,4 @@
-atom_feed(:url => follows_url, :schema_date => '2009', 'xmlns:opensearch' => "http://a9.com/-/spec/opensearch/1.1/") do |feed|
+atom_feed(:url => follows_url, :schema_date => '2009') do |feed|
   feed.title("Drapno: Updates for #{current_dreamer}")
   feed.updated(@updates.any? ? @updates.first.created_at : Time.now.utc)
 
