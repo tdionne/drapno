@@ -20,6 +20,7 @@
 class Dream < ActiveRecord::Base
   belongs_to :dreamer
   has_many :appearances
+  has_many :apparitions, :through => :appearances
   has_many :ratings
   has_many :raters, :through => :ratings
   has_many :comments
@@ -48,5 +49,26 @@ class Dream < ActiveRecord::Base
     indexes tags(:name), :as => :tag_names
     
     set_property :delta => :delayed
+  end
+  
+  after_create :store_activity
+  def store_activity
+    params = {:object_type => 'Dream', :verb => 'shared', :object_id => self.id, :object_name => self.title, 
+      :actor_name => dreamer.name, :actor_id => dreamer.id}
+    
+    notified = []
+    dreamer.followers.each do |follower|
+      unless notified.include?(follower.id)
+        Activity.create(params.merge(:for_user_id => follower.id))
+        notified << follower.id
+      end
+    end
+    
+    apparitions.each do |apparition|
+      unless notified.include?(follower.id)
+        Activity.create(params.merge(:for_user_id => apparition.id, :reason => 'featuring you'))
+        notified << follower.id
+      end
+    end
   end
 end

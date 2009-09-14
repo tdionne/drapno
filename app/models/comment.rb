@@ -29,4 +29,38 @@ class Comment < ActiveRecord::Base
     named_scope status.to_sym, :conditions => {:status => status}
   end
   
+  def previous_commenters
+    dream.comments.collect(&:dreamer).uniq.reject { |d| d == dreamer }
+  end
+  
+  after_create :store_activity
+  def store_activity
+    params = {:object_type => 'Comment', :verb => 'made', :object_id => self.id, :actor_id => dreamer.id, 
+      :object_name => "comment on #{dream.title}", :actor_name => dreamer.name}
+
+    Activity.create(params.merge(:for_user_id => dream.dreamer.id, :reason => 'your dream'))
+    notified = [dream.dreamer.id]
+    
+    dream.apparitions.each do |apparition|
+      unless notified.include?(apparition.id)
+        Activity.create(params.merge(:for_user_id => apparition.id, :reason => 'that you appeared in'))
+        notified << apparition.id
+      end
+    end
+    
+    previous_commenters.each do |commenter|
+      unless notified.include?(commenter.id)
+        Activity.create(params.merge(:for_user_id => commenter.id, :reason => 'that you also commented on'))
+        notified << commenter.id
+      end
+    end
+    
+    dreamer.followers.each do |follower|
+      unless notified.include?(follower.id)
+        Activity.create(params.merge(:for_user_id => follower.id))
+        notified << follower.id
+      end
+    end
+  end
+  
 end
