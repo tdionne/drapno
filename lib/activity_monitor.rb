@@ -8,6 +8,9 @@ module ActivityMonitor
   module ClassMethods
     def monitor_activity(attrs = {})
       send(:after_create, :store_activity)
+      if respond_to?(:handle_asynchronously)
+        send(:handle_asynchronously, :store_activity)
+      end
       self.monitoring_details = attrs
     end
   end
