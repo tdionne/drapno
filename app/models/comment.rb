@@ -29,38 +29,31 @@ class Comment < ActiveRecord::Base
     named_scope status.to_sym, :conditions => {:status => status}
   end
   
+  # Convenience methods to simplify delimiter issues and make our
+  # activity monitoring work smoothly
   def previous_commenters
     dream.comments.collect(&:dreamer).uniq.reject { |d| d == dreamer }
   end
   
-  after_create :store_activity
-  def store_activity
-    params = {:object_type => 'Comment', :verb => 'made', :object_id => self.id, :actor_id => dreamer.id, 
-      :object_name => "comment on #{dream.title}", :actor_name => dreamer.name}
-
-    Activity.create(params.merge(:for_user_id => dream.dreamer.id, :reason => 'your dream'))
-    notified = [dream.dreamer.id]
-    
-    dream.apparitions.each do |apparition|
-      unless notified.include?(apparition.id)
-        Activity.create(params.merge(:for_user_id => apparition.id, :reason => 'that you appeared in'))
-        notified << apparition.id
-      end
-    end
-    
-    previous_commenters.each do |commenter|
-      unless notified.include?(commenter.id)
-        Activity.create(params.merge(:for_user_id => commenter.id, :reason => 'that you also commented on'))
-        notified << commenter.id
-      end
-    end
-    
-    dreamer.followers.each do |follower|
-      unless notified.include?(follower.id)
-        Activity.create(params.merge(:for_user_id => follower.id))
-        notified << follower.id
-      end
-    end
+  def dream_apparitions
+    dream.apparitions
   end
   
+  def dreamer_in_array
+    [dream.dreamer]
+  end
+  
+  def dreamer_followers
+    dreamer.followers
+  end
+  
+  include ActivityMonitor
+  monitor_activity :object_details => proc { |comment| [comment.dream.id, "comment on #{comment.dream.title}"] },
+    :verb => 'made',
+    :parties => {
+      :dreamer_in_array => 'your dream',
+      :previous_commenters => 'that you also commented on',
+      :dream_apparitions => 'that you appeared in',
+      :dreamer_followers => ''
+    }
 end

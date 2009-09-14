@@ -51,24 +51,16 @@ class Dream < ActiveRecord::Base
     set_property :delta => :delayed
   end
   
-  after_create :store_activity
-  def store_activity
-    params = {:object_type => 'Dream', :verb => 'shared', :object_id => self.id, :object_name => self.title, 
-      :actor_name => dreamer.name, :actor_id => dreamer.id}
-    
-    notified = []
-    dreamer.followers.each do |follower|
-      unless notified.include?(follower.id)
-        Activity.create(params.merge(:for_user_id => follower.id))
-        notified << follower.id
-      end
-    end
-    
-    apparitions.each do |apparition|
-      unless notified.include?(follower.id)
-        Activity.create(params.merge(:for_user_id => apparition.id, :reason => 'featuring you'))
-        notified << follower.id
-      end
-    end
+  def dreamer_followers
+    dreamer.followers
   end
+  
+  include ActivityMonitor
+  monitor_activity :object_details => proc { |dream| [dream.id, dream.title] },
+    :verb => 'shared',
+    :parties => {
+      :apparitions => 'featuring you',
+      :dreamer_followers => ''
+    }
+  
 end
