@@ -49,7 +49,7 @@
 </div>
 
 <% content_for :extra_headers do %>
-<% if @results.any? %>
+<% if @results and @results.any? %>
 <%= auto_discovery_link_tag :atom, {:q => params[:q], :format => :atom}, {:title => 'Subscribe to these results'} %>
 <% end %>
 <style type="text/css" media="screen">
