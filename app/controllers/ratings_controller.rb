@@ -6,7 +6,7 @@ class RatingsController < ApplicationController
   # GET /ratings.xml
   def index
     @dreams = Dream.listings.paginate :per_page => 15, :page => params[:page], :order => ['average_rating DESC'], 
-      :conditions => 'ratings_count > 0'
+      :conditions => 'dreams.ratings_count > 0'
   end
 
   # POST /ratings
