@@ -15,6 +15,8 @@
       </ul>
       
       <%= will_paginate @results %>
+      
+      <p><%= link_to 'Subscribe to these results', {:q => params[:q], :format => :atom}, :class => 'subscribe' %></p>
     <% else %>
       <p>No matching results. Please try again</p>
     <% end %>
@@ -27,7 +29,7 @@
       <% if params[:q].blank?  %>
         <label>Enter keywords in the box below to search dreams on this site. We look at titles, descriptions and tags to produce results.</label><br />
       <% else %>
-        <label>Search again</label>
+        <label style="font-weight: bold">Search again</label>
       <% end %>
   
       <%= text_field_tag 'q', params[:q], :size => 40 %>
@@ -47,6 +49,9 @@
 </div>
 
 <% content_for :extra_headers do %>
+<% if @results.any? %>
+<%= auto_discovery_link_tag :atom, {:q => params[:q], :format => :atom}, {:title => 'Subscribe to these results'} %>
+<% end %>
 <style type="text/css" media="screen">
   #tag-cloud {
     list-style: none;

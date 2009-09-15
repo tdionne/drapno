@@ -483,3 +483,9 @@ div.fieldWithErrors label {
 div.fieldWithErrors input, div.fieldWithErrors select {
   margin-top: 20px;
 }
+a.subscribe {
+  background-image: url(/images/feed-icon-14x14.png);
+  background-repeat: no-repeat;
+  background-position: center left;
+  padding-left: 20px;
+}
