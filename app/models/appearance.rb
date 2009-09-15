@@ -28,8 +28,13 @@ class Appearance < ActiveRecord::Base
   after_create :send_notification
   
   xss_terminate
-  attr_accessor :should_be_notified
+  attr_writer :should_be_notified
   
+  # default to sending notifications
+  def should_be_notified
+    @should_be_notified ||= true
+  end
+      
   def should_be_notified?
     self.should_be_notified.to_i == 1
   end
@@ -45,11 +50,7 @@ class Appearance < ActiveRecord::Base
     
     def send_notification
       if should_be_notified? and accepts_notifications?
-        if UserMailer.respond_to?(:send_later)
-          UserMailer.send_later(:deliver_appearance, self)
-        else
-          UserMailer.deliver_appearance(self)
-        end
+        UserMailer.deliver_appearance(self)
       end
     end
     

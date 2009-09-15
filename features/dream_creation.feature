@@ -38,7 +38,6 @@ Feature: Dream creation
     And I should see "My Real Dream"
     And I should see "Close personal friends"
 
-
   Scenario: Previews
     Given I am signed up and confirmed as "email@person.com/password"
 

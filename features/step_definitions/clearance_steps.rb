@@ -46,13 +46,13 @@ Then /^a confirmation message should be sent to "(.*)"$/ do |email|
   sent = ActionMailer::Base.deliveries.first
   assert_equal [dreamer.email], sent.to
   assert_match /confirm/i, sent.subject
-  assert !dreamer.token.blank?
-  assert_match /#{dreamer.token}/, sent.body
+  assert !dreamer.confirmation_token.blank?
+  assert_match /#{dreamer.confirmation_token}/, sent.body
 end
 
 When /^I follow the confirmation link sent to "(.*)"$/ do |email|
   dreamer = Dreamer.find_by_email(email)
-  visit new_dreamer_confirmation_path(:dreamer_id => dreamer, :token => dreamer.token)
+  visit new_dreamer_confirmation_path(:dreamer_id => dreamer, :token => dreamer.confirmation_token)
 end
 
 Then /^a password reset message should be sent to "(.*)"$/ do |email|
@@ -60,13 +60,13 @@ Then /^a password reset message should be sent to "(.*)"$/ do |email|
   sent = ActionMailer::Base.deliveries.first
   assert_equal [dreamer.email], sent.to
   assert_match /password/i, sent.subject
-  assert !dreamer.token.blank?
-  assert_match /#{dreamer.token}/, sent.body
+  assert !dreamer.confirmation_token.blank?
+  assert_match /#{dreamer.confirmation_token}/, sent.body
 end
 
 When /^I follow the password reset link sent to "(.*)"$/ do |email|
   dreamer = Dreamer.find_by_email(email)
-  visit edit_dreamer_password_path(:dreamer_id => dreamer, :token => dreamer.token)
+  visit edit_dreamer_password_path(:dreamer_id => dreamer, :token => dreamer.confirmation_token)
 end
 
 When /^I try to change the password of "(.*)" without token$/ do |email|
