@@ -99,14 +99,14 @@ var HasMany = {
   },
   
   addNew: function() {
-    $ul = $(this).parent().prev('ul');
+    $ul = $(this).closest('ul');
 
     if ($ul.length == 0) {
       // it looks like we're in a table, not a ul
       $table = $(this).closest('table');
-      $predecessors = $('tr.appearances', $table).not('.append');
+      $predecessors = $('div.appearances', $table).not('.append');
     } else {
-      $predecessors = $('li', $ul);
+      $predecessors = $('li', $ul).not('.append');
     }
     
     $initial = $predecessors.filter('.new:first');
