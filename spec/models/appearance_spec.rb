@@ -54,7 +54,7 @@ describe Appearance do
   describe "notification" do
     before(:each) do
       @appearance = Appearance.new(:email => 'sample@example.com', :should_be_notified => '1')
-      UserMailer.stubs(:send_later)
+      UserMailer.stubs(:deliver_appearance)
       OptOut.stubs(:exists?).returns(false)
     end
     
@@ -74,7 +74,7 @@ describe Appearance do
     end
     
     it "sends an email to this person if they should be notified" do
-      UserMailer.expects(:send_later).with(:deliver_appearance, @appearance)
+      UserMailer.expects(:deliver_appearance).with(@appearance)
       @appearance.send(:callback, :after_create)
     end
   end

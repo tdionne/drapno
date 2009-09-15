@@ -38,6 +38,27 @@ Feature: Dream creation
     And I should see "My Real Dream"
     And I should see "Close personal friends"
 
+  Scenario: Successful creation with appearance but not notification
+    Given I am signed up and confirmed as "email@person.com/password"
+
+    When I sign in as "email@person.com/password"
+    And I follow "Submit my dream"
+    And I fill in "Give your dream a title" with "My Real Dream"
+    And I fill in "Describe your dream" with "All this stuff happens"
+    And I fill in "dream[tag_list]" with "dream, weird, stuff"
+    And I fill in "Their Name" with "My Friend"
+    And I fill in "Your Relationship" with "Close personal friends"
+    And I fill in "Their Role" with "Fancy bartender"
+    And I fill in "Their Email" with "example@person.com"
+    And I uncheck "Let Them Know"
+    And I press "Submit my dream"
+
+    Then I should see "Dream was successfully created"
+    And an email should not be sent
+    And I should see "My Real Dream"
+    And I should see "Close personal friends"
+
+
   Scenario: Previews
     Given I am signed up and confirmed as "email@person.com/password"
 

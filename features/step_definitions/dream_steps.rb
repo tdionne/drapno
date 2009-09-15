@@ -21,3 +21,6 @@ Then /^an email should be sent to "([^\"]*)"$/ do |email|
   last_email_sent.to.include?(email).should be_true
 end
 
+Then /^an email should not be sent$/ do
+  last_email_sent.should be_nil
+end
