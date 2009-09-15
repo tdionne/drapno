@@ -6,20 +6,32 @@
 
     <% if @results.any? %>
   
-      <%= page_entries_info @results %>
+      <p><%= page_entries_info @results %></p>
   
       <ul>
         <% @results.each do |dream| %>
         <li><%= link_to dream.title, dream %> from <%= link_to dream.dreamer, dream.dreamer %></li>
         <% end %>
       </ul>
+      
+      <%= will_paginate @results %>
     <% else %>
       <p>No matching results. Please try again</p>
     <% end %>
+  <% else %>
+    <h3>Search Drapno</h3>
   <% end %>
 
   <% form_tag search_path, :method => :get do %>
-    <p><%= text_field_tag 'q', params[:q] %></p>
+    <p>
+      <% if params[:q].blank?  %>
+        <label>Enter keywords in the box below to search dreams on this site. We look at titles, descriptions and tags to produce results.</label><br />
+      <% else %>
+        <label>Search again</label>
+      <% end %>
+  
+      <%= text_field_tag 'q', params[:q], :size => 40 %>
+    </p>
     <p><%= submit_tag 'Search' %></p>
   <% end %>
 </div>

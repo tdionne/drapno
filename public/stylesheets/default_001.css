@@ -83,7 +83,7 @@ body {
 } 
 
 /* Typography */
-#content p { font-size:12px; margin:1.5em 0; color:#544915; }
+#content p, #content div.pagination { font-size:12px; margin:1.5em 0; color:#544915; }
 #content p a, #content li a { color:#544915; }
 #content p a:hover, #content li a:hover { background-color:#544915; color:#fff; text-decoration:none; }
 #content li { font-size:12px; color:#544915; }
