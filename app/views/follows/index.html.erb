@@ -1,22 +1,16 @@
 <div id="left-col">
   <h2>Recent Updates</h2>
-  
-  <ol>
+
+  <%= will_paginate @updates %>
+    
+  <ol start="<%= (((params[:page].to_i || 1) - 1) * 20) + 1 %>">
+    <%# TODO: The huge assumption here is that the actor and objects are dreamers and dreams. Can we change that? %>
     <% @updates.each do |update| %>
-    <li><%= update.created_at.to_s(:update) %>:
-      <% if update.is_a?(Dream) %>
-        <%= update.dreamer %> dreamt: <%= link_to update.title, update %>
-      <% elsif update.is_a?(Comment) %>
-        <% if update.dream.dreamer_id == current_dreamer.id %>
-          New comment on your dream: <%= link_to update.dream.title, update.dream %> from <%= update.dreamer %>
-        <% else %>
-          New comment on <%= link_to update.dream.dreamer, update.dream.dreamer %>'s dream 
-            <%= link_to update.dream.title, update.dream %> from <%= update.dreamer %>
-        <% end %>
-      <% end %>
-    </li>
+      <li><%= render :partial => 'update', :object => update %></li>
     <% end %>
   </ol>
+  
+  <%= will_paginate @updates %>
 </div>
 
 <div id="right-col">

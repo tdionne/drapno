@@ -14,6 +14,7 @@ Rails::Initializer.run do |config|
   config.gem 'freelancing-god-thinking-sphinx', :lib => 'thinking_sphinx', :version => '>=1.1.23'
   config.gem "mbleigh-acts-as-taggable-on", :source => "http://gems.github.com", :lib => "acts-as-taggable-on"
   config.gem "RedCloth", :lib => 'redcloth'
+  config.gem "mongomapper", :version => '>0.2.1'
   
   config.frameworks -= [ :active_resource ]
 
@@ -21,3 +22,4 @@ Rails::Initializer.run do |config|
 end
 
 DO_NOT_REPLY = "Dream Notification <donotreply@drapno.com>"
+MongoMapper.database = "mdb_drapno_#{Rails.env}"

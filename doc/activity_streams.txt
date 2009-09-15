@@ -1,0 +1,92 @@
+== The growth of our activity streams concept
+
+step 1)
+  I want to see all new dreams from people I'm following:
+
+  SELECT dreamer_id FROM follows WHERE follower_id = current_user.id;
+  SELECT * FROM dreams WHERE dreamer_id IN (dreamer_list);
+
+step 2)
+  step 1 and... I want to see all comments from people I'm following:
+  
+  SELECT dreamer_id FROM follows WHERE follower_id = current_user.id;
+  SELECT * FROM dreams WHERE dreamer_id IN (dreamer_list);
+  SELECT * FROM comments WHERE commenter_id IN (dreamer_list);
+
+step 3)
+  step 2 and... I want to see all comments on my dreams:
+  
+  SELECT dreamer_id FROM follows WHERE follower_id = current_user.id;
+  SELECT id FROM dreams WHERE dreamer_id = current_user.id;
+  SELECT * FROM dreams WHERE dreamer_id IN (dreamer_list);
+  SELECT * FROM comments WHERE commenter_id IN (dreamer_list) OR dream_id IN (my_dream_ids);
+
+step 4)
+  step 3 and... I want to see all comments on dreams I've commented on:
+
+  SELECT dreamer_id FROM follows WHERE follower_id = current_user.id;
+  SELECT id FROM dreams WHERE dreamer_id = current_user.id;
+  SELECT dream_id FROM comments WHERE commenter_id = current_user.id;
+  
+  SELECT * FROM dreams WHERE dreamer_id IN (dreamer_list);
+  SELECT * FROM comments WHERE commenter_id IN (dreamer_list) OR dream_id IN (my_dream_ids) OR dream_id IN (dreams_ive_commented_on);
+
+step 5)
+  step 4 and... I want to see all dreams I appear in:
+  
+  SELECT dreamer_id FROM follows WHERE follower_id = current_user.id;
+  SELECT id FROM dreams WHERE dreamer_id = current_user.id;
+  SELECT dream_id FROM comments WHERE commenter_id = current_user.id;
+  SELECT dream_id FROM appearances WHERE apparition_id = current_user.id;
+  
+  SELECT * FROM dreams WHERE dreamer_id IN (dreamer_list) OR id IN (my_appearance_ids);
+  SELECT * FROM comments WHERE commenter_id IN (dreamer_list) OR dream_id IN (my_dream_ids) OR dream_id IN (dreams_ive_commented_on);
+
+step 6)
+  step 5 and... I want to see comments on all dreams I appear in:
+  
+  SELECT dreamer_id FROM follows WHERE follower_id = current_user.id;
+  SELECT id FROM dreams WHERE dreamer_id = current_user.id;
+  SELECT dream_id FROM comments WHERE commenter_id = current_user.id;
+  SELECT dream_id FROM appearances WHERE apparition_id = current_user.id;
+  
+  SELECT * FROM dreams WHERE dreamer_id IN (dreamer_list) OR id IN (my_appearance_ids);
+  SELECT * FROM comments WHERE commenter_id IN (dreamer_list) OR dream_id IN (my_dream_ids) OR dream_id IN (dreams_ive_commented_on) OR dream_id IN (my_appearance_ids);
+
+step 7)
+  step 6 and... Not everyone allows me to follow their dreams/comments:
+  
+  ...
+
+step 8)
+  step 7 and... I want to configure which of these updates I see but not lose any of those I've had in the past:
+  
+  ....
+  
+
+== Pain points
+
+1) As the database gets large, these selects are going to get very slow
+2) We can't paginate the results without first loading _every_ update
+3) Applying any filtering (permissions, etc) or extending the system is going to involve new queries, new complexity
+
+
+== Options
+
+* Have a dedicated "updates" model and update it using after_filters
+  - one entry per update per user?
+  - would resolve 2 and simplify 3
+  - would allow future move to message queue
+  - would still be potentially slow on 1, but it'll happen later
+  - needs discipline to keep code clean for filters, etc.
+  - could get _very_ large _very_ fast
+
+* Move after_save hooks out to job queue
+  - requires extra resilience in the system/increases syadmin complexity
+  - improves responsiveness
+
+* Use super-fast key-value store to store updates. Denormalise.
+  - one entry per update per reader
+  - should resolve 1
+  - new tech
+

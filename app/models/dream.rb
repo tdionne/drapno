@@ -20,6 +20,7 @@
 class Dream < ActiveRecord::Base
   belongs_to :dreamer
   has_many :appearances
+  has_many :apparitions, :through => :appearances
   has_many :ratings
   has_many :raters, :through => :ratings
   has_many :comments
@@ -49,4 +50,17 @@ class Dream < ActiveRecord::Base
     
     set_property :delta => :delayed
   end
+  
+  def dreamer_followers
+    dreamer.followers
+  end
+  
+  include ActivityMonitor
+  monitor_activity :object_details => proc { |dream| [dream.id, dream.title] },
+    :verb => 'shared',
+    :parties => {
+      :apparitions => 'featuring you',
+      :dreamer_followers => ''
+    }
+  
 end

@@ -29,4 +29,31 @@ class Comment < ActiveRecord::Base
     named_scope status.to_sym, :conditions => {:status => status}
   end
   
+  # Convenience methods to simplify delimiter issues and make our
+  # activity monitoring work smoothly
+  def previous_commenters
+    dream.comments.collect(&:dreamer).uniq.reject { |d| d == dreamer }
+  end
+  
+  def dream_apparitions
+    dream.apparitions
+  end
+  
+  def dreamer_in_array
+    [dream.dreamer]
+  end
+  
+  def dreamer_followers
+    dreamer.followers
+  end
+  
+  include ActivityMonitor
+  monitor_activity :object_details => proc { |comment| [comment.dream.id, "comment on #{comment.dream.title}"] },
+    :verb => 'made',
+    :parties => {
+      :dreamer_in_array => 'your dream',
+      :previous_commenters => 'that you also commented on',
+      :dream_apparitions => 'that you appeared in',
+      :dreamer_followers => ''
+    }
 end
