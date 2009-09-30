@@ -2,8 +2,7 @@
   <h1>Dreamer: <%= @dreamer %></h1>
 
   <% if @dreamer.public_profile? %>
-    <p><%= @dreamer.email %></p>
-    <p><%= [@dreamer.location, @dreamer.gender, @dreamer.age_band].compact.join(' / ') %></p>
+    <p><%= @dreamer.email %> / <%= [@dreamer.location, @dreamer.gender, @dreamer.age_band].compact.join(' / ') %></p>
   <% end %>
 
   <h2>Dreams</h2>
@@ -34,4 +33,6 @@
       <%= button_to 'Follow this dreamer', dreamer_follows_path(@dreamer) %>
     <% end %>
   <% end %>
+  
+  <%= render 'calendar' %>
 </div>

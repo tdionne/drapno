@@ -7,14 +7,14 @@ RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
-  config.gem 'thoughtbot-paperclip', :lib => 'paperclip', :source => 'http://gems.github.com'
-  config.gem 'thoughtbot-clearance', :lib => 'clearance', :source => 'http://gems.github.com'
-  config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
-  config.gem 'collectiveidea-delayed_job', :lib => 'delayed_job', :source => 'http://gems.github.com'
+  config.gem 'thoughtbot-paperclip', :lib => 'paperclip', :source => 'http://gems.github.com', :version => '2.3.1'
+  config.gem 'thoughtbot-clearance', :lib => 'clearance', :source => 'http://gems.github.com', :version => '0.8.2'
+  config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com', :version => '2.3.11'
+  config.gem 'collectiveidea-delayed_job', :lib => 'delayed_job', :source => 'http://gems.github.com', :version => '1.8.1'
   config.gem 'freelancing-god-thinking-sphinx', :lib => 'thinking_sphinx', :version => '>=1.1.23'
-  config.gem "mbleigh-acts-as-taggable-on", :source => "http://gems.github.com", :lib => "acts-as-taggable-on"
+  config.gem "mbleigh-acts-as-taggable-on", :source => "http://gems.github.com", :lib => "acts-as-taggable-on", :version => '1.0.5'
   config.gem "RedCloth", :lib => 'redcloth'
-  config.gem "mongomapper", :version => '>0.2.1'
+  config.gem "mongomapper", :version => '>0.3.4'
   
   config.frameworks -= [ :active_resource ]
 

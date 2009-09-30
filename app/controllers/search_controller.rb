@@ -25,6 +25,5 @@ class SearchController < ApplicationController
         :order  => "count DESC",
         :limit  => 30
       ).sort_by(&:name)
-      
     end
 end

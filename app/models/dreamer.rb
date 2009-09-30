@@ -91,4 +91,13 @@ class Dreamer < ActiveRecord::Base
   def has_rated?(dream)
     self.ratings.exists?(:dream_id => dream.id)
   end
+  
+  def calendar_data_for(start_date)
+    end_date = start_date + 1.month
+
+    {
+      :appearances => references.all(:conditions => {:dreamt_on => (start_date..end_date)}),
+      :dreams => dreams.all(:conditions => {:dreamt_on => (start_date..end_date)})
+    }
+  end
 end
