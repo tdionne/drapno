@@ -26,4 +26,4 @@ config.log_level = :debug
 
 # Enable threaded mode
 # config.threadsafe!
-HOST="212.124.198.2"
+HOST="drapno.ketlaiprojects.com"
