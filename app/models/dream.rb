@@ -55,6 +55,10 @@ class Dream < ActiveRecord::Base
     dreamer.followers
   end
   
+  def can_rate?(dream)
+    dream.dreamer != self
+  end
+  
   include ActivityMonitor
   monitor_activity :object_details => proc { |dream| [dream.id, dream.title] },
     :verb => 'shared',

@@ -72,7 +72,7 @@
 </div>
   
 <% content_for :extra_headers do %>
-  <% if signed_in? %>
+  <% if signed_in? and current_user.can_rate?(@dream) %>
     <%= javascript_include_tag 'jquery.rater.js' %>
     <%= stylesheet_link_tag 'stars.style.css' %>
     <script type="text/javascript" charset="utf-8">
