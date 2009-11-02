@@ -92,6 +92,10 @@ class Dreamer < ActiveRecord::Base
     self.ratings.exists?(:dream_id => dream.id)
   end
   
+  def can_rate?(dream)
+    dream.dreamer != self
+  end
+  
   def calendar_data_for(start_date)
     end_date = start_date + 1.month
 
