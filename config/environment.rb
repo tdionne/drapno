@@ -21,5 +21,5 @@ Rails::Initializer.run do |config|
   config.time_zone = 'UTC'
 end
 
-DO_NOT_REPLY = "Dream Notification <donotreply@drapno.com>"
+DO_NOT_REPLY = "DRAPNO <donotreply@drapno.com>"
 MongoMapper.database = "mdb_drapno_#{Rails.env}"
