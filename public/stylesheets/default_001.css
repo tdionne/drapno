@@ -100,9 +100,9 @@ body {
 #btn_submit-dream, #btn_submit-dream span {
   width:267px; height:57px;
   display:block; overflow:hidden;
-  position:absolute; cursor:pointer;  
+/*  position:absolute; cursor:pointer;  
   top:20px; left:218px;
-}
+*/}
 
 #btn_submit-dream span {
   left:0; top:0;

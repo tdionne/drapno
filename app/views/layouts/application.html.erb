@@ -20,22 +20,13 @@
 
         <div id="header">
 
-          <a href="/" style="border: none"><img src="/images/logo.jpg" width="236" height="133" id="logo" alt="Drapno logo" style="border: none" /></a>
-          <%= link_to 'submit a dream<span title="submit a dream"></span>', new_dream_path, :id => 'btn_submit-dream', :title => 'submit a dream' %>
-          <!-- <a href="" id="btn_buy-notepad" title="buy a dream notepad">buy a notepad<span title="buy a dream notepad"></span></a> -->
+          <a href="/" style="border: none">
+            <img src="/images/logo.jpg" width="236" height="133" id="logo" alt="Drapno logo" style="border: none" />
+          </a>
 
-          <!-- <ul id="basic-navigation">
-            <li></li>
-            <% if signed_in? %>
-              <li><%= link_to 'Sign out', sign_out_path %></li>        
-            <% else %>
-              <li><%= link_to 'Sign Up', sign_up_path %></li>
-              <li><%= link_to 'Sign In', sign_in_path %></li>
-            <% end %>
-          </ul> -->
           <div id="menu">
             <ul>
-              <li id="item1"><a href="/about">About Drapno<span title="About Drapno" class="active"></span></a></li>
+              <li id="item1"><a href="/about">About Drapno<span title="About Drapno"></span></a></li>
               <li id="item2"><%= link_to 'Read the Dreams<span title="Read the Dreams"></span>', dreams_path %></li>
               <li id="item3">
                 <% if signed_in? %>
@@ -44,7 +35,6 @@
                   <%= link_to 'My Drapno<span title="My Drapno"></span>', sign_in_path %></li>
                 <% end %>
               <li id="item4"><%= link_to 'Search<span title="Search"></span>', search_path  %></li>
-              <li id="item5"><a href="/contact">Contact Us<span title="Contact Us"></span></a></li>
             </ul>
           </div> <!-- //menu -->
         </div> <!-- //header -->
@@ -78,8 +68,6 @@
              <h4>Your Dreams</h4>
              <ul>
                <li><%= link_to 'Submit a dream', new_dream_path %></li>
-               <!-- <li><a href="">My log</a></li>
-               <li><a href="">Manage my log book</a></li> -->
                <% if signed_in? %>
                 <li><%= link_to 'My Profile', current_user %></li>
               <% end %>
@@ -92,13 +80,8 @@
                <% if signed_in? %>
                <li><%= link_to 'My Network', follows_path %></li>
                <% end %>
-               <!-- <li><a href="">Dream Community</a></li> -->
-               <!-- <% if signed_in? %>
-                <li><a href="">Dreams I am in</a></li>
-               <% end %> -->
                <li><%= link_to 'Highest rated', ratings_path %></li>
                <li><%= link_to 'Most commented on', comments_path %></li>
-               <!-- <li><a href="">Most viewed</a></li> -->
              </ul>
            </div> <!-- //footer-box -->
 
@@ -107,21 +90,7 @@
              <ul>
                <li><%= link_to 'RSS feed of new Dreams', dreams_path(:format => :atom) %></li>            
              </ul>
-             <!-- <h4>Newsletter</h4>
-             <ul>
-               <li><a href="">Sign up</a></li>            
-             </ul> -->
            </div>
-            <!-- //footer-box -->
-
-           <!-- <div class="footer-box" id="last">                
-             <h4>Shop</h4>
-             <ul>
-               <li><a href="">Buy notepad</a></li>
-               <li><a href="">Buy other bits</a></li>            
-             </ul>
-           </div>  -->
-           <!-- //footer-box -->
 
          <div id="footeropacity"></div>
        </div> <!-- //footer-in -->
