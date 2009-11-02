@@ -78,7 +78,7 @@
     <script type="text/javascript" charset="utf-8">
       $(document).ready(function () {
         $(function() {
-          $('#ratings').append('<div id="testRater" class="stat"><label for="rating">Rating</label><div class="statVal"><span class="ui-rater"><span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:63px"></span></span><span class="ui-rater-rating"><%= @average_rating %></span>&#160;(<span class="ui-rater-rateCount"><%= @dream.ratings.count %></span>)</span></div></div>');
+          $('#ratings').append('<div id="testRater" class="stat"><div class="statVal"><span class="ui-rater"><span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:63px"></span></span><span class="ui-rater-rating"><%= @average_rating %></span>&#160;(<span class="ui-rater-rateCount"><%= @dream.ratings.count %></span>)</span></div></div>');
           $('#new_rating').remove();
           $rated = $('#rated');
           if ($rated.length > 0) {

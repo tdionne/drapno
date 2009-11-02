@@ -1,3 +1,5 @@
+<label for="rating"><strong>Rating</strong></label>
+<p style="margin-top: 0px">"Interesting?". Rate this dream from 1 star (dull) to 5 stars (fascinating). </p>
 <% form_for([current_user, Rating.new]) do |form| %>
   <%= form.hidden_field :dream_id, :value => @dream.id %>
   <% (1..5).each do |rating|  %>
