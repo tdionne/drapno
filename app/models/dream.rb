@@ -34,6 +34,7 @@ class Dream < ActiveRecord::Base
   validates_presence_of :dreamer_id
   
   named_scope :listings, :order => 'created_at DESC', :select => 'dreams.id, dreams.title, dreams.story, dreams.dreamer_id, dreams.created_at, dreams.dreamt_on', :include => :dreamer
+  named_scope :rated, :order => ['average_rating DESC'], :conditions => 'dreams.ratings_count > 0'
   acts_as_taggable_on :tags
   
   xss_terminate
@@ -49,6 +50,10 @@ class Dream < ActiveRecord::Base
     indexes tags(:name), :as => :tag_names
     
     set_property :delta => :delayed
+  end
+  
+  def created_on
+    created_at.to_date
   end
   
   def dreamer_followers
