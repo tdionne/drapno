@@ -4,11 +4,15 @@ Feature: Commenting
   Should be able to send some feedback
   
   Background:
-    Given I am signed up and confirmed as "email@person.com/password"
+    Given the following users:
+      | name | email | password | password_confirmation |
+      | Other user | other@person.com | password | password |
+    And I am signed up and confirmed as "email@person.com/password"
     And the following dreams exist:
       | title           | story              |
       | My First Dream  | Something happened |
       | My Other Dream  | Another happening  |
+    And all dreams were created by "other@person.com"
   
   Scenario: Not logged in
     When I go to the dream page for "My First Dream"

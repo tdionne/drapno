@@ -1,3 +1,7 @@
+Given /^the following users:$/ do |table|
+  User.create(table.hashes)
+end
+
 Given /^the following dreams exist:$/ do |table|
   dreamer = Dreamer.first
   table.hashes.each do |hash|
@@ -24,3 +28,12 @@ end
 Then /^an email should not be sent$/ do
   last_email_sent.should be_nil
 end
+
+Given /^all dreams were created by "([^\"]*)"$/ do |email|
+  u = User.find_by_email(email)
+  Dream.all.each do |dream|
+    dream.dreamer = u
+    dream.save
+  end
+end
+
