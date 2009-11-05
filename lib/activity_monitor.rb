@@ -17,7 +17,7 @@ module ActivityMonitor
   
   module InstanceMethods
     def store_activity    
-      params = {:object_type => self.class.to_s, :verb => self.monitoring_details[:verb], :actor_id => dreamer.id, :actor_name => dreamer.name}
+      params = {:object_type => self.class.to_s, :object_name => to_s, :verb => self.monitoring_details[:verb], :actor_id => dreamer.id, :actor_name => dreamer.name}
       params[:object_id], params[:object_title] = self.monitoring_details[:object_details].call(self)
 
       notified = []
