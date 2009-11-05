@@ -26,7 +26,7 @@
     <p>No comments yet</p>
   <% end %>
 
-  <% if signed_in? %>
+  <% if signed_in? and eligible_to_comment_on?(@dream) %>
     <% form_for([@dream, Comment.new]) do |form| %>
     <fieldset>
       <legend>Your Comment</legend>

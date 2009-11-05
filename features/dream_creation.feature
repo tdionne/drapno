@@ -38,6 +38,7 @@ Feature: Dream creation
     And I should see "My Real Dream"
     And I should see "Close personal friends"
 
+
   Scenario: Successful creation with appearance but not notification
     Given I am signed up and confirmed as "email@person.com/password"
 
@@ -57,6 +58,7 @@ Feature: Dream creation
     And an email should not be sent
     And I should see "My Real Dream"
     And I should see "Close personal friends"
+    And I should not see "Your Comment"
 
 
   Scenario: Previews
