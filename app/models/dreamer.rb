@@ -53,9 +53,7 @@ class Dreamer < ActiveRecord::Base
     end
   end
   
-  has_attached_file :picture, :styles => { :thumb => "27x27>" },
-    :convert_options => { :all => '-strip' },
-    :default_url => ":random_default_url"
+  has_attached_file :picture, :styles => { :thumb => "27x27#" }, :default_url => ":random_default_url"
 
   validates_attachment_content_type :picture, :content_type => /^image\/.*/
   
