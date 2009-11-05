@@ -11,7 +11,11 @@
   <% else %>
     <% if current_user == @dream.dreamer || current_user.has_rated?(@dream) %>
 
-      <p>This dream has been rated <%= pluralize(@dream.ratings_count, 'time', 'times') %> with an average rating of <%= @dream.average_rating %></p>
+      <% if @dream.ratings_count == 0%>
+        <p>This dream has yet to be rated</p>
+      <% else %>
+        <p>This dream has been rated <%= pluralize(@dream.ratings_count, 'time', 'times') %> with an average rating of <%= @dream.average_rating %></p>
+      <% end %>
       
       <% if current_user.has_rated?(@dream) %>
         <p id="rated">You have rated this dream.</p>

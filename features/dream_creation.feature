@@ -59,7 +59,8 @@ Feature: Dream creation
     And I should see "My Real Dream"
     And I should see "Close personal friends"
     And I should not see "Your Comment"
-
+    And I should see "This dream has yet to be rated"
+    And I should not see "Rate this dream"
 
   Scenario: Previews
     Given I am signed up and confirmed as "email@person.com/password"
