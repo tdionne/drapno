@@ -21,6 +21,12 @@ class Comment < ActiveRecord::Base
   STATUSES = %W(pending visible reported hidden spam)
   named_scope :available, :conditions => {:status => %W{visible reported hidden}}
   
+  after_create :send_notification
+  
+  def send_notification
+    UserMailer.deliver_comment(self)
+  end
+  
   STATUSES.each do |status|
     define_method("#{status}?") do
       self.status == status

@@ -25,4 +25,20 @@ describe Comment do
     it { should validate_presence_of(:dreamer_id) }
     it { should validate_presence_of(:body) }
   end
+  
+  describe "notifications" do
+    before(:each) do
+      @comment = Comment.new
+    end
+    
+    it "sends the dreamer a notification after creation" do
+      @comment.expects(:send_notification)
+      @comment.send(:callback, :after_create)
+    end
+    
+    it "dispatches an email" do
+      UserMailer.expects(:deliver_comment).with(@comment)
+      @comment.send_notification
+    end
+  end
 end

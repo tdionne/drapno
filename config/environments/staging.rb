@@ -27,3 +27,8 @@ config.log_level = :debug
 # Enable threaded mode
 # config.threadsafe!
 HOST="drapno.ketlaiprojects.com"
+config.after_initialize do
+  Comment.class_eval do |klass|
+    klass.handle_asynchronously :send_notification
+  end
+end
