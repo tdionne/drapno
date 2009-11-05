@@ -14,7 +14,7 @@
     <p class="short-element">
       <%= form.label :dreamt_on, "Dream Date:" %><br />
       <%= form.date_select :dreamt_on, :order => [:day, :month, :year], 
-        :start_year => Date.today.year - 5, :end_year => Date.today.year %>
+        :start_year => Date.today.year - 5, :end_year => Date.today.year, :default => 1.day.ago %>
     </p>
     
     <p class="short-element">
