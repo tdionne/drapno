@@ -22,7 +22,9 @@ $.fn.rater = function(options) {
             $off.unbind('click').unbind('mousemove').unbind('mouseenter').unbind('mouseleave');
             $off.css('cursor', 'default'); $on.css('cursor', 'default');
             $.fn.rater.rate($this, opts, r);
-        }).css('cursor', 'pointer'); $on.css('cursor', 'pointer');
+        }).css('cursor', 'pointer'); 
+        $on.css('cursor', 'pointer');
+        $on.width(opts.rating * opts.size);
     });
 };
 

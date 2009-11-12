@@ -13,6 +13,9 @@
   height:18px; 
   background:url(/images/stars.png) repeat-x 0 0px;
 }
+.ui-rater-starsOff {
+  width: 93px;
+}
 .ui-rater-starsOn {
   display:block; 
   max-width:90px; 
