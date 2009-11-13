@@ -6,7 +6,7 @@ body {
 h1, h2, h3, h4 {
   font-family: verdana, sans-serif;
 }
-
+a img { border: none; }
 /* Notifications */
 .flash {
   padding: 10px;
