@@ -25,7 +25,7 @@
           </a>
           
           <% if signed_in? %>
-            <p id="welcome-back">Welcome back, <%= current_user.display_name %>. <br />
+            <p id="welcome-back">Signed in as <%= current_user.display_name %>. <br />
               <small>[ <%= link_to 'My Drapno', dreamer_path(current_user) %> | <%= link_to 'Sign out?', sign_out_path %> ]</small></p>
           <% end %>
             
