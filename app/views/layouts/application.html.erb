@@ -20,9 +20,14 @@
 
         <div id="header">
 
-          <a href="/" style="border: none">
+          <a href="/">
             <img src="/images/logo.jpg" width="236" height="133" id="logo" alt="Drapno logo" />
           </a>
+          
+          <% if signed_in? %>
+            <p id="welcome-back">Welcome back, <%= link_to current_user.display_name, dreamer_path(current_user) %></p>
+          <% end %>
+            
           <div id="menu">
             <ul>
               <li id="nav-submit"><%= link_to 'Submit A Dream<span title="Submit a dream"></span>', new_dream_path %>

@@ -61,3 +61,12 @@ a img { border: none; }
     padding: 0.25em; 
     vertical-align: middle
   }
+#welcome-back {
+  float: left; 
+  margin-left: 220px; 
+  margin-top: 30px; 
+  font-weight: bold;
+}
+  #welcome-back a {
+    color: #206B94
+  }
