@@ -23,20 +23,29 @@
           <a href="/" style="border: none">
             <img src="/images/logo.jpg" width="236" height="133" id="logo" alt="Drapno logo" style="border: none" />
           </a>
-
           <div id="menu">
             <ul>
-              <li id="item1"><a href="/about">About Drapno<span title="About Drapno"></span></a></li>
-              <li id="item2"><%= link_to 'Read the Dreams<span title="Read the Dreams"></span>', dreams_path %></li>
-              <li id="item3">
-                <% if signed_in? %>
-                  <%= link_to 'My Drapno<span title="My Drapno"></span>', dreamer_path(current_user) %></li>
-                <% else %>
-                  <%= link_to 'My Drapno<span title="My Drapno"></span>', sign_in_path %></li>
-                <% end %>
-              <li id="item4"><%= link_to 'Search<span title="Search"></span>', search_path  %></li>
+              <li id="nav-submit"><%= link_to 'Submit A Dream<span title="Submit a dream"></span>', new_dream_path %>
+              <li id="nav-read"><%= link_to 'Read the Dreams<span title="Read the Dreams"></span>', dreams_path %></li>              
+              <% if signed_in? %>
+                <li id="nav-mydrapno"><%= link_to 'My Drapno<span title="My Drapno"></span>', dreamer_path(current_user) %></li>
+                <li id="nav-signout"><%= link_to 'Sign Out<span title="Sign Out"></span>', sign_out_path %></li>
+              <% else %>
+                <li id="nav-signin"><%= link_to 'Sign In <span title="Sign In"></span>', sign_in_path %></li>
+              <% end %>
+              <li id="nav-about"><a href="/about">About Drapno<span title="About Drapno"></span></a></li>
             </ul>
           </div> <!-- //menu -->
+          
+          <div id="header-search">
+          <% form_tag search_path, :method => :get do %>
+            <p>
+              <%= text_field_tag 'q', params[:q], :size => 20 %>
+              <%= submit_tag 'Search' %>
+            </p>
+          <% end %>
+          </div>
+          
         </div> <!-- //header -->
 
         <div id="content" class="clearfix">
