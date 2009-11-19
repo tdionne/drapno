@@ -9,3 +9,14 @@
   
   <%= form.submit 'Sign up', :disable_with => 'Please wait...' %>
 <% end %>
+
+<% content_for :extra_headers do %>
+<style type="text/css" media="screen">
+  label {
+    display: block;
+    float: left;
+    width: 150px;
+    font-weight: bold;
+  }
+</style>
+<% end %>

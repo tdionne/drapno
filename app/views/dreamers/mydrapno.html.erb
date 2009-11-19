@@ -64,7 +64,7 @@
         </p>
       <% end %>
       
-      <p><%= link_to 'Click here to view your profile as other people see it', dreamer_path(current_user, :public => '1') %></p>
+      <p style="margin: 0.5em 0px 2.5em 0px"><%= link_to 'Click here to view your profile as other people see it', dreamer_path(current_user, :public => '1') %></p>
       
       <h2>My Dreams</h2>
 
@@ -73,7 +73,13 @@
         <tr>
           <th><%= dream.dreamt_on || dream.created_at.to_date %>:</th>
           <td><%= dream.title %></td>
-          <td><span>[<%= link_to 'View', dream %>] [<%= link_to 'Update', edit_dream_path(dream) %>] [<%= button_to 'Delete', dream, :method => 'delete' %>]</span></td>
+          <td class="dream-actions">
+            <span>
+              [<%= link_to 'View', dream %>] 
+              [<%= link_to 'Update', edit_dream_path(dream) %>] 
+              <span class="inline-delete">[<%= button_to 'Delete', dream, :method => 'delete' %>]</span>
+            </span>
+          </td>
         </tr>
         <% end %>
       </table>

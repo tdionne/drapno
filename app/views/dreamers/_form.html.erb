@@ -1,27 +1,29 @@
 <%= form.error_messages %>
 <p class="text_field">
-  <%= form.label :email %>
+  <%= form.label :email, 'Email <span class="required">*</span>' %>
   <%= form.text_field :email %>
 </p>
 
 <p class="text_field">
-  <%= form.label :name %>
+  <%= form.label :name, 'Name <span class="required">*</span>' %>
   <%= form.text_field :name %>
-  <br />(Your name will appear on the public site unless you setup a public alias below)
+  <br /><span class="hint">(Your name will appear on the public site unless you setup a public alias below)</span>
 </p>
 <p>
-  <%= form.label :public_alias %>
+  <%= form.label :public_alias, 'Public alias <span class="required">*</span>' %>
   <%= form.text_field :public_alias %>
-  <br />(how you would like to be identified on the site. Leave this blank if you want us to display your real name)
+  <br /><span class="hint">(how you would like to be identified on the site. Leave this blank if you want us to display your real name)</span>
 </p>
 
 <% if form.object.new_record? %>
   <p class="password_field">
-    <%= form.label :password %>
+    <%= form.label :password, 'Password <span class="required">*</span>' %>
     <%= form.password_field :password %>
   </p>
   <p class="password_field">
-    <%= form.label :password_confirmation, "Confirm password" %>
+    <%= form.label :password_confirmation, 'Confirm password <span class="required">*</span>' %>
     <%= form.password_field :password_confirmation %>
   </p>
 <% end %>
+
+<p>* indicates a required field</p>
