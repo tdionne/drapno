@@ -1,7 +1,7 @@
 <h2>Sign in</h2>
 
 <% unless invitation_only? %>
-<p>Not yet a member? <%= link_to "Click here to sign up", sign_up_path %></p>
+<p><strong>Not yet a member? <%= link_to "Click here to sign up", sign_up_path %></strong></p>
 <% end %>
 
 <% if invitation_only? %>
