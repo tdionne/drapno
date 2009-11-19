@@ -1,5 +1,9 @@
 <h2>Sign in</h2>
 
+<% unless invitation_only? %>
+<p>Not yet a member? <%= link_to "Click here to sign up", sign_up_path %></p>
+<% end %>
+
 <% if invitation_only? %>
 <p>We are currently in <em>invitation only</em> mode. If you don't have an account and would like an invitation, please get in touch.</p>
 <p>Otherwise, please log in below.</p>
@@ -15,18 +19,21 @@
     <%= form.label :password %>
     <%= form.password_field :password %>
   </p>
+  
   <p class="submit_field">
     <%= form.submit "Sign in", :disable_with => "Please wait..." %>
   </p>
 <% end %>
 
-<ul>
-  <% unless invitation_only? %>
-  <li>
-    <%= link_to "Sign up", sign_up_path %>
-  </li>
-  <% end %>
-  <li>
-    <%= link_to "Forgot password?", new_password_path %>
-  </li>
-</ul>
+<p><%= link_to "Forgotten your password? Click here to reset it", new_password_path %></p>
+
+<% content_for :extra_headers do %>
+<style type="text/css" media="screen">
+  label {
+    display: block;
+    float: left;
+    width: 150px;
+    font-weight: bold;
+  }
+</style>
+<% end %>
