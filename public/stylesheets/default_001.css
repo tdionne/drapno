@@ -496,3 +496,67 @@ a.subscribe {
   background-position: center left;
   padding-left: 20px;
 }
+
+input[type="submit"] {
+	height: 22px;
+	width: 107px;
+	font-family: Courier, sans-serif;
+	font-size: 12px;
+	color: #000;
+	text-shadow: 0px -1px 0px rgba(70,70,70,0.3);
+	border: none;
+	background-repeat: no-repeat;
+	background-position: 50% 0px;
+	background-image: url(/images/button_bg_small.gif);
+	background-color: transparent;
+	text-align: center;
+}
+input[type="submit"]:hover {
+	background-image: url(/images/button_bg_small_rollover.gif);
+}
+.large-buttons input[type="submit"] {
+  height: 36px;
+	width: 179px;
+  background-image: url(/images/button_bg.gif);
+  	padding-left: 15px;
+}
+.large-buttons input[type="submit"]:hover {
+	background-image: url(/images/button_bg_rollover.gif);
+}
+.float-buttons input {
+  float: left;
+}
+p.checkbox input {
+  float: right; 
+  margin-right: 3em;
+}
+p.example {
+  color: #544915;
+}
+
+#tag-cloud-space h3 {
+  font-family: Courier;
+  color: #415773;
+}
+  #tag-cloud-space ul {
+    list-style: none;
+  }
+    #tag-cloud-space ul li {
+      float: left;
+      margin-right: 1em;
+    }
+    #tag-cloud-space ul li.level-1 {
+      font-size: 80%;
+    }
+    #tag-cloud-space ul li.level-2 {
+      font-size: 95%;
+    }
+    #tag-cloud-space ul li.level-3 {
+      font-size: 110%;
+    }
+    #tag-cloud-space ul li.level-4 {
+      font-size: 125%;
+    }
+    #tag-cloud-space ul li.level-5 {
+      font-size: 140%;
+    }

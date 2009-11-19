@@ -43,12 +43,12 @@
           <%= app_form.label :email, 'Their Email' %>
           <%= app_form.text_field :email, :size => 30 %>
         </p>
-        <p>
-          <%= app_form.check_box :is_public_figure, :style => 'float: left; margin-right: 1em' %>
+        <p class="checkbox">
+          <%= app_form.check_box :is_public_figure %>
           <%= app_form.label :is_public_figure, 'Are they a figure in public life?' %>
         </p>
-        <p>
-          <%= app_form.check_box :should_be_notified, :style => 'float: left; margin-right: 1em' %>
+        <p class="checkbox">
+          <%= app_form.check_box :should_be_notified %>
           <%= app_form.label :should_be_notified, 'Let Them Know' %>
         </p>
       </li>
@@ -63,15 +63,15 @@
     </ul>
     
     <h2 id="h_tagyourdream" class="ir">Tag your dream<span></span></h2>
-    <div class="inner">
+    <div>
       <p><strong>If you have time please add extra keyword to help the search engine connect dreams</strong></p>
-      <p style="color:#544915;">Put a comma between tags. Eg, running, nightime, swimming etc..</p>
+      <p class="example">Put a comma between tags. Eg, running, nightime, swimming etc..</p>
       <%= form.text_area :tag_list, :style => 'width: 100%', :rows => '4' %>
     </div>
     
-    <p style="margin:2em 0; text-align: right" class="clearfix">
+    <p class="large-buttons float-buttons" style="vertical-align: top; margin:2em 0; text-align: right" class="clearfix">
       <% if form.object.new_record? %>
-        <%= form.submit 'Preview my dream' %> 
+        <%= form.submit 'Preview my dream', :style => 'margin-right: 30px' %> 
       <% end %>
       <%= image_submit_tag '/images/btn_submitadream.gif', :alt => 'Submit my dream' %>
     </p>

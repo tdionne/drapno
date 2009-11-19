@@ -39,13 +39,7 @@
 </div>
 
 <div id="right-col-home">
-  <h3>Popular Tags</h3>
-
-  <ul id="tag-cloud">
-    <% tag_cloud(@tags, @levels) do |tag, level| %>
-      <li class="<%= level %>"><%= link_to h(tag), tag %></li>
-    <% end %>
-  </ul>
+  <%= render 'shared/tag_cloud' %>
 </div>
 
 <% content_for :extra_headers do %>

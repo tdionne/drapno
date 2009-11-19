@@ -18,6 +18,17 @@ class ApplicationController < ActionController::Base
   alias :current_dreamer :current_user
   helper_method :current_dreamer
   
+  def load_tags
+    @tags = Tag.find(:all,
+      :select => "#{Tag.table_name}.id, #{Tag.table_name}.name, COUNT(*) AS count",
+      :joins  => "LEFT OUTER JOIN #{Tagging.table_name} ON #{Tag.table_name}.id = #{Tagging.table_name}.tag_id",
+      :group  => "#{Tag.table_name}.id, #{Tag.table_name}.name HAVING COUNT(*)> 0",
+      :order  => "count DESC",
+      :limit  => 30
+    ).sort_by(&:name)
+    @levels = (1..5).map { |i| "level-#{i}" }
+  end
+  
   protected
     def restrict_to_admin
       unless signed_in? and current_user.is_admin?
