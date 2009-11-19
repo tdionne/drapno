@@ -9,6 +9,10 @@ body {
   /*text-align:center;*/
 }
 
+h1, h2, h3 {
+  font-family: Courier;
+  color: #415773;  
+}
 /*******************************************************************************
   MAIN LAYOUT
 *******************************************************************************/
@@ -252,7 +256,7 @@ body {
 }
 
 /* .tab1 */
-table.tab1 { margin:1em 0; clear:both; }
+table.tab1 { margin: 1em 0 02 0; clear:both; }
 
 .tab1 td,
 .tab1 th { 
@@ -534,10 +538,6 @@ p.example {
   color: #544915;
 }
 
-#tag-cloud-space h3 {
-  font-family: Courier;
-  color: #415773;
-}
   #tag-cloud-space ul {
     list-style: none;
   }
@@ -560,3 +560,34 @@ p.example {
     #tag-cloud-space ul li.level-5 {
       font-size: 140%;
     }
+#flash {
+  margin-bottom: 1em;
+}
+
+.inline-delete, .inline-delete form, .inline-delete form div {
+  display: inline;
+}
+.inline-delete form input, .inline-delete form input:hover {
+  background-image: none;
+  color: #206B94;
+  text-decoration: underline;
+  width: auto;
+  font-style: normal;
+  cursor: pointer;
+  height: 14px;
+}
+.inline-delete form input:hover  {
+  background-color:#206b94;
+  color:#faf9fb;
+  text-decoration:none;
+}
+td.dream-actions {
+  width: 180px;
+}
+td.dream-actions a {
+  text-decoration: none;
+  font-weight: bold;
+}
+.hint {
+  font-style: italic;
+}

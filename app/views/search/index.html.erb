@@ -2,7 +2,7 @@
 <div id="left-col-home">
   
   <% if @results %>
-    <h3>Search Results</h3>
+    <h2>Search Results</h2>
 
     <% if @results.any? %>
   
@@ -21,7 +21,7 @@
       <p>No matching results. Please try again</p>
     <% end %>
   <% else %>
-    <h3>Search Drapno</h3>
+    <h2>Search Drapno</h2>
   <% end %>
 
   <% form_tag search_path, :method => :get do %>

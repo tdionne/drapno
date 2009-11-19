@@ -13,8 +13,13 @@
   <h2 id="h_read-dreams" class="ir">Read the dreams<span></span></h2>
   <div style="padding-left:25px;">
     <% @recent_dreams.each do |dream| %>
-    <p><%= link_to truncate(dream.story, :length => 75), dream_path(dream) %><br /> 
-    <%= dream.dreamer %> from <%= dream.dreamer.location %></p>    
+    <p>
+      <%= link_to truncate(dream.story, :length => 75), dream_path(dream) %><br /> 
+      by <%= dream.dreamer %> 
+      <% if dream.dreamer.location.present? %>
+        from <%= dream.dreamer.location %>
+      <% end %>
+    </p>    
     <% end %>
     <p><%= link_to 'More Dreams', dreams_path %></p>
   </div>                      
