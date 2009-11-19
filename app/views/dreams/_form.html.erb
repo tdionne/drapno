@@ -57,8 +57,8 @@
       </li>
       <% else %>
       <li class="appearances old" id="<%= dom_id(app_form.object) %>">
-        <%= app_form.object.name %> as <%= app_form.object.role %><br />
-        <%= app_form.label :_delete, 'Delete' %>
+        <%= app_form.object.name %> as <%= app_form.object.role %> - 
+        <%= app_form.label :_delete, 'Delete?', :style => 'display: inline' %>
         <%= app_form.check_box :_delete %>
       </li>
       <% end %>
@@ -91,7 +91,7 @@
 <%= javascript_include_tag 'has_many' %>
 <script type="text/javascript" charset="utf-8">
 $(function() {
-  $('li.appearances.new').append('<p class="remove-appearance"><a href="">I\'ve changed my mind, remove this person</a></p>');
+  $('li.appearances.new').append('<p class="remove-appearance"><a href="#">I\'ve changed my mind, remove this person</a></p>');
   $('.remove-appearance').click(function () {
     var $container = $(this).closest('li');
     if ($('li.appearances').length == 2) {
