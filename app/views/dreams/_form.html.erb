@@ -1,18 +1,21 @@
 <div id="left-col">
-  <h1 id="h_submitadream" class="ir">Submit a dream<span></span></h1>
+  <% if form.object.new_record? %>
+    <h1 id="h_submitadream" class="ir">Submit a dream<span></span></h1>
+  <% end %>
+  
   <div class="inner">
     <p style="padding-bottom: 5px">
-      <%= form.label :title, 'Give your dream a title' %><br />
+      <%= form.label :title, 'Give your dream a title <span class="required">*</span>' %><br />
       <%= form.text_field :title %>
     </p>
     
     <p>
-      <%= form.label :story, 'Describe your dream' %><br />
+      <%= form.label :story, 'Describe your dream <span class="required">*</span>' %><br />
       <%= form.text_area :story, :cols => '60', :rows => '7' %>
     </p>
     
     <p class="short-element">
-      <%= form.label :dreamt_on, "Dream Date:" %><br />
+      <%= form.label :dreamt_on, 'Dream Date <span class="required">*</span>' %><br />
       <%= form.date_select :dreamt_on, :order => [:day, :month, :year], 
         :start_year => Date.today.year - 5, :end_year => Date.today.year, :default => 1.day.ago %>
     </p>
@@ -22,7 +25,7 @@
       <%= form.text_field :location %>
     </p>
     
-    <h2 style="clear: both; padding-top: 5px">Who is in your dream</h2>
+    <h2 style="clear: both; padding-top: 5px">Who is in your dream?</h2>
     <ul id="appearances">
     <% form.fields_for :appearances do |app_form| %>
       <% if app_form.object.new_record? %>
@@ -72,8 +75,10 @@
     <p class="large-buttons float-buttons" style="vertical-align: top; margin:2em 0; text-align: right" class="clearfix">
       <% if form.object.new_record? %>
         <%= form.submit 'Preview my dream', :style => 'margin-right: 30px' %> 
+        <%= image_submit_tag '/images/btn_submitadream.gif', :alt => 'Submit my dream' %>
+      <% else %>
+        <%= form.submit 'Update my dream' %>
       <% end %>
-      <%= image_submit_tag '/images/btn_submitadream.gif', :alt => 'Submit my dream' %>
     </p>
   </div> <!-- //inner -->  
 
@@ -86,11 +91,31 @@
 <%= javascript_include_tag 'has_many' %>
 <script type="text/javascript" charset="utf-8">
 $(function() {
+  $('li.appearances.new').append('<p class="remove-appearance"><a href="">I\'ve changed my mind, remove this person</a></p>');
+  $('.remove-appearance').click(function () {
+    var $container = $(this).closest('li');
+    if ($('li.appearances').length == 2) {
+      $('input', $container).val('').attr('checked', '');
+    } else {
+      $container.remove();      
+    }
+
+    return false;
+  })
   $('li.appearances:last').after('<li class="appearances append"><p><a class="add-link" href="">Add another person to your dream +</a></p></li>');
   HasMany.attach('li.appearances');
 });
 </script>
 <style type="text/css" media="screen">
+#content form#submitdream p.remove-appearance {
+  text-align: right;
+  font-style: italic;
+  margin-right: 30px;
+}
+a.add-link {
+  font-weight: bold;
+  font-size: 120%;
+}
 ul#appearances {
   list-style: none;
   padding-left: 0px;
@@ -98,6 +123,9 @@ ul#appearances {
 }
   ul#appearances li {
     border-top: 1px dotted black;
+  }
+  ul#appearances li.old {
+    padding: 1em 0;
   }
 p.short-element {
   width: 50%; 
