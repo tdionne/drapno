@@ -1,7 +1,7 @@
 Given /^I have appeared in a dream with the email address "([^\"]*)"$/ do |email|
   dreamer = Dreamer.create!(:email => 'dreamer@example.com', :name => 'Dreamer', :password => 'pass-word', :password_confirmation => 'pass-word')
   dreamer.confirm_email!
-  d = dreamer.dreams.create!(:title => 'Example', :story => 'A dream of dreams')
+  d = dreamer.dreams.create!(:title => 'Example', :story => 'A dream of dreams', :dreamt_on => 5.days.ago)
   d.appearances.create(:email => email, :name => email.split('@').first, :role => 'apparition', :should_be_notified => '1')
 end
 

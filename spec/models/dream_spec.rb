@@ -32,5 +32,6 @@ describe Dream do
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:story) }
     it { should validate_presence_of(:dreamer_id) }
+    it { should validate_presence_of(:dreamt_on) }
   end
 end

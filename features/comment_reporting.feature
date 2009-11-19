@@ -6,9 +6,9 @@ Feature: Reporting a comment
   Background:
     Given I am signed up and confirmed as "email@person.com/password"
     And the following dreams exist:
-      | title           | story              |
-      | My First Dream  | Something happened |
-      | My Other Dream  | Another happening  |
+      | title           | story              | dreamt_on |
+      | My First Dream  | Something happened | 2009-01-02 |
+      | My Other Dream  | Another happening  | 2009-02-01 |
 
     And the following comments exist on "My First Dream":
         | body                              | 

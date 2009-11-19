@@ -32,6 +32,7 @@ class Dream < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :story
   validates_presence_of :dreamer_id
+  validates_presence_of :dreamt_on
   
   named_scope :listings, :order => 'created_at DESC', :select => 'dreams.id, dreams.title, dreams.story, dreams.dreamer_id, dreams.created_at, dreams.dreamt_on', :include => :dreamer
   named_scope :rated, :order => ['average_rating DESC'], :conditions => 'dreams.ratings_count > 0'
