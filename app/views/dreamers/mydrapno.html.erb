@@ -19,6 +19,13 @@
           <td><%= current_user.name %> <span>[<%= link_to "Change", edit_dreamer_path(current_user) %>]</span></td>
         </tr>
         <tr>
+          <th>Public Alias:</th>
+          <td>
+            <%= current_user.public_alias.present? ? current_user.public_alias : "<em>You've not set one so we display your real name</em>"  %> 
+            <span>[<%= link_to "Change", edit_dreamer_path(current_user) %>]</span>
+          </td>
+        </tr>
+        <tr>
           <th>Email:</th>
           <td><%= current_user.email %> <span>[<%= link_to "Change", edit_dreamer_path(current_user) %>]</span></td>
         </tr>
