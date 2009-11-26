@@ -20,10 +20,10 @@
         :start_year => Date.today.year - 5, :end_year => Date.today.year, :default => 1.day.ago %>
     </p>
     
-    <p class="short-element">
-      <%= form.label :location, 'Location:' %><br />
-      <%= form.text_field :location %>
-    </p>
+    <!-- <p class="short-element">
+      <%# form.label :location, 'Location:' %><br />
+      <%# form.text_field :location %>
+    </p> -->
     
     <h2 style="clear: both; padding-top: 5px">Who is in your dream?</h2>
     <ul id="appearances">
@@ -39,7 +39,7 @@
           <%= app_form.text_field :relationship, :size => 30 %>
         </p>
         <p class="short-element">
-          <%= app_form.label :role, 'Their Role' %>
+          <%= app_form.label :role, 'Their Role in Your Dream' %>
           <%= app_form.text_field :role, :size => 30 %>
         </p>
         <p class="short-element">
