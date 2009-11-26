@@ -1,0 +1,6 @@
+staging:
+  port: 3314
+  bin_path: '/usr/local/bin'
+production:
+  port: 3315
+  bin_path: '/usr/local/bin'
