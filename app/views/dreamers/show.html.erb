@@ -2,7 +2,7 @@
   <h1>Dreamer: <%= @dreamer %></h1>
 
   <% if @dreamer.public_profile? %>
-    <p><%= @dreamer.email %> / <%= [@dreamer.location, @dreamer.gender, @dreamer.age_band].compact.join(' / ') %></p>
+    <p><%= [@dreamer.location, @dreamer.gender, @dreamer.age_band].compact.join(' / ') %></p>
   <% end %>
 
   <h2>Appearances</h2>
