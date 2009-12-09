@@ -19,7 +19,10 @@ Rails::Initializer.run do |config|
   config.frameworks -= [ :active_resource ]
 
   config.time_zone = 'UTC'
+  
+  config.after_initialize do  
+    MongoMapper.database = "mdb_drapno_#{Rails.env}"
+  end
 end
 
 DO_NOT_REPLY = "DRAPNO <donotreply@drapno.com>"
-MongoMapper.database = "mdb_drapno_#{Rails.env}"
