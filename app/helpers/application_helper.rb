@@ -1,11 +1,18 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  # def tag_cloud(tags, classes)
-  #   max_count = tags.sort_by { |t| t.taggings.count }.last.count.to_f
-  #   
-  #   tags.each do |tag|
-  #     index = ((tag.taggings.count / max_count) * (classes.size - 1)).round
-  #     yield tag, classes[index]
-  #   end
-  # end
+  def google_analytics
+    if Rails.env.production?
+      return <<-END
+        <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+        <script type="text/javascript">
+        try {
+        var pageTracker = _gat._getTracker("UA-11988050-1");
+        pageTracker._trackPageview();
+        } catch(err) {}</script>
+      END
+    end
+  end
 end
