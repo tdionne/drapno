@@ -44,6 +44,7 @@ ActionController::Routing::Routes.draw do |map|
   %W(about history behind where-we-are contact).each do |page|
     map.connect "/#{page}", :controller => 'home', :action => 'page', :permalink => page
   end
-  
+
+  map.ping '/ping', :controller => 'pings', :action => 'ping'
   map.root :controller => 'home'
 end
