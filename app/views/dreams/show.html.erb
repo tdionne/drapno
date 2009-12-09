@@ -26,18 +26,20 @@
     <p>No comments yet</p>
   <% end %>
 
-  <% if signed_in? and eligible_to_comment_on?(@dream) %>
-    <% form_for([@dream, Comment.new]) do |form| %>
-    <fieldset>
-      <legend>Your Comment</legend>
-      <p>
-        <%= form.label :body, 'Comment' %>
-        <%= form.text_area :body %>
-      </p>
-      <p>
-        <%= form.submit 'Add Comment' %>
-      </p>
-    </fieldset>
+  <% if signed_in? %>
+    <% if eligible_to_comment_on?(@dream) %>
+      <% form_for([@dream, Comment.new]) do |form| %>
+      <fieldset>
+        <legend>Your Comment</legend>
+        <p>
+          <%= form.label :body, 'Comment' %>
+          <%= form.text_area :body %>
+        </p>
+        <p>
+          <%= form.submit 'Add Comment' %>
+        </p>
+      </fieldset>
+      <% end %>
     <% end %>
   <% else %>
     <p>You must be signed in to comment. <%= link_to 'Sign in now', sign_in_path(:return_to => dream_path(@dream)) %></p>
