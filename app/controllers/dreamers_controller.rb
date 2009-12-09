@@ -54,4 +54,13 @@ class DreamersController < Clearance::UsersController
       render :action => 'new'
     end
   end
+  
+  private
+  def flash_notice_after_create
+    flash[:notice] = translate(:deliver_confirmation,
+      :scope   => [:clearance, :controllers, :users],
+      :default => "You will receive an email within the next few minutes. " <<
+                  "It contains instructions for confirming your account. " <<
+                  "If you don't see it within a few minutes don't forget to check your junk/spam mailbox.")
+  end
 end

@@ -22,6 +22,7 @@ Feature: Sign up
       And I fill in "Confirm password" with "password"
       And I press "Sign Up"
       Then I should see "instructions for confirming"
+      And I should see "If you don't see it within a few minutes don't forget to check your junk/spam mailbox"
       And a confirmation message should be sent to "email@person.com"
 
     Scenario: User confirms his account
