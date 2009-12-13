@@ -57,7 +57,7 @@ end
 
 Then /^a password reset message should be sent to "(.*)"$/ do |email|
   dreamer = Dreamer.find_by_email(email)
-  sent = ActionMailer::Base.deliveries.first
+  sent = ActionMailer::Base.deliveries.last
   assert_equal [dreamer.email], sent.to
   assert_match /password/i, sent.subject
   assert !dreamer.confirmation_token.blank?
