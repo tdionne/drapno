@@ -11,7 +11,10 @@ Rails::Initializer.run do |config|
   config.gem 'clearance', :source => 'http://gemcutter.org', :version => '>=0.8.2'
   config.gem 'will_paginate', :source => 'http://gemcutter.org', :version => '>=2.3.11'
   config.gem 'collectiveidea-delayed_job', :lib => 'delayed_job', :source => 'http://gems.github.com', :version => '>=1.8.0'
-  config.gem 'freelancing-god-thinking-sphinx', :lib => 'thinking_sphinx', :version => '>=1.1.23'
+
+  config.gem "thinking-sphinx", :lib => 'thinking_sphinx', :source => 'http://gemcutter.org', :version => '>= 1.3.8'
+  config.gem 'ts-delayed-delta', :lib => 'thinking_sphinx/deltas/delayed_delta', :version => '>= 1.0.0', :source  => 'http://gemcutter.org'
+
   config.gem "mbleigh-acts-as-taggable-on", :source => "http://gems.github.com", :lib => "acts-as-taggable-on", :version => '1.0.5'
   config.gem "RedCloth", :lib => 'redcloth'
   config.gem "mongomapper", :version => '>0.3.4'
