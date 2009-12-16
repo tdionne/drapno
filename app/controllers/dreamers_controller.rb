@@ -47,7 +47,6 @@ class DreamersController < Clearance::UsersController
     @user = ::User.new params[:user]
     if @user.save
       @invitation.redeem! if @invitation
-      ::ClearanceMailer.deliver_confirmation @user
       flash_notice_after_create
       redirect_to(url_after_create)
     else
