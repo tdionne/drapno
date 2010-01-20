@@ -23,5 +23,4 @@
 #  comments_count     :integer(4)      default(0), not null
 #
 
-require 'dreamer'
 User = Dreamer
