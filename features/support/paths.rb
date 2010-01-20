@@ -4,6 +4,8 @@ module NavigationHelpers
     
     when /the homepage/i
       root_path
+    when /the sign up with code page/i
+      sign_up_path(:code => Invitation.first.invitation_code)
     when /the sign up page/i
       sign_up_path
     when /the sign in page/i

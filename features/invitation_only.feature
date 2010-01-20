@@ -17,7 +17,7 @@ Feature: Invitation Only
   
     When I follow the invitation link for "me@mysite.com"
   
-    Then I should be on the sign up page
+    Then I should be on the sign up with code page
     And I should see "We've pre-filled some values from the invitation you received"
     And the "Email" field should contain "me@mysite.com"
     
