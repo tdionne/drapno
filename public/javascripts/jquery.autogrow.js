@@ -47,8 +47,10 @@
     this.max_height       = this.options.maxHeight || parseInt(jQuery(e).css('max-height'));;
     this.textarea       = jQuery(e);
 
-    if(this.line_height == NaN)
-      this.line_height = 0;
+    if (isNaN(this.line_height)) {
+      this.line_height = 14;
+    }
+      
     
     // Only one textarea activated at a time, the one being used
     this.init();
@@ -79,7 +81,6 @@
     },
     
     checkExpand: function() {
-      
       if (this.dummy == null)
       {
         this.dummy = jQuery('<div></div>');
@@ -120,7 +121,7 @@
         else
         {
           this.textarea.css('overflow-y', 'hidden');
-          if (this.textarea.height() < this.dummy.height() + this.line_height || (this.dummy.height() < this.textarea.height()))
+          if (this.textarea.height() < (this.dummy.height() + this.line_height) || (this.dummy.height() < this.textarea.height()))
           { 
             if (this.dummy.height() + this.line_height > parseInt(this.min_height)) {
               this.textarea.animate({height: (this.dummy.height() + this.line_height) + 'px'}, 100);  
