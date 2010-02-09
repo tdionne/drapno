@@ -32,7 +32,7 @@
             
           <div id="menu">
             <ul>
-              <li id="nav-submit"><%= link_to 'Submit A Dream<span title="Submit a dream"></span>', new_dream_path %>
+              <li id="nav-submit"><%= link_to 'Submit A Dream<span title="Submit a dream"></span>', new_dream_path %></li>
               <li id="nav-read"><%= link_to 'Read the Dreams<span title="Read the Dreams"></span>', dreams_path %></li>              
               <% if signed_in? %>
                 <li id="nav-mydrapno"><%= link_to 'My Drapno<span title="My Drapno"></span>', dreamer_path(current_user) %></li>
