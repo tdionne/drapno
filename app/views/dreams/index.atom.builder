@@ -12,7 +12,7 @@ atom_feed(:url => dreams_url, :schema_date => '2009', 'xmlns:opensearch' => "htt
       end
       
       entry.author do |author|
-        author.name(dream.dreamer.name)
+        author.name(dream.dreamer.to_s)
         author.uri(dreamer_url(dream.dreamer))
       end
     end
