@@ -53,6 +53,10 @@ class Comment < ActiveRecord::Base
     dreamer.followers
   end
   
+  def to_s
+    dream.title
+  end
+  
   include ActivityMonitor
   monitor_activity :object_details => proc { |comment| [comment.dream.id, "comment on #{comment.dream.title}"] },
     :verb => 'made',
