@@ -38,6 +38,9 @@ class Dream < ActiveRecord::Base
   named_scope :rated, :order => ['average_rating DESC'], :conditions => 'dreams.ratings_count > 0'
   acts_as_taggable_on :tags
   
+  attr_accessor :tweet_dream
+  after_create :update_twitter, :if => :tweet_dream
+  
   xss_terminate
   
   def to_s
@@ -59,6 +62,10 @@ class Dream < ActiveRecord::Base
   
   def dreamer_followers
     dreamer.followers
+  end
+  
+  def update_twitter
+    
   end
   
   include ActivityMonitor

@@ -35,6 +35,7 @@ class Dreamer < ActiveRecord::Base
   has_many :comments
   has_many :comment_reports, :foreign_key => :reporter_id
   has_many :consumer_tokens, :foreign_key => :user_id
+  has_one :twitter, :class_name => "TwitterToken", :dependent => :destroy, :foreign_key => :user_id
 
   # The follow stuff is a little awkward linguistically.
   # A "follow" is a request from a follower to follow this dreamer
@@ -94,6 +95,10 @@ class Dreamer < ActiveRecord::Base
   def can_rate?(dream)
     dream.dreamer != self
   end
+  
+  # def has_twitter_account?
+  #   twitter
+  # end
   
   def calendar_data_for(start_date)
     end_date = start_date + 1.month

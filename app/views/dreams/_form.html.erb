@@ -72,6 +72,13 @@
       <%= form.text_area :tag_list, :style => 'width: 100%', :rows => '4' %>
     </div>
     
+    <% if form.object.new_record? and current_user.twitter %>
+    <p>
+      <%= form.label :tweet_dream, 'Post this dream to twitter?' %>
+      <%= form.check_box :tweet_dream %>
+    </p>
+    <% end %>
+    
     <p class="large-buttons float-buttons" style="vertical-align: top; margin:2em 0; text-align: right" class="clearfix">
       <% if form.object.new_record? %>
         <%= form.submit 'Preview my dream', :style => 'margin-right: 30px' %> 
