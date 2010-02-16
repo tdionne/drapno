@@ -6,19 +6,21 @@ end
 
 # Database
 
-Given /^no dreamer exists with an email of "(.*)"$/ do |email|
-  assert_nil Dreamer.find_by_email(email)
+Given /^no user exists with an email of "(.*)"$/ do |email|
+  assert_nil User.find_by_email(email)
 end
 
 Given /^I signed up with "(.*)\/(.*)"$/ do |email, password|
-  dreamer = Factory :dreamer,
+  user = Factory :user,
+    :name                  => email.split('@').first,
     :email                 => email,
     :password              => password,
     :password_confirmation => password
 end 
 
 Given /^I am signed up and confirmed as "(.*)\/(.*)"$/ do |email, password|
-  dreamer = Factory :email_confirmed_dreamer,
+  user = Factory :email_confirmed_user,
+    :name                  => email.split('@').first,
     :email                 => email,
     :password              => password,
     :password_confirmation => password
@@ -39,39 +41,52 @@ When /^session is cleared$/ do
   controller.instance_variable_set(:@_current_user, nil)
 end
 
+Given /^I have signed in with "(.*)\/(.*)"$/ do |email, password|
+  Given %{I am signed up and confirmed as "#{email}/#{password}"}
+  And %{I sign in as "#{email}/#{password}"}
+end
+
 # Emails
 
 Then /^a confirmation message should be sent to "(.*)"$/ do |email|
-  dreamer = Dreamer.find_by_email(email)
-  sent = ActionMailer::Base.deliveries.first
-  assert_equal [dreamer.email], sent.to
-  assert_match /confirm/i, sent.subject
-  assert !dreamer.confirmation_token.blank?
-  assert_match /#{dreamer.confirmation_token}/, sent.body
+  user = User.find_by_email(email)
+  assert !user.confirmation_token.blank?
+  assert !ActionMailer::Base.deliveries.empty?
+  result = ActionMailer::Base.deliveries.any? do |email|
+    email.to == [user.email] &&
+    email.subject =~ /confirm/i &&
+    email.body =~ /#{user.confirmation_token}/
+  end
+  assert result
 end
 
 When /^I follow the confirmation link sent to "(.*)"$/ do |email|
-  dreamer = Dreamer.find_by_email(email)
-  visit new_dreamer_confirmation_path(:dreamer_id => dreamer, :token => dreamer.confirmation_token)
+  user = User.find_by_email(email)
+  visit new_user_confirmation_path(:user_id => user,
+                                   :token   => user.confirmation_token)
 end
 
 Then /^a password reset message should be sent to "(.*)"$/ do |email|
-  dreamer = Dreamer.find_by_email(email)
-  sent = ActionMailer::Base.deliveries.last
-  assert_equal [dreamer.email], sent.to
-  assert_match /password/i, sent.subject
-  assert !dreamer.confirmation_token.blank?
-  assert_match /#{dreamer.confirmation_token}/, sent.body
+  user = User.find_by_email(email)
+  assert !user.confirmation_token.blank?
+  assert !ActionMailer::Base.deliveries.empty?
+  result = ActionMailer::Base.deliveries.any? do |email|
+    email.to == [user.email] &&
+    email.subject =~ /password/i &&
+    email.body =~ /#{user.confirmation_token}/
+  end
+  assert result
 end
 
 When /^I follow the password reset link sent to "(.*)"$/ do |email|
-  dreamer = Dreamer.find_by_email(email)
-  visit edit_dreamer_password_path(:dreamer_id => dreamer, :token => dreamer.confirmation_token)
+  user = User.find_by_email(email)
+  visit edit_user_password_path(:user_id => user,
+                                :token   => user.confirmation_token)
 end
 
 When /^I try to change the password of "(.*)" without token$/ do |email|
-  dreamer = Dreamer.find_by_email(email)
-  visit edit_dreamer_password_path(:dreamer_id => dreamer)
+  user = User.find_by_email(email)
+  visit edit_user_password_path(:user_id => user)
 end
 
 Then /^I should be forbidden$/ do
@@ -80,24 +95,15 @@ end
 
 # Actions
 
-When /^I sign in( with "remember me")? as "(.*)\/(.*)"$/ do |remember, email, password|
+When /^I sign in as "(.*)\/(.*)"$/ do |email, password|
   When %{I go to the sign in page}
   And %{I fill in "Email" with "#{email}"}
   And %{I fill in "Password" with "#{password}"}
-  And %{I check "Remember me"} if remember
-  And %{I press "Sign In"}
-end
-
-Given /^I am signed in( with "remember me")? as "(.*)\/(.*)"$/ do |remember, email, password|
-  When %{I go to the sign in page}
-  And %{I fill in "Email" with "#{email}"}
-  And %{I fill in "Password" with "#{password}"}
-  And %{I check "Remember me"} if remember
   And %{I press "Sign In"}
 end
 
 When /^I sign out$/ do
-  visit '/session', :delete
+  visit '/sign_out'
 end
 
 When /^I request password reset link to be sent to "(.*)"$/ do |email|
