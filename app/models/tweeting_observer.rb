@@ -11,6 +11,7 @@ class TweetingObserver < ActiveRecord::Observer
       message = build_message(dream, url)
       send_to_twitter(dream, message)
     end
+    handle_asynchronously :update_twitter
     
     def build_short_url(dream)
       "http://#{HOST}/d/#{dream.b58}"
