@@ -29,7 +29,7 @@ config.action_mailer.delivery_method = :test
 
 config.gem 'rspec-rails', :lib => "spec/rails", :git => 'git://github.com/dchelimsky/rspec-rails.git'
 config.gem 'rspec', :lib => "spec", :git => 'git://github.com/dchelimsky/rspec.git'
-config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com'
-config.gem 'thoughtbot-shoulda', :lib => 'shoulda', :source => 'http://gems.github.com'
-
+config.gem 'factory_girl',     :source => 'http://gemcutter.org'
+config.gem 'shoulda',          :source => 'http://gemcutter.org'
+config.gem 'fakeweb'
 HOST = "localhost"
