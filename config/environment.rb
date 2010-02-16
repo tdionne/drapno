@@ -19,6 +19,9 @@ Rails::Initializer.run do |config|
   config.gem "RedCloth", :lib => 'redcloth'
   config.gem "mongomapper", :version => '>0.3.4'
   
+  config.gem 'oauth'
+  config.gem 'oauth-plugin'
+  
   config.frameworks -= [ :active_resource ]
 
   config.time_zone = 'UTC'
