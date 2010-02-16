@@ -22,7 +22,8 @@ Rails::Initializer.run do |config|
   config.gem 'oauth'
   config.gem 'oauth-plugin'
   config.gem 'twitter'
-
+  config.gem 'base58'
+  
   config.frameworks -= [ :active_resource ]
   config.active_record.observers = :tweeting_observer
 

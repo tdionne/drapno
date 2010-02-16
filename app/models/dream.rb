@@ -46,6 +46,10 @@ class Dream < ActiveRecord::Base
     self.title
   end
   
+  def b58
+    Base58.encode(self.id)
+  end
+  
   define_index do
     indexes title
     indexes story
