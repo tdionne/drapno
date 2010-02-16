@@ -34,7 +34,7 @@ class Dreamer < ActiveRecord::Base
   has_many :ratings, :foreign_key => :rater_id
   has_many :comments
   has_many :comment_reports, :foreign_key => :reporter_id
-  has_many :consumer_tokens
+  has_many :consumer_tokens, :foreign_key => :user_id
 
   # The follow stuff is a little awkward linguistically.
   # A "follow" is a request from a follower to follow this dreamer

@@ -16,4 +16,7 @@ class OauthConsumersController < ApplicationController
     redirect_to root_url
   end
   
+  def login_required
+    authenticate
+  end
 end
