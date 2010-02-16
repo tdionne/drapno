@@ -1,6 +1,5 @@
 class TweetingObserver < ActiveRecord::Observer
   observe :dream
-  include ActionController::UrlWriter
   
   def after_create(dream)
     update_twitter(dream) if dream.tweet_dream
@@ -14,7 +13,7 @@ class TweetingObserver < ActiveRecord::Observer
     end
     
     def build_short_url(dream)
-      dream_url(dream, :host => HOST)
+      "http://#{HOST}/d/#{dream.b58}"
     end
     
     def build_message(dream, url)
