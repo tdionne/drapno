@@ -22,6 +22,8 @@ module NavigationHelpers
     when /the dreamer page for "(.+?)"/i
       d = Dreamer.find_by_email($1)
       dreamer_path(d)
+    when /the oauth page/
+      oauth_consumers_path
     when /the admin comments page/
       admin_comments_path
     when /the first reported comment page/i
