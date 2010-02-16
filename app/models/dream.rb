@@ -39,7 +39,6 @@ class Dream < ActiveRecord::Base
   acts_as_taggable_on :tags
   
   attr_accessor :tweet_dream
-  after_create :update_twitter, :if => :tweet_dream
   
   xss_terminate
   
@@ -62,10 +61,6 @@ class Dream < ActiveRecord::Base
   
   def dreamer_followers
     dreamer.followers
-  end
-  
-  def update_twitter
-    
   end
   
   include ActivityMonitor
