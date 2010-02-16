@@ -9,7 +9,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 Rails::Initializer.run do |config|
   config.gem 'paperclip', :source => 'http://gemcutter.org', :version => '>=2.3.1'
   config.gem 'clearance', :source => 'http://gemcutter.org', :version => '0.8.4'
-  config.gem 'will_paginate', :source => 'http://gemcutter.org', :version => '>=2.3.11'
+  config.gem 'will_paginate', :source => 'http://gemcutter.org', :version => '2.3.12'
   config.gem 'collectiveidea-delayed_job', :lib => 'delayed_job', :source => 'http://gems.github.com', :version => '>=1.8.0'
 
   config.gem "thinking-sphinx", :lib => 'thinking_sphinx', :source => 'http://gemcutter.org', :version => '>= 1.3.8'
