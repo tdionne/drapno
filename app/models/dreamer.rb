@@ -96,10 +96,6 @@ class Dreamer < ActiveRecord::Base
     dream.dreamer != self
   end
   
-  # def has_twitter_account?
-  #   twitter
-  # end
-  
   def calendar_data_for(start_date)
     end_date = start_date + 1.month
 
