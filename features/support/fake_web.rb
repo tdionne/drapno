@@ -1,6 +1,6 @@
 module FakewebHelpers
   # Make sure nothing gets out (IMPORTANT)
-  FakeWeb.allow_net_connect = false
+  # FakeWeb.allow_net_connect = false
 
   # Convenience methods for stubbing URLs to fixtures
   def stub_get(url, args = {})

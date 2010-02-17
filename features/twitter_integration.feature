@@ -5,10 +5,21 @@ Feature: Twitter Integration
   
   Background:
     Given I have signed in with "email@person.com/password"
-
-  Scenario: Authorising with twitter oauth
+  
+  @external
+  Scenario: Authorising a twitter account with full oauth practice
     When I go to "the oauth page"  
-    And I follow the oauth link to twitter
+    And I follow "twitter"
+    And I follow the redirect
+    And I press "Allow"
+    
+    Then I should be on the homepage
+    And I should see "Twitter was successfully connected to your account"
+    And I should have twitter credentials in the database    
+    
+  Scenario: Authorising a twitter account
+    When I go to "the oauth page"  
+    And I follow the stubbed oauth link to twitter
 
     Then I should be on the homepage
     And I should see "Twitter was successfully connected to your account"

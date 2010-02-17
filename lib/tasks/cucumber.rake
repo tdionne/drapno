@@ -25,6 +25,12 @@ begin
       t.fork = true # You may get faster startup if you set this to false
       t.profile = 'wip'
     end
+    
+    Cucumber::Rake::Task.new({:external => 'db:test:prepare'}, 'Run features that are being worked on') do |t|
+      t.binary = vendored_cucumber_bin
+      t.fork = true # You may get faster startup if you set this to false
+      t.profile = 'external'
+    end
 
     desc 'Run all features'
     task :all => [:ok, :wip]
