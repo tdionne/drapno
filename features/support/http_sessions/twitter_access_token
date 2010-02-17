@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Date: Wed, 17 Feb 2010 11:16:23 GMT
+Server: hi
+X-Transaction: 1266405383-28791-18327
+Status: 200 OK
+ETag: "1e12178939743c5ccb21b98a065e4a30"
+Last-Modified: Wed, 17 Feb 2010 11:16:23 GMT
+X-Runtime: 0.03153
+Content-Type: text/html; charset=utf-8
+Pragma: no-cache
+Content-Length: 165
+Cache-Control: no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+Expires: Tue, 31 Mar 1981 05:00:00 GMT
+X-Revision: DEV
+Set-Cookie: _twitter_sess=BAh7CDoRdHJhbnNfcHJvbXB0MDoHaWQiJTBhZGM4OTcxNDM5NDhjOTk0YThm%250AMGRlZWNjZjgxYjNmIgpmbGFzaElDOidBY3Rpb25Db250cm9sbGVyOjpGbGFz%250AaDo6Rmxhc2hIYXNoewAGOgpAdXNlZHsA--5e6f1754492022c32ebd6de6cb5ee7971f0be1a0; domain=.twitter.com; path=/
+Vary: Accept-Encoding
+Connection: close
+
+oauth_token=114716962-WoKVIBAiX8vyo4RoQdk8i0XdqICuuhpZmnko5CMd&oauth_token_secret=pUWoyLD03PHQioLwJGvBLbM3IjLUpUGVooiHfkNSao&user_id=114716962&screen_name=ketlaitest

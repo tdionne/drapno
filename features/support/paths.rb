@@ -16,6 +16,8 @@ module NavigationHelpers
       new_password_path
     when /new invitation page/i
       new_invitation_path
+    when /the new dream page/i
+      new_dream_path
     when /the dream page for "(.+?)"/i
       d = Dream.find_by_title($1)
       dream_path(d)
