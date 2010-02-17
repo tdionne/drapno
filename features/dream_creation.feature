@@ -8,9 +8,10 @@ Feature: Dream creation
 
     When I sign in as "email@person.com/password"
     And I follow "Submit my dream"
-    And I fill in "Give your dream a title" with "My Real Dream"
-    And I fill in "Describe your dream" with "All this stuff happens"
-    And I fill in "dream[tag_list]" with "dream, weird, stuff"
+    And I fill in the following:
+      | Give your dream a title | My Real Dream |
+      | Describe your dream | All this stuff happens |
+      | dream[tag_list] | dream, weird, stuff |
     And I press "Submit my dream"
     
     Then I should see "Dream was successfully created"
@@ -23,13 +24,14 @@ Feature: Dream creation
 
     When I sign in as "email@person.com/password"
     And I follow "Submit my dream"
-    And I fill in "Give your dream a title" with "My Real Dream"
-    And I fill in "Describe your dream" with "All this stuff happens"
-    And I fill in "dream[tag_list]" with "dream, weird, stuff"
-    And I fill in "Their Name" with "My Friend"
-    And I fill in "Your Relationship" with "Close personal friends"
-    And I fill in "Their Role" with "Fancy bartender"
-    And I fill in "Their Email" with "example@person.com"
+    And I fill in the following:
+      | Give your dream a title | My Real Dream |
+      | Describe your dream | All this stuff happens |
+      | dream[tag_list] | dream, weird, stuff |
+      | Their Name | My Friend |
+      | Your Relationship | Close personal friends |
+      | Their Role | Fancy bartender |
+      | Their Email | example@person.com |
     And I check "Let Them Know"
     And I press "Submit my dream"
 
@@ -44,13 +46,14 @@ Feature: Dream creation
 
     When I sign in as "email@person.com/password"
     And I follow "Submit my dream"
-    And I fill in "Give your dream a title" with "My Real Dream"
-    And I fill in "Describe your dream" with "All this stuff happens"
-    And I fill in "dream[tag_list]" with "dream, weird, stuff"
-    And I fill in "Their Name" with "My Friend"
-    And I fill in "Your Relationship" with "Close personal friends"
-    And I fill in "Their Role" with "Fancy bartender"
-    And I fill in "Their Email" with "example@person.com"
+    And I fill in the following:
+      | Give your dream a title | My Real Dream |
+      | Describe your dream | All this stuff happens |
+      | dream[tag_list] | dream, weird, stuff |
+      | Their Name | My Friend |
+      | Your Relationship | Close personal friends |
+      | Their Role | Fancy bartender |
+      | Their Email | example@person.com |
     And I uncheck "Let Them Know"
     And I press "Submit my dream"
 
@@ -67,9 +70,10 @@ Feature: Dream creation
 
     When I sign in as "email@person.com/password"
     And I follow "Submit my dream"
-    And I fill in "Give your dream a title" with "My Real Dream"
-    And I fill in "Describe your dream" with "All this stuff happens"
-    And I fill in "dream[tag_list]" with "dream, weird, stuff"
+    And I fill in the following:
+      | Give your dream a title | My Real Dream |
+      | Describe your dream | All this stuff happens |
+      | dream[tag_list] | dream, weird, stuff |
     And I press "Preview my dream"
 
     Then I should see "This is a preview of your dream"

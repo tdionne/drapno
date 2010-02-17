@@ -18,3 +18,7 @@ end
 Given /^I pressed "([^\"]*)"$/ do |button|
   When %{I press "#{button}"}
 end
+
+Given /^no dreamer exists with an email of "([^\"]*)"$/ do |email|
+  Dreamer.find_by_email(email).should be_nil
+end
