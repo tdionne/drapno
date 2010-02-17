@@ -34,4 +34,4 @@ namespace :deploy do
   end
 end
 
-after 'deploy:symlink', "link_config"
+after 'deploy:finalize_update', "link_config"
