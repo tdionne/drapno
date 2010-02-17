@@ -19,7 +19,7 @@ describe CommentsController do
     end
     
     it "paginates the dream" do
-      @listings.expects(:paginate).with(:per_page => 15, :page => nil, :order => ['comments_count DESC'], :conditions => 'comments_count > 0').returns([])
+      @listings.expects(:paginate).with(:per_page => 15, :page => params[:page], :order => ['dreams.comments_count DESC'], :conditions => 'dreams.comments_count > 0').returns([])
       get :index
     end
     

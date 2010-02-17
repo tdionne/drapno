@@ -4,8 +4,8 @@ describe "/admin/comments/edit.html.erb" do
   include Admin::CommentsHelper
 
   before(:each) do
-    @dream = Dream.mock
-    @dreamer = Dreamer.mock
+    @dream = Dream.mock(:title => 'a dream')
+    @dreamer = Dreamer.mock(:to_s => 'a dreamer', :to_param => '1')
     assigns[:comment] = @comment = Comment.mock(:id => 1, :dream => @dream, :dreamer => @dreamer)
   end
 
