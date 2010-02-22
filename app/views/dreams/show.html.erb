@@ -74,6 +74,20 @@
 </div>
   
 <% content_for :extra_headers do %>
+  <% if signed_in? and current_dreamer.has_facebook_account? and flash[:notice] == 'Dream was successfully created.' %>
+  <%= fb_connect_javascript_tag %>
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function () {
+      FB_RequireFeatures(["XFBML"], function() {
+        FB.init('<%= Facebooker.api_key %>','/xd_receiver.html');
+        FB.Connect.streamPublish("<%= current_user.name %> posted a new dream <%= @dream.title %> on Drapno",
+          null, [{ text: "Read it here", href: $('link[rev=canonical]').attr('href')}]
+        );
+      });
+    })
+  </script>
+  <% end %>
+  
   <% if signed_in? and current_user.can_rate?(@dream) %>
     <%= javascript_include_tag 'jquery.rater.js' %>
     <%= stylesheet_link_tag 'stars.style.css' %>

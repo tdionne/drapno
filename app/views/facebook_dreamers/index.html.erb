@@ -1,8 +1,0 @@
-<%= fb_connect_javascript_tag %>
-<%= init_fb_connect "XFBML", :js => :jquery, :permsToRequestOnConnect => "publish_stream" %>
-<% if facebook_session %>
-  <h2>You are logged in as <%= facebook_session.user.name %></h2>
-<% else %>
-  <h2>You are not logged in!</h2>
-  <%= fb_login_and_redirect(facebook_dreamers_path) %>
-<% end %>
