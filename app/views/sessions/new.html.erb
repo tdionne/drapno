@@ -27,10 +27,6 @@
 
 <p><%= link_to "Forgotten your password? Click here to reset it", new_password_path %></p>
 
-<%= fb_connect_javascript_tag %>
-<%= init_fb_connect "XFBML", :js => :jquery %>
-<%= fb_login_and_redirect(session_path) %>
-
 <% content_for :extra_headers do %>
 <style type="text/css" media="screen">
   label {
