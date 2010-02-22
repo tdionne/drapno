@@ -7,7 +7,7 @@ When /^I follow the stubbed oauth link to twitter$/ do
 end
 
 Given /^I have authorised twitter for my account$/ do
-  When %{I go to "the oauth page"}
+  When %{I go to "the services page"}
   When %{I follow the oauth link to twitter}
 end
 

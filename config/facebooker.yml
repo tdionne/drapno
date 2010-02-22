@@ -17,17 +17,20 @@ development:
   set_asset_host_to_callback_url: false
 
 test:
-  api_key: 
-  secret_key: 
-  canvas_page_name: 
-  callback_url:
-  set_asset_host_to_callback_url: true
-  tunnel:
-    public_host_username: 
-    public_host: 
-    public_port: 4007
-    local_port: 3000
-    server_alive_interval: 0
+  api_key: 57f774fecdccce1f359f2be458a1bd9c
+  secret_key: aa485583ba8996d5f40da1843ee5c4c5
+  canvas_page_name:
+  callback_url: http://localhost:3000/facebook_dreamers/
+  pretty_errors: true
+  set_asset_host_to_callback_url: false
+
+cucumber:
+  api_key: 57f774fecdccce1f359f2be458a1bd9c
+  secret_key: aa485583ba8996d5f40da1843ee5c4c5
+  canvas_page_name:
+  callback_url: http://localhost:3000/facebook_dreamers/
+  pretty_errors: true
+  set_asset_host_to_callback_url: false
 
 production:
   api_key: 

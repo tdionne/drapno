@@ -28,8 +28,6 @@ describe Invitation do
     invitation.expects(:generate_code)
     invitation.send(:callback, :before_create)
   end
-
-  it { should have_named_scope(:redeemable).finding(:conditions => {:redeemed_at => nil}) }
   
   describe "marking as redeemed" do
     it "has a method to allow redemption" do

@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :oauth_consumers,:member=>{:callback=>:get}
+  map.resources :services
+  map.resources :oauth_consumers, :member => { :callback => :get }, :controller => 'services'
   
   map.resources :facebook_dreamers
 
@@ -18,9 +19,8 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :pages
     admin.resources :comments, :dreamers, :except => [:new, :create, :show]
+    admin.dashboard '/dashboard', :controller => 'dashboard'
   end
-  
-  map.admin_dashboard '/admin/dashboard', :controller => '/admin/dashboard', :action => 'index'
   
   map.resources :dreamers do |dreamers|
     dreamers.resources :follows, :only => [:create, :destroy]

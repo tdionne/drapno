@@ -11,7 +11,7 @@
   <ul>
     <% @consumer_tokens.each do |token| %>
       <li>
-        <%= link_to token.class.service_name.to_s.humanize, oauth_consumer_path(token.class.service_name) %>
+        <%= link_to token.class.service_name.to_s.humanize, service_path(token.class.service_name) %>
       </li>
     <% end %>
     <% if current_dreamer.has_facebook_account? %>
@@ -27,7 +27,7 @@
 <ul>
   <% @services.each do |service| %>
     <li>
-      <%= link_to service.to_s.humanize, oauth_consumer_path(service) %>
+      <%= link_to service.to_s.humanize, service_path(service) %>
     </li>
   <% end %>
   <% unless current_dreamer.has_facebook_account? %>
