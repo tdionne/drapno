@@ -24,6 +24,8 @@ Rails::Initializer.run do |config|
   config.gem 'twitter'
   config.gem 'base58'
   
+  config.gem 'facebooker'
+  
   config.frameworks -= [ :active_resource ]
   config.active_record.observers = :tweeting_observer
 
