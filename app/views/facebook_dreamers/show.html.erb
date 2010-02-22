@@ -1,0 +1,12 @@
+<p style="float: left; margin: 0px 10px 0px 0px"><%= fb_profile_pic(facebook_session.user) %></p>
+
+<h2>You are logged in to Facebook as <%= facebook_session.user.name %></h2>
+
+
+
+<p>If you would like to disconnect your facebook account from your Drapno profile please go to Facebook and edit your Application Setttings</p>
+
+<% content_for :extra_headers do %>
+  <%= fb_connect_javascript_tag %>
+  <%= init_fb_connect "XFBML", :js => :jquery, :permsToRequestOnConnect => "publish_stream" %>
+<% end %>

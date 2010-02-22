@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :services
   map.resources :oauth_consumers, :member => { :callback => :get }, :controller => 'services'
   
-  map.resources :facebook_dreamers
+  map.resource :facebook_dreamer, :member => { :remove => :get }
 
   map.resources :invitations, :only => [:index, :new, :create]
   map.resources :opt_outs, :only => [:show, :create, :destroy]

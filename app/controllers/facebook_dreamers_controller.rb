@@ -1,12 +1,43 @@
 class FacebookDreamersController < ApplicationController
-  def index
-    if current_user and facebook_session
-      current_user.update_attribute(:facebook_id, facebook_session.user.uid)
-      flash.now[:notice] = 'Facebook connection established'
-    end
+  before_filter :authenticate, :only => :index
+  before_filter :ensure_facebook_account, :only => :index
+  before_filter :ensure_accounts_linked, :only => :index
+  before_filter :verify_uninstall_signature, :only => :remove
+  
+  def show
+  end
+  
+  def remove
+    user = User.find_by_facebook_id(params[:fb_sig_user]) 
+    user.update_attribute(:facebook_id, nil) if user 
+    render :nothing => true
   end
   
   protected
+    def ensure_facebook_account
+      redirect_to services_url unless facebook_session
+    end
+    
+    def ensure_accounts_linked
+      if facebook_session and ! current_dreamer.has_facebook_account?
+        current_dreamer.update_attribute(:facebook_id, facebook_session.user.uid)
+        flash.now[:notice] = 'Facebook connection established'
+      end
+    end
+    
+    def verify_uninstall_signature
+      signature = ''
+      facebook_params.keys.each do |key| 
+        key_name = key.gsub('fb_sig_', '') 
+        signature += "#{key_name}=#{params[key]}" 
+      end 
+      
+      signature += Facebooker.secret_key
+      calculated_sig = Digest::MD5.hexdigest(signature) 
+
+      return calculated_sig == params[:fb_sig] 
+    end 
+    
     def post_to_stream
       dream = Dream.first
       begin

@@ -16,7 +16,7 @@
     <% end %>
     <% if current_dreamer.has_facebook_account? %>
       <li>
-        <%= link_to 'Facebook', '#' %>
+        <%= link_to 'Facebook', facebook_dreamer_path %>
       </li>
     <% end %>
   </ul>
@@ -34,7 +34,7 @@
     <li>
       <%= fb_connect_javascript_tag %>
       <%= init_fb_connect "XFBML", :js => :jquery, :permsToRequestOnConnect => "publish_stream" %>
-      <%= fb_login_and_redirect(facebook_dreamers_path) %>
+      <%= fb_login_and_redirect(facebook_dreamer_path) %>
     </li>
   <% end %>
 </ul>
