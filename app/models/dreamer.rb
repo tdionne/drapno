@@ -97,7 +97,7 @@ class Dreamer < ActiveRecord::Base
   end
   
   def has_facebook_account?
-    facebook_id.present?
+    ! self.facebook_id.nil?
   end
   
   def calendar_data_for(start_date)

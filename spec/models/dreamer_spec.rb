@@ -46,7 +46,16 @@ describe Dreamer do
     it { should_not allow_value('15').for(:age_band) }
   end
   
-  # describe "attachments" do
-  #   it { should have_attached_file(:picture) }
-  # end
+  describe "spotting facebook accounts" do
+    it "returns true if we have a facebook id stored" do
+      d = Dreamer.new
+      d.facebook_id = '1234'
+      d.has_facebook_account?.should be_true
+    end
+    
+    it "returns false if we don't have a facebook id" do
+      d = Dreamer.new
+      d.has_facebook_account?.should be_false
+    end
+  end
 end
