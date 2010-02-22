@@ -12,7 +12,7 @@ development:
   api_key: 57f774fecdccce1f359f2be458a1bd9c
   secret_key: aa485583ba8996d5f40da1843ee5c4c5
   canvas_page_name:
-  callback_url: http://localhost:3000/facebook_dreamers/
+  callback_url: http://localhost:3000/facebook_dreamer/
   pretty_errors: true
   set_asset_host_to_callback_url: false
 
@@ -20,7 +20,7 @@ test:
   api_key: 57f774fecdccce1f359f2be458a1bd9c
   secret_key: aa485583ba8996d5f40da1843ee5c4c5
   canvas_page_name:
-  callback_url: http://localhost:3000/facebook_dreamers/
+  callback_url: http://localhost:3000/facebook_dreamer/
   pretty_errors: true
   set_asset_host_to_callback_url: false
 
@@ -28,7 +28,15 @@ cucumber:
   api_key: 57f774fecdccce1f359f2be458a1bd9c
   secret_key: aa485583ba8996d5f40da1843ee5c4c5
   canvas_page_name:
-  callback_url: http://localhost:3000/facebook_dreamers/
+  callback_url: http://localhost:3000/facebook_dreamer/
+  pretty_errors: true
+  set_asset_host_to_callback_url: false
+
+staging:
+  api_key: 73a084048eb905d6d56779bdf5d36940
+  secret_key: f5b6bd10fcd006bc8b9bf5e9720ac0c7
+  canvas_page_name:
+  callback_url: http://staging.drapno.com/facebook_dreamer/
   pretty_errors: true
   set_asset_host_to_callback_url: false
 
