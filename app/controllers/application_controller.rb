@@ -10,7 +10,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
+  before_filter :set_facebook_session
+  helper_method :facebook_session
+  
   filter_parameter_logging :password
+  filter_parameter_logging :fb_sig_friends
+  
   before_filter :transfer_dreamer_params
   skip_before_filter :verify_authenticity_token, :if => proc { |c| c.request.js? }
   
