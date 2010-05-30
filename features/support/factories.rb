@@ -1,3 +1,5 @@
+require 'factory_girl'
+
 Factory.sequence :email do |n|
   "somebody#{n}@example.com"
 end

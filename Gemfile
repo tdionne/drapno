@@ -3,6 +3,7 @@ source "http://gems.github.com"
 
 gem 'rails', '2.3.5'
 gem 'mysql'
+gem 'sqlite3-ruby'
 
 gem 'paperclip', '>=2.3.1'
 gem 'clearance', '0.8.4'
@@ -15,6 +16,7 @@ gem 'ts-delayed-delta', '>= 1.1.0', :require => 'thinking_sphinx/deltas/delayed_
 gem "mbleigh-acts-as-taggable-on", '1.0.5', :require => "acts-as-taggable-on"
 gem "RedCloth", :require => 'redcloth'
 gem "mongo_mapper", '>0.3.4'
+gem 'bson_ext'
 
 gem 'oauth'
 gem 'oauth-plugin'
@@ -22,6 +24,9 @@ gem 'twitter'
 gem 'base58'
 
 gem 'facebooker'
+
+gem 'capistrano'
+gem 'capistrano-ext'
 
 group :test do
   gem 'rspec-rails'
@@ -32,4 +37,5 @@ group :test do
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'webrat'
+  gem 'mocha'
 end
