@@ -21,7 +21,9 @@ class ApplicationController < ActionController::Base
   
   alias :current_dreamer :current_user
   helper_method :current_dreamer
-  
+
+  rescue_from ActionController::MethodNotAllowed, :with => :render_406
+
   def load_tags
     @tags = Tag.all(
       :select => "#{Tag.table_name}.id, #{Tag.table_name}.name, COUNT(*) AS count",
