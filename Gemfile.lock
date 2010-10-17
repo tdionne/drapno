@@ -1,249 +1,163 @@
---- 
-dependencies: 
-  fakeweb: 
-    group: 
-    - :test
-    version: ">= 0"
-  bson_ext: 
-    group: 
-    - :default
-    version: ">= 0"
-  base58: 
-    group: 
-    - :default
-    version: ">= 0"
-  mongo_mapper: 
-    group: 
-    - :default
-    version: "> 0.3.4"
-  rails: 
-    group: 
-    - :default
-    version: = 2.3.5
-  mysql: 
-    group: 
-    - :default
-    version: ">= 0"
-  sqlite3-ruby: 
-    group: 
-    - :default
-    version: ">= 0"
-  ts-delayed-delta: 
-    group: 
-    - :default
-    version: ">= 1.1.0"
-    require: 
-    - thinking_sphinx/deltas/delayed_delta
-  oauth-plugin: 
-    group: 
-    - :default
-    version: ">= 0"
-  oauth: 
-    group: 
-    - :default
-    version: ">= 0"
-  shoulda: 
-    group: 
-    - :test
-    version: ">= 0"
-  delayed_job: 
-    group: 
-    - :default
-    version: ">= 2.0.0"
-  database_cleaner: 
-    group: 
-    - :test
-    version: ">= 0"
-  thinking-sphinx: 
-    group: 
-    - :default
-    version: ">= 1.3.8"
-  rspec-rails: 
-    group: 
-    - :test
-    version: ">= 0"
-  mocha: 
-    group: 
-    - :test
-    version: ">= 0"
-  factory_girl: 
-    group: 
-    - :test
-    version: ">= 0"
-  capistrano-ext: 
-    group: 
-    - :default
-    version: ">= 0"
-  will_paginate: 
-    group: 
-    - :default
-    version: = 2.3.12
-  paperclip: 
-    group: 
-    - :default
-    version: ">= 2.3.1"
-  cucumber-rails: 
-    group: 
-    - :test
-    version: ">= 0"
-  webrat: 
-    group: 
-    - :test
-    version: ">= 0"
-  mbleigh-acts-as-taggable-on: 
-    group: 
-    - :default
-    version: = 1.0.5
-    require: 
-    - acts-as-taggable-on
-  clearance: 
-    group: 
-    - :default
-    version: = 0.8.4
-  RedCloth: 
-    group: 
-    - :default
-    version: ">= 0"
-    require: 
-    - redcloth
-  facebooker: 
-    group: 
-    - :default
-    version: ">= 0"
-  twitter: 
-    group: 
-    - :default
-    version: ">= 0"
-  capistrano: 
-    group: 
-    - :default
-    version: ">= 0"
-specs: 
-- rake: 
-    version: 0.8.7
-- RedCloth: 
-    version: 4.2.3
-- activesupport: 
-    version: 2.3.5
-- rack: 
-    version: 1.0.1
-- actionpack: 
-    version: 2.3.5
-- actionmailer: 
-    version: 2.3.5
-- activerecord: 
-    version: 2.3.5
-- activeresource: 
-    version: 2.3.5
-- after_commit: 
-    version: 1.0.7
-- base58: 
-    version: 0.1.0
-- bson: 
-    version: "1.0"
-- bson_ext: 
-    version: 1.0.1
-- builder: 
-    version: 2.1.2
-- highline: 
-    version: 1.5.2
-- net-ssh: 
-    version: 2.0.22
-- net-scp: 
-    version: 1.0.2
-- net-sftp: 
-    version: 2.0.4
-- net-ssh-gateway: 
-    version: 1.0.1
-- capistrano: 
-    version: 2.5.18
-- capistrano-ext: 
-    version: 1.2.1
-- clearance: 
-    version: 0.8.4
-- crack: 
-    version: 0.1.6
-- diff-lcs: 
-    version: 1.1.2
-- trollop: 
-    version: 1.16.2
-- gherkin: 
-    version: 1.0.30
-- json_pure: 
-    version: 1.4.3
-- term-ansicolor: 
-    version: 1.0.5
-- cucumber: 
-    version: 0.7.3
-- cucumber-rails: 
-    version: 0.3.1
-- daemons: 
-    version: 1.0.10
-- database_cleaner: 
-    version: 0.5.2
-- delayed_job: 
-    version: 2.0.3
-- facebooker: 
-    version: 1.0.69
-- factory_girl: 
-    version: 1.2.4
-- fakeweb: 
-    version: 1.2.8
-- hashie: 
-    version: 0.2.0
-- httparty: 
-    version: 0.5.2
-- jnunemaker-validatable: 
-    version: 1.8.4
-- mbleigh-acts-as-taggable-on: 
-    version: 1.0.5
-- mocha: 
-    version: 0.9.8
-- mongo: 
-    version: "1.0"
-- plucky: 
-    version: 0.1.1
-- mongo_mapper: 
-    version: 0.7.6
-- mysql: 
-    version: 2.8.1
-- nokogiri: 
-    version: 1.4.2
-- oauth: 
-    version: 0.4.0
-- oauth-plugin: 
-    version: 0.3.14
-- paperclip: 
-    version: 2.3.1.1
-- rack-test: 
-    version: 0.5.4
-- rails: 
-    version: 2.3.5
-- riddle: 
-    version: 1.0.10
-- rspec: 
-    version: 1.3.0
-- rspec-rails: 
-    version: 1.3.2
-- shoulda: 
-    version: 2.10.3
-- sqlite3-ruby: 
-    version: 1.2.5
-- thinking-sphinx: 
-    version: 1.3.16
-- ts-delayed-delta: 
-    version: 1.1.0
-- yajl-ruby: 
-    version: 0.7.6
-- twitter: 
-    version: 0.9.7
-- webrat: 
-    version: 0.7.1
-- will_paginate: 
-    version: 2.3.12
-hash: 16e04e64deab71b7e1d746859b6dbe55344c4e31
-sources: 
-- Rubygems: 
-    uri: http://gemcutter.org
-- Rubygems: 
-    uri: http://gems.github.com
+GEM
+  remote: http://rubygems.org/
+  remote: http://gems.github.com/
+  specs:
+    RedCloth (4.2.3)
+    actionmailer (2.3.5)
+      actionpack (= 2.3.5)
+    actionpack (2.3.5)
+      activesupport (= 2.3.5)
+      rack (~> 1.0.0)
+    activerecord (2.3.5)
+      activesupport (= 2.3.5)
+    activeresource (2.3.5)
+      activesupport (= 2.3.5)
+    activesupport (2.3.5)
+    after_commit (1.0.8)
+      activerecord (< 3.0.0)
+    base58 (0.1.0)
+    bson (1.1.1)
+    bson_ext (1.1.1)
+    builder (2.1.2)
+    capistrano (2.5.19)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.0.0)
+    capistrano-ext (1.2.1)
+      capistrano (>= 1.0.0)
+    clearance (0.8.4)
+    crack (0.1.8)
+    cucumber (0.9.2)
+      builder (~> 2.1.2)
+      diff-lcs (~> 1.1.2)
+      gherkin (~> 2.2.5)
+      json (~> 1.4.6)
+      term-ansicolor (~> 1.0.5)
+    cucumber-rails (0.3.2)
+      cucumber (>= 0.8.0)
+    daemons (1.1.0)
+    database_cleaner (0.5.2)
+    delayed_job (2.0.3)
+      daemons
+    diff-lcs (1.1.2)
+    facebooker (1.0.75)
+      json_pure (>= 1.0.0)
+    factory_girl (1.3.2)
+    fakeweb (1.3.0)
+    gherkin (2.2.9)
+      json (~> 1.4.6)
+      term-ansicolor (~> 1.0.5)
+    hashie (0.4.0)
+    highline (1.6.1)
+    httparty (0.6.1)
+      crack (= 0.1.8)
+    jnunemaker-validatable (1.8.4)
+      activesupport (>= 2.3.4)
+    json (1.4.6)
+    json_pure (1.4.6)
+    mbleigh-acts-as-taggable-on (1.0.5)
+    mocha (0.9.8)
+      rake
+    mongo (1.1.1)
+      bson (>= 1.1.1)
+    mongo_mapper (0.8.6)
+      activesupport (>= 2.3.4)
+      jnunemaker-validatable (~> 1.8.4)
+      plucky (~> 0.3.6)
+    multi_json (0.0.4)
+    mysql (2.8.1)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.0.23)
+    net-ssh-gateway (1.0.1)
+      net-ssh (>= 1.99.1)
+    nokogiri (1.4.3.1)
+    oauth (0.4.3)
+    oauth-plugin (0.3.14)
+      oauth (>= 0.3.5)
+    paperclip (2.3.4)
+      activerecord
+      activesupport
+    plucky (0.3.6)
+      mongo (~> 1.1)
+    rack (1.0.1)
+    rack-test (0.5.6)
+      rack (>= 1.0)
+    rails (2.3.5)
+      actionmailer (= 2.3.5)
+      actionpack (= 2.3.5)
+      activerecord (= 2.3.5)
+      activeresource (= 2.3.5)
+      activesupport (= 2.3.5)
+      rake (>= 0.8.3)
+    rake (0.8.7)
+    riddle (1.1.0)
+    rspec (2.0.0)
+      rspec-core (= 2.0.0)
+      rspec-expectations (= 2.0.0)
+      rspec-mocks (= 2.0.0)
+    rspec-core (2.0.0)
+    rspec-expectations (2.0.0)
+      diff-lcs (>= 1.1.2)
+    rspec-mocks (2.0.0)
+      rspec-core (= 2.0.0)
+      rspec-expectations (= 2.0.0)
+    rspec-rails (2.0.1)
+      rspec (~> 2.0.0)
+    shoulda (2.11.3)
+    sqlite3-ruby (1.3.1)
+    term-ansicolor (1.0.5)
+    thinking-sphinx (1.3.20)
+      activerecord (>= 1.15.6, < 3.0.0)
+      after_commit (>= 1.0.6)
+      riddle (>= 1.0.10)
+    ts-delayed-delta (1.1.1)
+      delayed_job (>= 1.8.4)
+      thinking-sphinx (>= 1.3.6)
+    twitter (0.9.12)
+      hashie (~> 0.4.0)
+      httparty (~> 0.6.1)
+      multi_json (~> 0.0.4)
+      oauth (~> 0.4.3)
+    webrat (0.7.1)
+      nokogiri (>= 1.2.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5.3)
+    will_paginate (2.3.12)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  RedCloth
+  base58
+  bson_ext
+  capistrano
+  capistrano-ext
+  clearance (= 0.8.4)
+  cucumber-rails
+  database_cleaner
+  delayed_job (>= 2.0.0)
+  facebooker
+  factory_girl
+  fakeweb
+  mbleigh-acts-as-taggable-on (= 1.0.5)
+  mocha
+  mongo_mapper (> 0.3.4)
+  mysql
+  oauth
+  oauth-plugin
+  paperclip (>= 2.3.1)
+  rails (= 2.3.5)
+  rspec-rails
+  shoulda
+  sqlite3-ruby
+  thinking-sphinx (>= 1.3.8)
+  ts-delayed-delta (>= 1.1.0)
+  twitter
+  webrat
+  will_paginate (= 2.3.12)
