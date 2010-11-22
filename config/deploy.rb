@@ -1,5 +1,8 @@
 require 'capistrano/ext/multistage'
 require 'delayed/recipes'
+require 'bundler/capistrano'
+
+set :bundle_cmd, "/usr/local/bin/bundle"
 
 set :default_stage, "staging"
 
@@ -10,6 +13,8 @@ set :user, "drapno"
 set :use_sudo, false
 set :deploy_via, :remote_cache
 
+set :ssh_options, { :forward_agent => true }
+ 
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
 set :scm, :git
@@ -34,26 +39,4 @@ namespace :deploy do
   end
 end
 
-namespace :bundler do
-  task :create_symlink, :roles => :app do
-    shared_dir = File.join(shared_path, 'bundle')
-    release_dir = File.join(current_release, '.bundle')
-    run("mkdir -p #{shared_dir} && ln -s #{shared_dir} #{release_dir}")
-  end
-  
-  task :bundle_new_release, :roles => :app do
-    bundler.create_symlink
-    run "cd #{release_path} && /opt/ruby-enterprise/bin/bundle install --relock"
-  end
-  
-  task :lock, :roles => :app do
-    run "cd #{current_release} && /opt/ruby-enterprise/bin/bundle lock;"
-  end
-  
-  task :unlock, :roles => :app do
-    run "cd #{current_release} && /opt/ruby-enterprise/bin/bundle unlock;"
-  end
-end
-
 after 'deploy:finalize_update', "link_config"
-after "deploy:update_code", "bundler:bundle_new_release"
