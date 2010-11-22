@@ -9,7 +9,7 @@
   <% if ! signed_in? %>
     <p><%= link_to 'Sign in', sign_in_path(:return_to => dream_path(@dream)) %> or <%= link_to 'Sign up', sign_up_path %> to rate this dream.</p>
   <% else %>
-    <% if current_user == @dream.dreamer || current_user.has_rated?(@dream) %>
+    <% if current_dreamer == @dream.dreamer || current_dreamer.has_rated?(@dream) %>
 
       <% if @dream.ratings_count == 0%>
         <p>This dream has yet to be rated</p>
@@ -17,7 +17,7 @@
         <p>This dream has been rated <%= pluralize(@dream.ratings_count, 'time', 'times') %> with an average rating of <%= @dream.average_rating %></p>
       <% end %>
       
-      <% if current_user.has_rated?(@dream) %>
+      <% if current_dreamer.has_rated?(@dream) %>
         <p id="rated">You have rated this dream.</p>
       <% end %>
     <% else %>
