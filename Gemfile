@@ -1,21 +1,21 @@
 source :gemcutter
 source "http://gems.github.com"
 
-gem 'rails', '2.3.5'
+gem 'rails', '2.3.10'
 gem 'mysql'
 gem 'sqlite3-ruby'
 
-gem 'paperclip', '>=2.3.1'
+gem 'paperclip', '~> 2.3.1'
 gem 'clearance', '0.8.4'
 gem 'will_paginate', '2.3.12'
-gem 'delayed_job', '>=2.0.0'
+gem 'delayed_job', '~> 2.0.0'
 
-gem "thinking-sphinx", '>= 1.3.8'
-gem 'ts-delayed-delta', '>= 1.1.0', :require => 'thinking_sphinx/deltas/delayed_delta'
+gem "thinking-sphinx", '~> 1.3.8'
+gem 'ts-delayed-delta', '~> 1.1.0', :require => 'thinking_sphinx/deltas/delayed_delta'
 
-gem "mbleigh-acts-as-taggable-on", '1.0.5', :require => "acts-as-taggable-on"
+gem "mbleigh-acts-as-taggable-on", '~> 1.0.5', :require => "acts-as-taggable-on"
 gem "RedCloth", :require => 'redcloth'
-gem "mongo_mapper", '>0.3.4'
+gem "mongo_mapper", '~> 0.8.6'
 gem 'bson_ext'
 
 gem 'oauth'
@@ -28,8 +28,10 @@ gem 'facebooker'
 gem 'capistrano'
 gem 'capistrano-ext'
 
+gem 'hoptoad_notifier'
+
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 1.3.1'
   gem 'factory_girl'
   gem 'shoulda'
   gem 'fakeweb'
