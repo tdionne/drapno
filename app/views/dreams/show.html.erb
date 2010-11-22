@@ -49,9 +49,9 @@
 <div id="right-col-home">
 
   <% if signed_in? %>
-    <% if current_user == @dream.dreamer %>
+    <% if current_dreamer == @dream.dreamer %>
       <p>This is your dream. <%= link_to 'Edit it here', edit_dream_path(@dream) %></p>
-    <% elsif ! current_user.is_following?(@dream.dreamer) %>
+    <% elsif ! current_dreamer.is_following?(@dream.dreamer) %>
       <%= button_to 'Follow this dreamer', dreamer_follows_path(@dream.dreamer) %>
     <% end %>
   <% end %>
@@ -80,7 +80,7 @@
     $(document).ready(function () {
       FB_RequireFeatures(["XFBML"], function() {
         FB.init('<%= Facebooker.api_key %>','/xd_receiver.html');
-        FB.Connect.streamPublish("<%= current_user.name %> posted a new dream <%= @dream.title %> on Drapno",
+        FB.Connect.streamPublish("<%= current_dreamer.name %> posted a new dream <%= @dream.title %> on Drapno",
           null, [{ text: "Read it here", href: $('link[rev=canonical]').attr('href')}]
         );
       });
@@ -88,7 +88,7 @@
   </script>
   <% end %>
   
-  <% if signed_in? and current_user.can_rate?(@dream) %>
+  <% if signed_in? and current_dreamer.can_rate?(@dream) %>
     <%= javascript_include_tag 'jquery.rater.js' %>
     <%= stylesheet_link_tag 'stars.style.css' %>
     <script type="text/javascript" charset="utf-8">
@@ -104,7 +104,7 @@
           $('#testRater').rater({ 
             id: <%= @dream.id %>,
             rating: <%= @average_rating %>,
-            postHref: '<%= dreamer_ratings_path(current_user, :format => :js) %>' 
+            postHref: '<%= dreamer_ratings_path(current_dreamer, :format => :js) %>' 
           });
         });
       });
