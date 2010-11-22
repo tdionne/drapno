@@ -3,7 +3,6 @@ source "http://gems.github.com"
 
 gem 'rails', '2.3.10'
 gem 'mysql'
-gem 'sqlite3-ruby'
 
 gem 'paperclip', '~> 2.3.1'
 gem 'clearance', '0.8.4'
