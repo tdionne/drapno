@@ -19,7 +19,7 @@ Given /^I signed up with "(.*)\/(.*)"$/ do |email, password|
 end 
 
 Given /^I am signed up and confirmed as "(.*)\/(.*)"$/ do |email, password|
-  user = Factory :email_confirmed_user,
+  user = Factory :email_confirmed_dreamer,
     :name                  => email.split('@').first,
     :email                 => email,
     :password              => password,
