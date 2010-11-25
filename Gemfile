@@ -39,4 +39,6 @@ group :test do
   gem 'database_cleaner'
   gem 'webrat'
   gem 'mocha'
+  
+  gem 'test-unit'
 end
