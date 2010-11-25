@@ -28,7 +28,8 @@ gem 'capistrano'
 gem 'capistrano-ext'
 
 gem 'hoptoad_notifier'
-
+gem 'test-unit'
+  
 group :test do
   gem 'rspec-rails', '~> 1.3.1'
   gem 'factory_girl'
@@ -40,5 +41,4 @@ group :test do
   gem 'webrat'
   gem 'mocha'
   
-  gem 'test-unit'
 end
