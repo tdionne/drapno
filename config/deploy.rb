@@ -14,7 +14,8 @@ set :use_sudo, false
 set :deploy_via, :remote_cache
 
 set :ssh_options, { :forward_agent => true }
- 
+set :keep_releases, 3
+
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
 set :scm, :git
