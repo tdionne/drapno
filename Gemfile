@@ -4,6 +4,8 @@ source "http://gems.github.com"
 gem 'rails', '2.3.10'
 gem 'mysql'
 
+gem 'SystemTimer'
+
 gem 'paperclip', '~> 2.3.1'
 gem 'clearance', '0.8.4'
 gem 'will_paginate', '2.3.12'
@@ -38,7 +40,7 @@ group :test do
   gem 'shoulda'
   gem 'fakeweb'
   
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', '~> 0.3.2'
   gem 'database_cleaner'
   gem 'webrat'
   gem 'mocha'

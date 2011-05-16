@@ -3,6 +3,7 @@ GEM
   remote: http://gems.github.com/
   specs:
     RedCloth (4.2.7)
+    SystemTimer (1.2.3)
     actionmailer (2.3.10)
       actionpack (= 2.3.10)
     actionpack (2.3.10)
@@ -35,10 +36,8 @@ GEM
       gherkin (>= 2.3.5)
       json (>= 1.4.6)
       term-ansicolor (>= 1.0.5)
-    cucumber-rails (0.4.1)
-      cucumber (>= 0.10.1)
-      nokogiri (>= 1.4.4)
-      rack-test (>= 0.5.7)
+    cucumber-rails (0.3.2)
+      cucumber (>= 0.8.0)
     daemons (1.0.10)
     database_cleaner (0.6.7)
     delayed_job (2.0.7)
@@ -52,7 +51,7 @@ GEM
     faraday (0.6.1)
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
-      rack (>= 1.1.0, < 2)
+      rack (< 2, >= 1.1.0)
     faraday_middleware (0.6.3)
       faraday (~> 0.6.0)
     gherkin (2.3.7)
@@ -148,12 +147,13 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
+  SystemTimer
   base58
   bson_ext
   capistrano
   capistrano-ext
   clearance (= 0.8.4)
-  cucumber-rails
+  cucumber-rails (~> 0.3.2)
   database_cleaner
   delayed_job (~> 2.0.0)
   facebooker
