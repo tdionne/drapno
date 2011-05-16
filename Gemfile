@@ -31,6 +31,8 @@ gem 'hoptoad_notifier'
 gem 'test-unit', '1.2.3'
   
 group :test do
+  gem 'sqlite3-ruby', :require => 'sqlite3'
+  
   gem 'rspec-rails', '~> 1.3.1'
   gem 'factory_girl'
   gem 'shoulda'
