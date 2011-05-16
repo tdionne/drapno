@@ -4,7 +4,9 @@ source "http://gems.github.com"
 gem 'rails', '2.3.10'
 gem 'mysql'
 
-gem 'SystemTimer'
+platforms :ruby_18 do
+  gem 'SystemTimer'
+end
 
 gem 'paperclip', '~> 2.3.1'
 gem 'clearance', '0.8.4'
