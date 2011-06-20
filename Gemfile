@@ -1,6 +1,7 @@
 source :gemcutter
 source "http://gems.github.com"
 
+gem 'rake', '~> 0.8.7'
 gem 'rails', '2.3.10'
 gem 'mysql'
 
@@ -33,6 +34,10 @@ gem 'capistrano-ext'
 
 gem 'hoptoad_notifier'
 gem 'test-unit', '1.2.3'
+
+group :development do
+  gem 'foreman'
+end
   
 group :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
