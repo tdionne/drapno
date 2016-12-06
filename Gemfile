@@ -17,16 +17,17 @@ gem 'delayed_job', '~> 2.0.0'
 gem "thinking-sphinx", '~> 1.3.8'
 gem 'ts-delayed-delta', '~> 1.1.0', :require => 'thinking_sphinx/deltas/delayed_delta'
 
-gem "mbleigh-acts-as-taggable-on", '~> 1.0.5', :require => "acts-as-taggable-on"
-gem "RedCloth", :require => 'redcloth'
+gem 'jnunemaker-validatable', :source => 'http://rubygems.org/'
+gem "mbleigh-acts-as-taggable-on", '~> 1.0.5', :source => 'http://rubygems.org', :require => "acts-as-taggable-on"
+gem "RedCloth", '~> 4.2.9', :require => 'redcloth'
 gem "mongo_mapper", '~> 0.8.6'
 gem 'bson_ext'
 
 gem 'oauth'
 gem 'oauth-plugin'
-gem 'twitter'
+gem 'twitter', '4.0.0'
 gem 'base58'
-
+gem 'faraday', '0.8'
 gem 'facebooker'
 
 gem 'capistrano'
