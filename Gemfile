@@ -28,7 +28,7 @@ gem 'oauth-plugin'
 gem 'twitter', '4.0.0'
 gem 'base58'
 gem 'faraday', '0.8'
-gem 'facebooker'
+gem 'facebooker', :git => 'https://github.com/tdionne/facebooker.git'
 gem 'json', '2.0.2'
 
 gem 'capistrano'
