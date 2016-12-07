@@ -67,13 +67,13 @@ class Dreamer < ActiveRecord::Base
   attr_accessible :name, :location, :gender, :age_band, :public_profile, :public_alias, :picture
   
   has_one :opt_out, :foreign_key => 'email', :primary_key => 'email'
-  xss_terminate
+  # xss_terminate
   
   ROLES.each do |role|
     define_method("is_#{role}?") do
       self.role == role
     end
-    named_scope role.to_sym, :conditions => {:role => role}
+    # named_scope role.to_sym, :conditions => {:role => role}
   end
 
   def display_name

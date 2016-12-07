@@ -34,13 +34,13 @@ class Dream < ActiveRecord::Base
   validates_presence_of :dreamer_id
   validates_presence_of :dreamt_on
   
-  named_scope :listings, :order => 'created_at DESC', :select => 'dreams.id, dreams.title, dreams.story, dreams.dreamer_id, dreams.created_at, dreams.dreamt_on', :include => :dreamer
-  named_scope :rated, :order => ['average_rating DESC'], :conditions => 'dreams.ratings_count > 0'
-  acts_as_taggable_on :tags
+  # named_scope :listings, :order => 'created_at DESC', :select => 'dreams.id, dreams.title, dreams.story, dreams.dreamer_id, dreams.created_at, dreams.dreamt_on', :include => :dreamer
+  # named_scope :rated, :order => ['average_rating DESC'], :conditions => 'dreams.ratings_count > 0'
+  # acts_as_taggable_on :tags
   
   attr_accessor :tweet_dream
   
-  xss_terminate
+  # xss_terminate
   
   def to_s
     self.title
@@ -50,14 +50,14 @@ class Dream < ActiveRecord::Base
     Base58.encode(self.id)
   end
   
-  define_index do
-    indexes title
-    indexes story
-    indexes dreamer(:name), :as => :dreamer
-    indexes tags(:name), :as => :tag_names
-    
-    set_property :delta => :delayed
-  end
+  # define_index do
+  #   indexes title
+  #   indexes story
+  #   indexes dreamer(:name), :as => :dreamer
+  #   indexes tags(:name), :as => :tag_names
+  #
+  #   set_property :delta => :delayed
+  # end
   
   def created_on
     created_at.to_date
@@ -67,12 +67,12 @@ class Dream < ActiveRecord::Base
     dreamer.followers
   end
   
-  include ActivityMonitor
-  monitor_activity :object_details => proc { |dream| [dream.id, dream.title] },
-    :verb => 'shared',
-    :parties => {
-      :apparitions => 'featuring you',
-      :dreamer_followers => ''
-    }
+  # include ActivityMonitor
+  # monitor_activity :object_details => proc { |dream| [dream.id, dream.title] },
+  #   :verb => 'shared',
+  #   :parties => {
+  #     :apparitions => 'featuring you',
+  #     :dreamer_followers => ''
+  #   }
   
 end

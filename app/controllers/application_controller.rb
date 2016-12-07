@@ -3,21 +3,18 @@
 
 class ApplicationController < ActionController::Base
   include Clearance::Authentication
-  include ErrorRenderers
-  include InvitationSystem
+  # include ErrorRenderers
+  # include InvitationSystem
 
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
-  before_filter :set_facebook_session
-  helper_method :facebook_session
-  
-  filter_parameter_logging :password
-  filter_parameter_logging :fb_sig_friends
+  # before_filter :set_facebook_session
+  # helper_method :facebook_session
   
   before_filter :transfer_dreamer_params
-  skip_before_filter :verify_authenticity_token, :if => proc { |c| c.request.js? }
+  skip_before_filter :verify_authenticity_token, :if => proc { |c| c.request.xhr? }
   
   alias :current_dreamer :current_user
   helper_method :current_dreamer

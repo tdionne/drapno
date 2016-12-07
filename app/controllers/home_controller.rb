@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     load_tags
-    @recent_dreams = Dream.listings.all(:limit => 5)
+    @recent_dreams = Dream.all(:limit => 5)
   end
   
   def page

@@ -10,11 +10,14 @@ Drapno::Application.routes.draw do
   
   resources :dreams do
     resources :comments, :only => :create do
-      # resources :reports, :only => [:new, :create], :controller => 'comment_reports'
+      resources :reports, :only => [:new, :create], :controller => 'comment_reports'
     end
   end
 
-  # search '/search.:format', :controller => 'search'
+  controller :search do
+    get '/search(.:format)', :to => 'search#index', :as => 'search'
+  end
+
 
   namespace :admin do
     resources :pages
@@ -45,9 +48,9 @@ Drapno::Application.routes.draw do
   #   :controller => 'dreamers',
   #   :action     => 'new'
   #
-  # %W(about history behind where-we-are contact).each do |page|
-  #   connect "/#{page}", :controller => 'home', :action => 'page', :permalink => page
-  # end
+  %W(about history behind where-we-are contact).each do |page|
+    get "/#{page}", :controller => 'home', :action => 'page', :permalink => page
+  end
   #
   # ping '/ping', :controller => 'pings', :action => 'ping'
   root :to => 'home#index'
