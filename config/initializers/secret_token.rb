@@ -1,0 +1,1 @@
+Drapno::Application.config.secret_token = '423ff4c32baccf3a377f80a751b4b9bbe5ee27ca22795783b7f9258a1d357bad26cc0455307b2778c0f23a113ceefd12289ace11d30e74a0035adda5c31d9ee1'
