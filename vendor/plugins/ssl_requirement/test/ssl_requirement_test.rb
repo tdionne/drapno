@@ -16,7 +16,7 @@ MSG
   end
 end
 
-require 'action_controller/test_process'
+# require 'action_controller/test_process'
 require 'test/unit'
 require "#{File.dirname(__FILE__)}/../lib/ssl_requirement"
 

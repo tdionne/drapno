@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe DreamsController do
+describe DreamsController, :type => :controller do
   describe "route generation" do
     it "maps #index" do
       route_for(:controller => "dreams", :action => "index").should == "/dreams"

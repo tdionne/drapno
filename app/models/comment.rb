@@ -19,7 +19,7 @@ class Comment < ActiveRecord::Base
   validates_presence_of :dream_id, :dreamer_id, :body
   
   STATUSES = %W(pending visible reported hidden spam)
-  named_scope :available, :conditions => {:status => %W{visible reported hidden}}
+  # named_scope :available, :conditions => {:status => %W{visible reported hidden}}
   
   after_create :send_notification
   
@@ -32,7 +32,7 @@ class Comment < ActiveRecord::Base
       self.status == status
     end
     
-    named_scope status.to_sym, :conditions => {:status => status}
+    # named_scope status.to_sym, :conditions => {:status => status}
   end
   
   # Convenience methods to simplify delimiter issues and make our
@@ -57,13 +57,13 @@ class Comment < ActiveRecord::Base
     dream.title
   end
   
-  include ActivityMonitor
-  monitor_activity :object_details => proc { |comment| [comment.dream.id, "comment on #{comment.dream.title}"] },
-    :verb => 'made',
-    :parties => {
-      :dreamer_in_array => 'your dream',
-      :previous_commenters => 'that you also commented on',
-      :dream_apparitions => 'that you appeared in',
-      :dreamer_followers => ''
-    }
+  # include ActivityMonitor
+  # monitor_activity :object_details => proc { |comment| [comment.dream.id, "comment on #{comment.dream.title}"] },
+  #   :verb => 'made',
+  #   :parties => {
+  #     :dreamer_in_array => 'your dream',
+  #     :previous_commenters => 'that you also commented on',
+  #     :dream_apparitions => 'that you appeared in',
+  #     :dreamer_followers => ''
+  #   }
 end

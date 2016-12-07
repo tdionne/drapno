@@ -27,7 +27,7 @@ class Appearance < ActiveRecord::Base
   before_create :generate_token
   after_create :send_notification
   
-  xss_terminate
+  # xss_terminate
   attr_writer :should_be_notified
   
   # default to sending notifications

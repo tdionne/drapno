@@ -18,7 +18,7 @@ class Invitation < ActiveRecord::Base
   validates_uniqueness_of :email, :on => :save, :message => "is already registered"
   validates_format_of       :email, :with => %r{.+@.+\..+}
   
-  named_scope :redeemable, :conditions => {:redeemed_at => nil}
+  # named_scope :redeemable, :conditions => {:redeemed_at => nil}
   
   before_create :generate_code
   

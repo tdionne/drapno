@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem 'rake', '10.1.1'
+gem 'rake'
 gem 'rails', '3.2.22'
 gem 'mysql2'
 gem 'activerecord-mysql-adapter'
@@ -49,12 +49,13 @@ end
 group :test do
   gem 'sqlite3', :require => 'sqlite3'
   
-  gem 'rspec-rails', '~> 1.3.1'
+  gem 'rspec-rails'
+  gem 'rspec'
   gem 'factory_girl'
   gem 'shoulda'
   gem 'fakeweb'
   
-  gem 'cucumber-rails', '~> 0.3.2'
+  gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'webrat'
   gem 'mocha'
