@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Comments Controller Routing' do
   describe "route generation", :type => :routing do
     it "maps #index" do
-      route_to(:controller => "admin/comments", :action => "index").should == "/admin/comments"
+      expect(route_to(:controller => "admin/comments", :action => "index").matches?("/admin/comments"))
     end
 
     it "maps #edit" do
