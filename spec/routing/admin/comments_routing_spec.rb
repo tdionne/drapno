@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Comments Controller Routing' do
+RSpec.describe 'Admin Comments Controller Routing' do
   # describe "route generation", :type => :routing do
   #   it "maps #index" do
   #     expect(route_to(:controller => "admin/comments", :action => "index").matches?({:controller => 'admin/comments', :action => 'index'})).to eq(true)

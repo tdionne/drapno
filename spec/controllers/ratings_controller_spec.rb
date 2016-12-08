@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe RatingsController do
   
   before(:each) do
-    @proxy = stub_everything('rating proxy')
+    @proxy = double('rating proxy').as_null_object
     @dreamer = Dreamer.mock(:id => '1', :ratings => @proxy)
     
     Dreamer.stubs(:find).with('1').returns(@dreamer)

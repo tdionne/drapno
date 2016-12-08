@@ -1,17 +1,17 @@
-require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require 'rails_helper'
 
 describe DreamsController do
   
   before(:each) do
     login_as :quentin
     @mock_dream = Dream.mock
-    @dream_proxy = stub_everything('dreams proxy')
+    @dream_proxy = double('dreams proxy').as_null_object
     @current_user.stubs(:dreams).returns(@dream_proxy)
   end
 
   describe "GET index" do
     it "assigns a page of dreams as @dreams" do
-      @listing_proxy = stub_everything('dream listing proxy')
+      @listing_proxy = double('dream listing proxy').as_null_object
       @listing_proxy.expects(:paginate).returns([@mock_dream])
       Dream.stubs(:listings).returns(@listing_proxy)
       get :index
@@ -32,8 +32,9 @@ describe DreamsController do
   end
 
   describe "GET new" do
+    include Spec::Rails::Matchers
     it "requires a signed in user" do
-      controller.should use_before_filter(:authenticate, :for => :new)
+      controller.should use_before_filter(:authenticate)
     end
     
     it "assigns a new dream as @dream" do
@@ -45,7 +46,7 @@ describe DreamsController do
 
   describe "GET edit" do
     it "requires a signed in user" do
-      controller.should use_before_filter(:authenticate, :for => :edit)
+      controller.should use_before_filter(:authenticate)
     end
     
     it "assigns the requested dream as @dream" do
@@ -58,7 +59,7 @@ describe DreamsController do
   describe "POST create" do
 
     it "requires a signed in user" do
-      controller.should use_before_filter(:authenticate, :for => :create)
+      controller.should use_before_filter(:authenticate)
     end
     
     before(:each) do
@@ -107,7 +108,7 @@ describe DreamsController do
   describe "PUT update" do
 
     it "requires a signed in user" do
-      controller.should use_before_filter(:authenticate, :for => :update)
+      controller.should use_before_filter(:authenticate)
     end
     
     describe "with valid params" do
@@ -166,7 +167,7 @@ describe DreamsController do
     end
     
     it "requires a signed in user" do
-      controller.should use_before_filter(:authenticate, :for => :destroy)
+      controller.should use_before_filter(:authenticate)
     end
     
     it "destroys the requested dream" do

@@ -50,27 +50,25 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-end
 
-module LegSpec
-  def params_from(verb, path)
-    case verb
-      when :get
-        basename = File.basename(path)
-        if basename == 'edit'
-          id = File.basename(File.dirname(path))
-          controller = File.dirname(File.dirname(path))[1..-1]
-          expect(verb => path).to route_to(:controller => controller, :action => 'edit', :id => id)
-        else
-          controller = path[1..-1]
-          expect(verb => path).to route_to(:controller => controller, :action => 'index')
-        end
-      when :delete
-        controller = File.dirname(path)[1..-1]
-        expect(verb => path).to route_to(:controller => controller, :action => 'destroy', :id => baesname)
-      when :put
-        controller = File.dirname(path)[1..-1]
-        expect(verb => path).to route_to(:controller => controller, :action => 'update', :id => basename)
+  config.before(:each, :type => :controller) do
+    def login_as(username)
+      setup_login_as(controller)
     end
   end
+
+  config.before(:each, :type => :view) do
+    def login_as(username)
+      setup_login_as(template)
+    end
+  end
+
+  def setup_login_as(parent)
+    @current_user = User.mock
+    parent.stubs(:signed_in?).returns(true)
+    parent.stubs(:current_user).returns(@current_user)
+    parent.stubs(:authenticate).returns(true)
+  end
 end
+
+
