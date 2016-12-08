@@ -51,3 +51,26 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+module LegSpec
+  def params_from(verb, path)
+    case verb
+      when :get
+        basename = File.basename(path)
+        if basename == 'edit'
+          id = File.basename(File.dirname(path))
+          controller = File.dirname(File.dirname(path))[1..-1]
+          expect(verb => path).to route_to(:controller => controller, :action => 'edit', :id => id)
+        else
+          controller = path[1..-1]
+          expect(verb => path).to route_to(:controller => controller, :action => 'index')
+        end
+      when :delete
+        controller = File.dirname(path)[1..-1]
+        expect(verb => path).to route_to(:controller => controller, :action => 'destroy', :id => baesname)
+      when :put
+        controller = File.dirname(path)[1..-1]
+        expect(verb => path).to route_to(:controller => controller, :action => 'update', :id => basename)
+    end
+  end
+end
