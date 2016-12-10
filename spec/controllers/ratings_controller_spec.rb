@@ -57,7 +57,7 @@ describe RatingsController do
 
       it "re-renders the 'new' template" do
         post :create, :dreamer_id => '1', :rating => {}
-        response.should render_template('new')
+        response.should render_template('index')
       end
     end
 

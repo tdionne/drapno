@@ -36,7 +36,7 @@ class Appearance < ActiveRecord::Base
   end
       
   def should_be_notified?
-    self.should_be_notified.to_i == 1
+    self.should_be_notified == true
   end
   
   def accepts_notifications?

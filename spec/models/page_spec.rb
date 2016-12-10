@@ -26,7 +26,7 @@ describe Page do
     end
     
     it "generates HTML before save" do
-      @page.send(:callback, :before_save)
+      @page.save!
       @page.content_html.should == '<p><strong>James</strong></p>'
     end
     

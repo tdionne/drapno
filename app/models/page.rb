@@ -15,6 +15,9 @@ class Page < ActiveRecord::Base
   validates_presence_of :title, :permalink, :content
   
   before_save :generate_html
+  attr_accessible :title
+  attr_accessible :permalink
+  attr_accessible :content
   
   def generate_html
     self.content_html = RedCloth.new(self.content).to_html

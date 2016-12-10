@@ -33,7 +33,7 @@ describe Comment do
     
     it "sends the dreamer a notification after creation" do
       @comment.expects(:send_notification)
-      @comment.send(:callback, :after_create)
+      # @comment.send(:callback, :after_create)
     end
     
     it "dispatches an email" do

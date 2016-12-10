@@ -50,12 +50,12 @@ describe Dreamer do
     it "returns true if we have a facebook id stored" do
       d = Dreamer.new
       d.facebook_id = '1234'
-      d.has_facebook_account?.should be_true
+      d.has_facebook_account?.should be(true)
     end
     
     it "returns false if we don't have a facebook id" do
       d = Dreamer.new
-      d.has_facebook_account?.should be_false
+      d.has_facebook_account?.should be(false)
     end
   end
 end

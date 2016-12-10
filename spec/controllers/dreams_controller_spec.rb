@@ -11,9 +11,7 @@ describe DreamsController do
 
   describe "GET index" do
     it "assigns a page of dreams as @dreams" do
-      @listing_proxy = double('dream listing proxy').as_null_object
-      @listing_proxy.expects(:paginate).returns([@mock_dream])
-      Dream.stubs(:listings).returns(@listing_proxy)
+      Dream.stubs(:paginate).returns([@mock_dream])
       get :index
       assigns[:dreams].should == [@mock_dream]
     end

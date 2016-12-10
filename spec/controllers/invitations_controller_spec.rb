@@ -10,7 +10,7 @@ describe InvitationsController do
 
   describe "GET index" do
     it "assigns all invitations as @invitations" do
-      Invitation.stubs(:find).with(:all).returns([@mock_invitation])
+      Invitation.stubs(:all).returns([@mock_invitation])
       get :index
       assigns[:invitations].should == [@mock_invitation]
     end

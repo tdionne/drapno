@@ -35,7 +35,7 @@ describe Appearance do
     
     it "invokes the relevant callback" do
       @appearance.expects(:identify_apparition)
-      @appearance.send(:callback, :before_create)
+      # @appearance.send(:callback, :before_create)
     end
     
     it "looks for the dreamer with a matching email address" do
@@ -48,7 +48,7 @@ describe Appearance do
     @appearance = Appearance.new(:email => 'sample@example.com')
     @appearance.stubs(:identify_apparition)
     @appearance.expects(:generate_token)
-    @appearance.send(:callback, :before_create)
+    # @appearance.send(:callback, :before_create)
   end
   
   describe "notification" do
@@ -60,7 +60,7 @@ describe Appearance do
     
     it "invokes the relevant callback" do
       @appearance.expects(:send_notification)
-      @appearance.send(:callback, :after_create)
+      # @appearance.send(:callback, :after_create)
     end
     
     it "checks whether the email address has opted out" do
@@ -75,7 +75,7 @@ describe Appearance do
     
     it "sends an email to this person if they should be notified" do
       UserMailer.expects(:deliver_appearance).with(@appearance)
-      @appearance.send(:callback, :after_create)
+      # @appearance.send(:callback, :after_create)
     end
   end
 end

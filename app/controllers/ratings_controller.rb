@@ -5,7 +5,7 @@ class RatingsController < ApplicationController
   # GET /ratings
   # GET /ratings.xml
   def index
-    @dreams = Dream.listings.rated.paginate :per_page => 15, :page => params[:page]
+    @dreams = Dream.paginate(:per_page => 15, :page => params[:page])
   end
 
   # POST /ratings
@@ -27,7 +27,7 @@ class RatingsController < ApplicationController
         format.js   { render :text => @rating.dream.ratings.average(:score), :status => :created }
         format.xml  { render :xml => @rating, :status => :created, :location => @rating }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "index" }
         format.js   { render :status => '400 Bad Request' }        
         format.xml  { render :xml => @rating.errors, :status => :unprocessable_entity }
       end
