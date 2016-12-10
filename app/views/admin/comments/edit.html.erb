@@ -19,7 +19,7 @@
   </dd>
 </dl>
 
-<% form_for([:admin, @comment]) do |form| %>
+<% form_for :comment do |form| %>
   <%= form.error_messages %>
   <p>
     <%= form.label :body %>

@@ -30,6 +30,7 @@ gem 'base58'
 gem 'faraday', '0.8'
 gem 'facebooker', :git => 'https://github.com/tdionne/facebooker.git'
 gem 'json', '2.0.2'
+gem 'dynamic_form'
 
 gem 'capistrano'
 gem 'capistrano-ext'

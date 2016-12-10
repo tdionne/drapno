@@ -10,9 +10,9 @@ class CreatePages < ActiveRecord::Migration
     
     add_index :pages, :permalink, :unique => true
     
-    # %W(about history behind where_we_are contact).each do |page|
-    #   Page.create!({'title' => page.humanize, 'content' => 'TBD', 'permalink' => page.gsub('_', '-')})
-    # end
+    %W(about history behind where_we_are contact).each do |page|
+      Page.create!({'title' => page.humanize, 'content' => 'TBD', 'permalink' => page.gsub('_', '-')})
+    end
   end
 
   def self.down

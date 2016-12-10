@@ -21,7 +21,8 @@ Drapno::Application.routes.draw do
 
   namespace :admin do
     resources :pages
-    resources :comments, :dreamers, :except => [:new, :create, :show]
+    resources :comments
+    resources :dreamers, :except => [:new, :create, :show]
     # get '/dashboard', :controller => 'dashboard'
   end
   
