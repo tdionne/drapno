@@ -4,6 +4,7 @@ gem 'rake'
 gem 'rails', '3.2.22'
 gem 'activerecord-mysql-adapter'
 gem 'mysql2', '0.3.18'
+gem 'postgresql'
 
 platforms :ruby_18 do
   gem 'SystemTimer'
