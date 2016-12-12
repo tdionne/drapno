@@ -2,7 +2,6 @@ source "http://rubygems.org"
 
 gem 'rake'
 gem 'rails', '3.2.22'
-gem 'mysql2'
 gem 'activerecord-mysql-adapter'
 
 platforms :ruby_18 do
@@ -42,9 +41,12 @@ gem 'railties'
 gem 'loofah-activerecord'
 gem 'hoptoad_notifier'
 gem 'test-unit', '2.5.5'
-
+group :production do
+  gem 'postgresql'
+end
 group :development do
   gem 'foreman'
+  gem 'mysql2'
 end
   
 group :test do
