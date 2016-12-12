@@ -44,5 +44,5 @@ production:
   api_key: 73a084048eb905d6d56779bdf5d36940
   secret_key: f5b6bd10fcd006bc8b9bf5e9720ac0c7
   canvas_page_name: Drapno
-  callback_url: http://www.drapno.com/facebook_dreamer/
+  callback_url: https://drapno.herokuapp.com/facebook_dreamer/
   set_asset_host_to_callback_url: false
