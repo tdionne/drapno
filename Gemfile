@@ -3,7 +3,7 @@ source "http://rubygems.org"
 gem 'rake'
 gem 'rails', '3.2.22'
 gem 'activerecord-mysql-adapter'
-gem 'mysql2'
+gem 'mysql2', '0.3.18'
 
 platforms :ruby_18 do
   gem 'SystemTimer'

@@ -17,8 +17,8 @@ test: &TEST
   timeout: 5000
 
 production:
-  adapter: mysql
-  database: drapno_prod
+  adapter: mysql2
+  database: drapno_production
   pool: 5
   timeout: 5000
 
