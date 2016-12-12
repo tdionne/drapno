@@ -46,7 +46,7 @@ group :production do
 end
 group :development do
   gem 'foreman'
-  gem 'mysql2'
+  gem 'postgresql'
 end
   
 group :test do
