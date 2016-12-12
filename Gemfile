@@ -2,7 +2,8 @@ source "http://rubygems.org"
 
 gem 'rake'
 gem 'rails', '3.2.22'
-# gem 'activerecord-mysql-adapter'
+gem 'activerecord-mysql-adapter'
+gem 'mysql2'
 
 platforms :ruby_18 do
   gem 'SystemTimer'
@@ -13,8 +14,8 @@ gem 'clearance'
 gem 'will_paginate'
 gem 'delayed_job'
 
-# gem "thinking-sphinx"
-# gem 'ts-delayed-delta', :require => 'thinking_sphinx/deltas/delayed_delta'
+gem "thinking-sphinx"
+gem 'ts-delayed-delta', :require => 'thinking_sphinx/deltas/delayed_delta'
 
 gem 'jnunemaker-validatable', :source => 'http://rubygems.org/'
 gem "mbleigh-acts-as-taggable-on", '~> 1.0.5', :source => 'http://rubygems.org', :require => "acts-as-taggable-on"
@@ -42,11 +43,11 @@ gem 'loofah-activerecord'
 gem 'hoptoad_notifier'
 gem 'test-unit', '2.5.5'
 group :production do
-  gem 'postgresql'
+  # gem 'postgresql'
 end
 group :development do
   gem 'foreman'
-  gem 'postgresql'
+  # gem 'postgresql'
 end
   
 group :test do
