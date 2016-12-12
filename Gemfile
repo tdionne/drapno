@@ -19,7 +19,7 @@ gem 'ts-delayed-delta', :require => 'thinking_sphinx/deltas/delayed_delta'
 
 gem 'jnunemaker-validatable', :source => 'http://rubygems.org/'
 gem "mbleigh-acts-as-taggable-on", '~> 1.0.5', :source => 'http://rubygems.org', :require => "acts-as-taggable-on"
-# gem "RedCloth", '~> 4.2.9', :require => 'redcloth'
+gem "RedCloth", '~> 4.2.9', :require => 'redcloth'
 gem "mongo_mapper"
 gem 'bson_ext'
 

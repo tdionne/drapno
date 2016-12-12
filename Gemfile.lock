@@ -8,6 +8,7 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
+    RedCloth (4.2.9)
     SystemTimer (1.2.3)
     actionmailer (3.2.22)
       actionpack (= 3.2.22)
@@ -277,6 +278,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  RedCloth (~> 4.2.9)
   SystemTimer
   activerecord-mysql-adapter
   activesupport (= 3.2.22)
