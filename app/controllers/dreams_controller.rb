@@ -1,5 +1,5 @@
 class DreamsController < ApplicationController
-  before_filter :authenticate, :except => [:index, :show]
+  before_filter :require_login, :except => [:index, :show]
   
   # GET /dreams
   # GET /dreams.xml

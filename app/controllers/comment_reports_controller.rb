@@ -1,5 +1,5 @@
 class CommentReportsController < ApplicationController
-  before_filter :authenticate
+  before_filter :authenticate, {}
   before_filter :load_comment
   
   def new

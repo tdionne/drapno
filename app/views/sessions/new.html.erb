@@ -1,16 +1,11 @@
 <h2>Sign in</h2>
 
-<% unless invitation_only? %>
-<p><strong>Not yet a member? <%= link_to "Click here to sign up", sign_up_path %></strong></p>
-<% end %>
 
-<% if invitation_only? %>
-<p>We are currently in <em>invitation only</em> mode. If you don't have an account and would like an invitation, please get in touch.</p>
-<p>Otherwise, please log in below.</p>
-<hr />
-<% end %>
+<p><strong>Not yet a member? <%= link_to "Click here to sign up", '/sign_up' %></strong></p>
 
-<% form_for :session, :url => session_path do |form| %>
+
+
+<% form_for :session, :url => '/session' do |form| %>
   <p class="text_field">
     <%= form.label :email %>
     <%= form.text_field :email %>  

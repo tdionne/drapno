@@ -22,7 +22,7 @@
         <div id="header">
 
           <a href="/">
-            <img src="/images/logo.jpg" width="236" height="133" id="logo" alt="Drapno logo" />
+            <img src="/assets/logo.jpg" width="236" height="133" id="logo" alt="Drapno logo" />
           </a>
           
           <% if signed_in? %>
@@ -36,9 +36,9 @@
               <li id="nav-read"><%= link_to 'Read the Dreams<span title="Read the Dreams"></span>', dreams_path %></li>              
               <% if signed_in? %>
                 <li id="nav-mydrapno"><%= link_to 'My Drapno<span title="My Drapno"></span>', dreamer_path(current_user) %></li>
-                <li id="nav-signout"><%= link_to 'Sign Out<span title="Sign Out"></span>', sign_out_path %></li>
+                <li id="nav-signout"><%= link_to 'Sign Out<span title="Sign Out"></span>', '/sign_out' %></li>
               <% else %>
-                <li id="nav-signin"><%= link_to 'Sign In <span title="Sign In"></span>', sign_in_path %></li>
+                <li id="nav-signin"><%= link_to 'Sign In <span title="Sign In"></span>', '/sign_in' %></li>
               <% end %>
               <li id="nav-about"><a href="/about">About Drapno<span title="About Drapno"></span></a></li>
             </ul>

@@ -1,7 +1,9 @@
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
+require 'clearance/authentication'
 
 class ApplicationController < ActionController::Base
+  include Clearance::Controller
   include Clearance::Authentication
   # include ErrorRenderers
   # include InvitationSystem
@@ -51,7 +53,7 @@ class ApplicationController < ActionController::Base
       else
         store_location
         flash[:failure] = flash_message if flash_message
-        redirect_to(new_session_url)
+        redirect_to('/sign_in')
       end
     end
     
