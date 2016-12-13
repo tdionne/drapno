@@ -32,13 +32,13 @@
             
           <div id="menu">
             <ul>
-              <li id="nav-submit"><%= link_to 'Submit A Dream<span title="Submit a dream"></span>', new_dream_path %></li>
-              <li id="nav-read"><%= link_to 'Read the Dreams<span title="Read the Dreams"></span>', dreams_path %></li>              
+              <li id="nav-submit"><%= link_to 'Submit A Dream<span title="Submit a dream"></span>'.html_safe, new_dream_path %></li>
+              <li id="nav-read"><%= link_to 'Read the Dreams<span title="Read the Dreams"></span>'.html_safe, dreams_path %></li>
               <% if signed_in? %>
-                <li id="nav-mydrapno"><%= link_to 'My Drapno<span title="My Drapno"></span>', dreamer_path(current_user) %></li>
-                <li id="nav-signout"><%= link_to 'Sign Out<span title="Sign Out"></span>', '/sign_out' %></li>
+                <li id="nav-mydrapno"><%= link_to 'My Drapno<span title="My Drapno"></span>'.html_safe, dreamer_path(current_user) %></li>
+                <li id="nav-signout"><%= link_to 'Sign Out<span title="Sign Out"></span>'.html_safe, '/sign_out' %></li>
               <% else %>
-                <li id="nav-signin"><%= link_to 'Sign In <span title="Sign In"></span>', '/sign_in' %></li>
+                <li id="nav-signin"><%= link_to 'Sign In <span title="Sign In"></span>'.html_safe, '/sign_in' %></li>
               <% end %>
               <li id="nav-about"><a href="/about">About Drapno<span title="About Drapno"></span></a></li>
             </ul>
