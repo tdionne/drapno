@@ -329,5 +329,8 @@ DEPENDENCIES
   webrat
   will_paginate
 
+RUBY VERSION
+   ruby 2.2.5p319
+
 BUNDLED WITH
    1.13.6

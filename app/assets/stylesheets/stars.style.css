@@ -11,7 +11,7 @@
 .ui-rater-starsOff, .ui-rater-starsOn {
   display:inline-block; 
   height:18px; 
-  background:url(/images/stars.png) repeat-x 0 0px;
+  background:url(/assets/stars.png) repeat-x 0 0px;
 }
 .ui-rater-starsOff {
   width: 93px;

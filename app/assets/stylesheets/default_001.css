@@ -4,7 +4,7 @@
 } 
 
 body {
-  background:#fcfdfe url("/images/bg_body.jpg");
+  background:#fcfdfe url("/assets/bg_body.jpg");
   font-family:'Courier New', Courier, monospace;
   /*text-align:center;*/
 }
@@ -60,7 +60,7 @@ h1, h2, h3 {
 }
 
 #footer {
-  background-image:url("/images/opacity_10.png");
+  background-image:url("/assets/opacity_10.png");
   position:relative;
   border-top:1px dotted #d59cb0;
   border-bottom:1px dotted #d59cb0;
@@ -110,7 +110,7 @@ h1, h2, h3 {
 
 #btn_submit-dream span {
   left:0; top:0;
-  background:url("/images/btn_submit-dream.jpg") no-repeat;
+  background:url("/assets/btn_submit-dream.jpg") no-repeat;
 }
 
 #btn_buy-notepad, #btn_buy-notepad span {
@@ -122,7 +122,7 @@ h1, h2, h3 {
 
 #btn_buy-notepad span {
   left:0; top:0;
-  background:url("/images/btn_buy-notepad.jpg") no-repeat;
+  background:url("/assets/btn_buy-notepad.jpg") no-repeat;
 }
 
 #menu {
@@ -171,12 +171,12 @@ h1, h2, h3 {
 #menu li#nav-signin, li#nav-signin a, li#nav-signin span { width:135px; }
 #menu li#nav-about, li#nav-about a, li#nav-about span { width:113px; }
 
-#nav-submit span { background:url("/images/navSubmit.gif") no-repeat; }
-#nav-read span { background:url("/images/navRead.gif") no-repeat; }
-#nav-mydrapno span { background:url("/images/navMyDrapno.gif") no-repeat; }
-#nav-signout span { background:url("/images/navSignout.gif") no-repeat; }
-#nav-signin span { background:url("/images/navSignin.gif") no-repeat; }
-#nav-about span { background:url("/images/navAbout.gif") no-repeat; }
+#nav-submit span { background:url("/assets/navSubmit.gif") no-repeat; }
+#nav-read span { background:url("/assets/navRead.gif") no-repeat; }
+#nav-mydrapno span { background:url("/assets/navMyDrapno.gif") no-repeat; }
+#nav-signout span { background:url("/assets/navSignout.gif") no-repeat; }
+#nav-signin span { background:url("/assets/navSignin.gif") no-repeat; }
+#nav-about span { background:url("/assets/navAbout.gif") no-repeat; }
 
 /*#menu a:hover span, #menu span.active {
   background-position: left bottom
@@ -193,29 +193,29 @@ h1, h2, h3 {
 *******************************************************************************/
 #h_submit-dream { padding:5px 10px; font-size:100%; }
 #h_submit-dream, #h_submit-dream span { width:355px; height:37px; }
-#h_submit-dream span { background:url("/images/h_submit-dream.gif") no-repeat;}
+#h_submit-dream span { background:url("/assets/h_submit-dream.gif") no-repeat;}
 
 #h_read-dreams { padding:5px 10px 0 20px; font-size:100%; }
 #h_read-dreams, #h_read-dreams span { width:254px; height:35px; }
-#h_read-dreams span { background:url("/images/h_read-dreams.gif") no-repeat;}
+#h_read-dreams span { background:url("/assets/h_read-dreams.gif") no-repeat;}
 
 #h_view-dreams { padding:5px 10px 0 20px; font-size:100%; }
 #h_view-dreams, #h_view-dreams span { width:355px; height:37px; }
-#h_view-dreams span { background:url("/images/h_view-dreams.gif") no-repeat;}
+#h_view-dreams span { background:url("/assets/h_view-dreams.gif") no-repeat;}
 
 #h_my-drapno { padding:5px 10px 0 20px; font-size:100%; }
 #h_my-drapno, #h_my-drapno span { width:355px; height:37px; }
-#h_my-drapno span { background:url("/images/h_my-drapno.jpg") no-repeat;}
+#h_my-drapno span { background:url("/assets/h_my-drapno.jpg") no-repeat;}
 
 #h_submitadream { padding:5px 10px 0 20px; font-size:100%; }
 #h_submitadream, #h_submitadream span { width:355px; height:37px; }
-#h_submitadream span { background:url("/images/h_submitadream.gif") no-repeat;}
+#h_submitadream span { background:url("/assets/h_submitadream.gif") no-repeat;}
 
 
 #btn_submit-my-dream { margin-left:20px; text-align:right; }
 #btn_submit-my-dream strong { display:block; padding:20px 20px 0 20px;}
 #btn_submit-my-dream, #btn_submit-my-dream span { width:271px; height:71px; cursor:pointer; }
-#btn_submit-my-dream span { background:url("/images/btn_submit-dream.gif") no-repeat; }
+#btn_submit-my-dream span { background:url("/assets/btn_submit-dream.gif") no-repeat; }
 #content a#btn_submit-my-dream:hover { background-color:transparent; }
 
 .dreams-nav { font-size:12px; }
@@ -283,7 +283,7 @@ table.tab2 { }
 button.save-changes {
   width:177px;
 	height:57px;
-	background:url("/images/btn_save-changes.gif") no-repeat;
+	background:url("/assets/btn_save-changes.gif") no-repeat;
 	border:0;	margin:0 0 0 8px;		
   cursor:pointer;
 	_cursor:hand;
@@ -312,7 +312,7 @@ form#submitdream td { vertical-align:top; }
 button.submit-dream {
   width:272px;
 	height:57px;
-	background:url("/images/btn_submitadream.gif") no-repeat;
+	background:url("/assets/btn_submitadream.gif") no-repeat;
 	border:0;	margin:0 0 0 8px;		
   cursor:pointer;
 	_cursor:hand;
@@ -337,9 +337,9 @@ button.submit-dream span {
 #h_my-network, #h_my-network span,
 #h_tagyourdream, #h_tagyourdream span { width:221px; height:33px; }
 
-#h_introduction span { background:url("/images/h_introduction.gif") no-repeat;}
-#h_my-network span { background:url("/images/h_my-network.gif") no-repeat;}
-#h_tagyourdream span { background:url("/images/h_tagyourdream.gif") no-repeat;}
+#h_introduction span { background:url("/assets/h_introduction.gif") no-repeat;}
+#h_my-network span { background:url("/assets/h_my-network.gif") no-repeat;}
+#h_tagyourdream span { background:url("/assets/h_tagyourdream.gif") no-repeat;}
 
 #content ul.mynetwork { 
   list-style:none;
@@ -406,7 +406,7 @@ button.submit-dream span {
 *******************************************************************************/
 #footer #first { margin-left:100px; }
 #footer #last { margin-right:0; }
-#footer-in { background:url("/images/drapno-1965.gif") 5px 100% no-repeat; height:170px; overflow:hidden; }
+#footer-in { background:url("/assets/drapno-1965.gif") 5px 100% no-repeat; height:170px; overflow:hidden; }
 .footer-box { width:160px; margin:20px 25px 0 0; float:left; display:inline; }
 .footer-box h4 { font-size:80%; color:#9f3453; }
 .footer-box ul { list-style:none; font-size:80%; margin: 0.5em 0 20px 0; }
@@ -477,7 +477,7 @@ p.ok {
 }
 /* End hide from IE-mac */
 div.fieldWithErrors {
-  background-image: url(/images/error-arrow.png);
+  background-image: url(/assets/error-arrow.png);
   background-repeat: no-repeat;
   background-position: top left;
   clear: none;
@@ -500,7 +500,7 @@ div.fieldWithErrors input, div.fieldWithErrors select {
   margin-top: 20px;
 }
 a.subscribe {
-  background-image: url(/images/feed-icon-14x14.png);
+  background-image: url(/assets/feed-icon-14x14.png);
   background-repeat: no-repeat;
   background-position: center left;
   padding-left: 20px;
@@ -516,21 +516,21 @@ input[type="submit"] {
 	border: none;
 	background-repeat: no-repeat;
 	background-position: 50% 0px;
-	background-image: url(/images/button_bg_small.gif);
+	background-image: url(/assets/button_bg_small.gif);
 	background-color: transparent;
 	text-align: center;
 }
 input[type="submit"]:hover {
-	background-image: url(/images/button_bg_small_rollover.gif);
+	background-image: url(/assets/button_bg_small_rollover.gif);
 }
 .large-buttons input[type="submit"] {
   height: 36px;
 	width: 179px;
-  background-image: url(/images/button_bg.gif);
+  background-image: url(/assets/button_bg.gif);
   	padding-left: 15px;
 }
 .large-buttons input[type="submit"]:hover {
-	background-image: url(/images/button_bg_rollover.gif);
+	background-image: url(/assets/button_bg_rollover.gif);
 }
 .float-buttons input {
   float: left;
