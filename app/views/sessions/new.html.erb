@@ -5,10 +5,10 @@
 
 
 
-<% form_for :session, :url => '/session' do |form| %>
+<%= form_for :session, :url => '/session' do |form| %>
   <p class="text_field">
     <%= form.label :email %>
-    <%= form.text_field :email %>  
+    <%= form.text_field :email %>
   </p>
   <p class="text_field">
     <%= form.label :password %>
