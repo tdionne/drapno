@@ -32,6 +32,7 @@ class Dream < ActiveRecord::Base
   attr_accessible :title
   attr_accessible :story
   attr_accessible :dreamt_on
+  attr_accessible :tag_list
   
   validates_presence_of :title
   validates_presence_of :story
