@@ -25,10 +25,10 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::MethodNotAllowed, :with => :render_406
 
   def load_tags
-    @tags = Tag.all(
-      :select => "#{Tag.table_name}.id, #{Tag.table_name}.name, COUNT(*) AS count",
-      :joins  => "LEFT OUTER JOIN #{Tagging.table_name} ON #{Tag.table_name}.id = #{Tagging.table_name}.tag_id",
-      :group  => "#{Tag.table_name}.id, #{Tag.table_name}.name HAVING COUNT(*)> 0",
+    @tags = ActsAsTaggableOn::Tag.all(
+      :select => "#{ActsAsTaggableOn::Tag.table_name}.id, #{ActsAsTaggableOn::Tag.table_name}.name, COUNT(*) AS count",
+      :joins  => "LEFT OUTER JOIN #{ActsAsTaggableOn::Tagging.table_name} ON #{ActsAsTaggableOn::Tag.table_name}.id = #{ActsAsTaggableOn::Tagging.table_name}.tag_id",
+      :group  => "#{ActsAsTaggableOn::Tag.table_name}.id, #{ActsAsTaggableOn::Tag.table_name}.name HAVING COUNT(*)> 0",
       :order  => "count DESC",
       :limit  => 30
     ).sort_by(&:name)
