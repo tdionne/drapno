@@ -1,27 +1,27 @@
 <%= form.error_messages %>
 <p class="text_field">
-  <%= form.label :email, 'Email <span class="required">*</span>' %>
+  <%= form.label :email, 'Email <span class="required">*</span>'.html_safe %>
   <%= form.text_field :email %>
 </p>
 
 <p class="text_field">
-  <%= form.label :name, 'Name <span class="required">*</span>' %>
+  <%= form.label :name, 'Name <span class="required">*</span>'.html_safe %>
   <%= form.text_field :name %>
   <br /><span class="hint">(Your name will appear on the public site unless you setup a public alias below)</span>
 </p>
 <p>
-  <%= form.label :public_alias, 'Public alias <span class="required">*</span>' %>
+  <%= form.label :public_alias, 'Public alias <span class="required">*</span>'.html_safe %>
   <%= form.text_field :public_alias %>
   <br /><span class="hint">(how you would like to be identified on the site. Leave this blank if you want us to display your real name)</span>
 </p>
 
 <% if form.object.new_record? %>
   <p class="password_field">
-    <%= form.label :password, 'Password <span class="required">*</span>' %>
+    <%= form.label :password, 'Password <span class="required">*</span>'.html_safe %>
     <%= form.password_field :password %>
   </p>
   <p class="password_field">
-    <%= form.label :password_confirmation, 'Confirm password <span class="required">*</span>' %>
+    <%= form.label :password_confirmation, 'Confirm password <span class="required">*</span>'.html_safe %>
     <%= form.password_field :password_confirmation %>
   </p>
 <% end %>

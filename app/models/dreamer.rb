@@ -37,6 +37,12 @@ class Dreamer < ActiveRecord::Base
   has_many :consumer_tokens, :foreign_key => :user_id
   has_one :twitter, :class_name => "TwitterToken", :dependent => :destroy, :foreign_key => :user_id
 
+  attr_accessible :email
+  attr_accessible :public_profile
+  attr_accessible :name
+  attr_accessible :password
+  attr_accessible :encrypted_password
+
   # The follow stuff is a little awkward linguistically.
   # A "follow" is a request from a follower to follow this dreamer
   # A "follower" is the dreamer who made that request

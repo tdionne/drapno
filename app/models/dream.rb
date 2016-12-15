@@ -28,6 +28,10 @@ class Dream < ActiveRecord::Base
 
   accepts_nested_attributes_for :appearances, :allow_destroy => true,
     :reject_if => proc { |attributes| attributes['name'].blank? || attributes['email'].blank? }
+
+  attr_accessible :title
+  attr_accessible :story
+  attr_accessible :dreamt_on
   
   validates_presence_of :title
   validates_presence_of :story

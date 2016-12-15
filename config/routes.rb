@@ -1,4 +1,13 @@
 Drapno::Application.routes.draw do
+  resources :passwords, controller: "clearance/passwords", only: [:create, :new]
+  resource :session, controller: "clearance/sessions", only: [:create]
+
+  resources :users, controller: "clearance/users", only: [:create] do
+    resource :password,
+      controller: "clearance/passwords",
+      only: [:create, :edit, :update]
+  end
+
   resources :services
   # resources :oauth_consumers, :member => { :callback => :get }, :controller => 'services'
   #
@@ -33,7 +42,7 @@ Drapno::Application.routes.draw do
     resource :credentials, :only => [:edit, :update]
 
     # resource :password,
-    #   :controller => 'clearance/passwords',
+    #   :controller => :passwords
     #   :only       => [:create, :edit, :update]
     #
     # resource :confirmation,
@@ -44,11 +53,14 @@ Drapno::Application.routes.draw do
   resources :ratings, :only => :index
   resources :comments, :only => :index
   resources :follows, :only => :index
-  
-  # sign_up  'sign_up',
-  #   :controller => 'dreamers',
-  #   :action     => 'new'
-  #
+
+  get "/sign_in" => "clearance/sessions#new", as: "sign_in"
+  delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
+  controller :dreamers do
+    get '/sign_up', :action => :new
+  end
+
+
   %W(about history behind where-we-are contact).each do |page|
     get "/#{page}", :controller => 'home', :action => 'page', :permalink => page
   end

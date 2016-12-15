@@ -5,17 +5,17 @@
   
   <div class="inner">
     <p style="padding-bottom: 5px">
-      <%= form.label :title, 'Give your dream a title <span class="required">*</span>' %><br />
+      <%= form.label :title, 'Give your dream a title <span class="required">*</span>'.html_safe %><br />
       <%= form.text_field :title %>
     </p>
     
     <p>
-      <%= form.label :story, 'Describe your dream <span class="required">*</span>' %><br />
+      <%= form.label :story, 'Describe your dream <span class="required">*</span>'.html_safe %><br />
       <%= form.text_area :story, :cols => '60', :rows => '7', :class => 'expanding' %>
     </p>
     
     <p class="short-element">
-      <%= form.label :dreamt_on, 'Dream Date <span class="required">*</span>' %><br />
+      <%= form.label :dreamt_on, 'Dream Date <span class="required">*</span>'.html_safe %><br />
       <%= form.date_select :dreamt_on, :order => [:day, :month, :year], 
         :start_year => Date.today.year - 5, :end_year => Date.today.year, :default => 1.day.ago %>
     </p>
@@ -27,7 +27,7 @@
     
     <h2 style="clear: both; padding-top: 5px">Who is in your dream?</h2>
     <ul id="appearances">
-    <% form.fields_for :appearances do |app_form| %>
+    <%= form.fields_for :appearances do |app_form| %>
       <% if app_form.object.new_record? %>
       <li class="appearances new">
         <p class="short-element">
@@ -64,7 +64,7 @@
       <% end %>
     <% end %>
     </ul>
-    
+
     <h2 id="h_tagyourdream" class="ir">Tag your dream<span></span></h2>
     <div>
       <p><strong>If you have time please add extra keyword to help the search engine connect dreams</strong></p>
