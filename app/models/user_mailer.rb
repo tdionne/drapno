@@ -3,10 +3,11 @@ class UserMailer < ActionMailer::Base
   default_url_options[:host] = HOST
   
   def comment(comment)
-    from       DO_NOT_REPLY
-    recipients comment.dream.dreamer.email
-    subject    "Someone commented on your dream"
-    body       :comment => comment
+    @comment = comment
+    from =       DO_NOT_REPLY
+    recipients = comment.dream.dreamer.email
+    subject =    "Someone commented on your dream"
+    mail :to => recipients, :subject => subject, :from => from
   end
   
   def appearance(appearance)

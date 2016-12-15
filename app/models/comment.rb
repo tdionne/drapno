@@ -17,14 +17,17 @@ class Comment < ActiveRecord::Base
   has_many :reports, :class_name => 'CommentReport'
   
   validates_presence_of :dream_id, :dreamer_id, :body
-  
+
+  attr_accessible :body
+  attr_accessible :dreamer_id
+
   STATUSES = %W(pending visible reported hidden spam)
   # named_scope :available, :conditions => {:status => %W{visible reported hidden}}
   
   after_create :send_notification
   
   def send_notification
-    UserMailer.deliver_comment(self)
+    UserMailer.comment(self).deliver
   end
   
   STATUSES.each do |status|

@@ -30,7 +30,7 @@
 
   <% if signed_in? %>
     <% if eligible_to_comment_on?(@dream) %>
-      <% form_for([@dream, Comment.new]) do |form| %>
+      <%= form_for([@dream, Comment.new]) do |form| %>
       <fieldset>
         <legend>Your Comment</legend>
         <p>

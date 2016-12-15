@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate, :except => :index
+  before_filter :require_login, :except => :index
   before_filter :load_dream, :except => :index
   
   def index
