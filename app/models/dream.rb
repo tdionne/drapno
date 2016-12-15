@@ -40,7 +40,7 @@ class Dream < ActiveRecord::Base
   
   # named_scope :listings, :order => 'created_at DESC', :select => 'dreams.id, dreams.title, dreams.story, dreams.dreamer_id, dreams.created_at, dreams.dreamt_on', :include => :dreamer
   # named_scope :rated, :order => ['average_rating DESC'], :conditions => 'dreams.ratings_count > 0'
-  # acts_as_taggable_on :tags
+  acts_as_taggable
   
   attr_accessor :tweet_dream
   

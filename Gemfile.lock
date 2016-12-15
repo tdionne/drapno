@@ -41,6 +41,8 @@ GEM
     activesupport (3.2.22)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
+    acts-as-taggable-on (3.0.2)
+      rails (>= 3, < 5)
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     airbrussh (1.1.1)
@@ -131,7 +133,6 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mbleigh-acts-as-taggable-on (1.0.5)
     metaclass (0.0.4)
     middleware (0.1.0)
     mime-types (1.25.1)
@@ -285,6 +286,7 @@ DEPENDENCIES
   SystemTimer
   activerecord-mysql-adapter
   activesupport (= 3.2.22)
+  acts-as-taggable-on (= 3.0.2)
   base58
   bson_ext
   capistrano
@@ -305,7 +307,6 @@ DEPENDENCIES
   jnunemaker-validatable!
   json (= 2.0.2)
   loofah-activerecord
-  mbleigh-acts-as-taggable-on (~> 1.0.5)!
   minitest
   mocha
   model_mocker
