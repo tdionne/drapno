@@ -2,7 +2,7 @@
 
 <p>Want to change your password? <%= link_to 'Click here', edit_dreamer_credentials_path(current_user) %></p>
 
-<% form_for @dreamer, :html => {:multipart => true} do |form| %>
+<%= form_for @dreamer, :html => {:multipart => true} do |form| %>
   <%= form.error_messages %>
   
   <fieldset>
