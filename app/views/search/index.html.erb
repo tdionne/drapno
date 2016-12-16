@@ -24,7 +24,7 @@
     <h2>Search Drapno</h2>
   <% end %>
 
-  <% form_tag search_path, :method => :get do %>
+  <%= form_tag search_path, :method => :get do %>
     <p>
       <% if params[:q].blank?  %>
         <label>Enter keywords in the box below to search dreams on this site. We look at titles, descriptions and tags to produce results.</label><br />

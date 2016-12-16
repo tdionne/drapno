@@ -55,14 +55,14 @@ class Dream < ActiveRecord::Base
     Base58.encode(self.id)
   end
   
-  # define_index do
-  #   indexes title
-  #   indexes story
-  #   indexes dreamer(:name), :as => :dreamer
-  #   indexes tags(:name), :as => :tag_names
-  #
-  #   set_property :delta => :delayed
-  # end
+  ThinkingSphinx::Index.define :dream, :with => :real_time do
+    indexes title
+    indexes story
+    indexes dreamer(:name), :as => :dreamer
+    indexes tags(:name), :as => :tag_names
+
+    set_property :delta => :delayed
+  end
   
   def created_on
     created_at.to_date
