@@ -18,6 +18,8 @@ gem 'will_paginate'
 gem 'delayed_job'
 
 gem "thinking-sphinx"
+gem 'flying-sphinx'
+
 gem 'ts-delayed-delta', :require => 'thinking_sphinx/deltas/delayed_delta'
 
 gem 'jnunemaker-validatable', :source => 'http://rubygems.org/'
