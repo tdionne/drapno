@@ -4,7 +4,7 @@
 
   <ul id="tag-cloud">
     <% tag_cloud(@tags, @levels) do |tag, level| %>
-      <li class="<%= level %>"><%= link_to h(tag), "/tags/#{tag.id}" %></li>
+      <li class="<%= level %>"><%= link_to h(tag), tag_path(tag) %></li>
     <% end %>
   </ul>
 </div>
