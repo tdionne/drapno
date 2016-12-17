@@ -48,6 +48,8 @@ gem 'railties'
 gem 'loofah-activerecord'
 gem 'hoptoad_notifier'
 gem 'test-unit', '2.5.5'
+gem 'jquery-rails'
+
 group :production do
   # gem 'postgresql'
 end
