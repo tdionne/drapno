@@ -1,6 +1,6 @@
 class RatingsController < ApplicationController
   before_filter :load_dreamer, :only => :create
-  before_filter :authenticate, :only => :create
+  before_filter :require_login, :only => :create
   
   # GET /ratings
   # GET /ratings.xml

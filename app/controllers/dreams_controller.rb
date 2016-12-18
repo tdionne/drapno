@@ -21,7 +21,7 @@ class DreamsController < ApplicationController
     respond_to do |format|
       format.html {
         @related_dreams = @dream.find_related_tags(:limit => 6)
-        @average_rating = @dream.ratings.average(:score)
+        @average_rating = @dream.ratings.average(:score) || 0
         render
       }
       format.json { render :json => @dream }

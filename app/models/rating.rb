@@ -16,7 +16,10 @@ class Rating < ActiveRecord::Base
   
   validates_presence_of :rater_id
   validates_presence_of :dream_id
-  
+
+  attr_accessible :dream_id
+  attr_accessible :score
+
   after_save :update_dream
   
   def update_dream

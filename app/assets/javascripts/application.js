@@ -2,8 +2,8 @@
 // This file is automatically included by javascript_include_tag :defaults
 //= require jquery
 //= require jquery_ujs
-$(function() {
-  $('textarea.expanding').autogrow({
-    minHeight: '98px'
-  });
-})
+// $(function() {
+//   $('textarea.expanding').autogrow({
+//     minHeight: '98px'
+//   });
+// })
